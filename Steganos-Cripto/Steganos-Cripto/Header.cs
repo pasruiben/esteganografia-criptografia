@@ -5,11 +5,8 @@ using System.Text;
 
 namespace Steganos_Cripto
 {
-    class Util
+    class Header
     {
-        public static bool isWavFile(String s)
-        {
-            return s.EndsWith(".wav");
-        }
+        public byte[] data { set; get; }
     }
 }
