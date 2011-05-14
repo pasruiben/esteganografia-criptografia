@@ -13,7 +13,7 @@ namespace Steganos_Cripto
     public partial class Main : Form
     {
         String filenameIn;
-        String filenameOut = "C:\\out.wav";
+        String filenameOut = @"C:\Users\jacano\out.wav";
 
         List<Algorithm> algorithms = null;
         Algorithm activeAlgorithm = null;

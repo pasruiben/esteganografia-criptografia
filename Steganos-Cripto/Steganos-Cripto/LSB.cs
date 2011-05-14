@@ -39,7 +39,10 @@ namespace Steganos_Cripto
             for (int i = 0; i < samples.Length; i++)
             {
                 samples[i] = new Sample(buffer[j++], buffer[j++]);
+                //String s = samples[i].ToString();
             }
+
+            fs.Close();
         }
 
 
@@ -65,6 +68,7 @@ namespace Steganos_Cripto
             while (messageBitArrayIndex < xoresMessageArray.Length)
             {
                 int sampleIndex = generateSampleIndex(rnd, usedIndexSamples);
+                usedIndexSamples.Add(sampleIndex);
 
                 Sample s = samples[sampleIndex];
 
@@ -74,19 +78,24 @@ namespace Steganos_Cripto
                 }
             }
 
-            FileStream fs = new FileStream(fileOutput, FileMode.CreateNew, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(fileOutput, FileMode.Create | FileMode.CreateNew, FileAccess.ReadWrite);
 
-            int fileOffset = 0;
-            fs.Write(header.data, fileOffset, header.data.Length);
-
-            fileOffset += header.data.Length;
+            fs.Write(header.data, 0, header.data.Length);
 
             byte[] finalDataWav = new byte[samples.Length * 2];
+            int j = 0;
             foreach (Sample s in samples)
             {
-                fs.Write(Util.ToByteArray(s.data), fileOffset, 2);
-                fileOffset += 2;
+                byte[] d = Util.ToByteArray(s.data); 
+                for(int i = 1 ; i >= 0 ; i--)
+                {
+                    finalDataWav[j++] = d[i];
+                }
             }
+
+            fs.Write(finalDataWav, 0, finalDataWav.Length);
+
+            fs.Close();
         }
 
 
@@ -111,7 +120,7 @@ namespace Steganos_Cripto
 
             int bitPerSampleMessage = int.Parse(view.bitPerSampleMessageTextBox.Text);
 
-            long maxMessage = samples.Length*bitPerSampleMessage;
+            float maxMessage = (samples.Length*bitPerSampleMessage)/8;
 
             view.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
         }
