@@ -15,9 +15,15 @@ namespace Steganos_Cripto
             data = new BitArray(16);
             for (int i = 0; i < 8; i++)
             {
-                data[15-i] = (b1 & (1>>i)) == 1;
-                data[7-i] = (b2 & (1>>i)) == 1;
+                data[15-i] = (b1 & (1<<i)) >= 1;
+                data[7-i] = (b2 & (1<<i)) >= 1;
             }
+        }
+
+        public override string ToString()
+        {
+            byte[] value = Util.ToByteArray(this.data);
+            return String.Format("0x{0:X2} 0x{1:X2}", value[0], value[1]);
         }
 
     }

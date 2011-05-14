@@ -10,15 +10,14 @@ namespace Steganos_Cripto
     {
         public static byte[] XorMessageWithKey(string message, string key)
         {
-            char[] keyArray = key.ToCharArray();
-            char[] messageArray = key.ToCharArray();
-
+            byte[] res = new byte[message.Length];
+            
             for (int i = 0; i < message.Length; i++ )
             {
-                messageArray[i] ^= keyArray[i % keyArray.Length];
+                res[i] = (byte)(message[i] ^ key[i % key.Length]);
             }
 
-            return UnicodeEncoding.Unicode.GetBytes(messageArray);
+            return res;
         }
 
         public static byte[] ToByteArray(BitArray bits)
