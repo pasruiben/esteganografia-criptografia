@@ -1,0 +1,11 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Resumen}{3}
+\contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{4}
+\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{5}
+\contentsline {section}{\numberline {4}Soluciones presentadas}{6}
+\contentsline {section}{\numberline {5}Conclusiones}{7}
+\contentsline {section}{\numberline {6}Problemas abiertos}{8}
+\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{9}
+\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{10}
+\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{11}
+\contentsline {section}{\numberline {10}Tabla de tiempo}{12}
