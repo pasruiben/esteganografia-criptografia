@@ -36,7 +36,7 @@ Diversos grupos han mostrado tener un gran interés en las aplicaciones de la es
 
 La figura \ref{prisioneros} ilustra un ejemplo simple de un problema en el que el uso de la esteganografía puede ser de utilidad.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
     \includegraphics[width=\textwidth]{img/prisoners}
   \caption{Problema de los prisioneros}
@@ -62,6 +62,26 @@ Fruto de la combinación de esteganografía pura con criptosistemas simétricos.
 Basada en unir esteganografía pura y criptosistemas de clave pública. De esta manera, el emisor y el receptor evitan tener que compartir una clave privada.
 
 \end{itemize}
+
+\subsection{Audio digital}
+
+El audio digital se diferencia del sonido analógico tradicional en que es una señal discreta en lugar de una señal continua. Esta señal discreta es creada llevando a cabo un proceso de muestreo y cuantización de una señal analógica continua. La frecuencia de muestro varía según los propósitos. Por ejemplo, la frecuencia de muestreo estándar para un CD de audio digital es de alrededor de 44kHz. La figura \ref{audiodigital} ilustra el proceso de muestro y cuantización para producir una señal de audio digital a partir de una señal continua de audio analógico.
+En dicha figura se ha exagerado la naturaleza discreta de la señal digital. Sin embargo, las frecuencias de muestreo usuales permiten que el audio digital sea prácticamente idéntico a la señal de audio analógica original.
+
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=\textwidth]{img/digitalaudio}
+  \caption{Audio digital}
+  \label{audiodigital}
+\end{figure}
+
+Los archivos de audio digital se almacenan en el ordenador como una secuencia de ceros y unos. Con las herramientas apropiadas, es posible alterar individualmente los bits que componen estos archivos. Esto hará posible llevar a cabo modificaciones a la secuencia binaria que produzcan cambios en la señal de audio que no sean perceptibles al oído humano.
+
+\subsection{Esteganografía de audio}
+
+En un sistema de estaganografía digital informatizado, se ocultan mensajes secretos en audio digital. El mensaje secreto se introduce alterando ligeramente la secuencia binaria del archivo de audio. Existen aplicaciones de esteganografía de audio que permiten ocultar mensajes en archivos de audio en formato WAV, AU e incluso MP3.
+
+Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en mayor detalle en la sección ``Soluciones presentadas".
 
 \newpage
 \section{Descripción del problema}
