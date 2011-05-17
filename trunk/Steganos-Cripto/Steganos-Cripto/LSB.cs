@@ -16,20 +16,21 @@ namespace Steganos_Cripto
 
         public LSB()
         {
-            base.view = new LSBControl();
+            base.EncryptView = new LSBEncryptControl();
+            base.DecryptView = new LSBDecryptControl();
             base.Name = "LSB";
         }
 
-        private void setSamples(String fileInput)
+        private void setData()
         {
-            FileStream fs = new FileStream(fileInput, FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(filenameIn, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
 
             header = new Header();
             header.data = br.ReadBytes(44);
 
             //los samples empiezan a partir del offset 44. (en los wav)
-            int numBytes = ((int) new FileInfo(fileInput).Length) - 44;
+            int numBytes = ((int) new FileInfo(filenameIn).Length) - 44;
             byte[] buffer = br.ReadBytes((int)numBytes);
 
             int numSamples = (numBytes * 8 / bitsPerSample);
@@ -46,39 +47,39 @@ namespace Steganos_Cripto
         }
 
 
-        public override void run(String fileOutput, String message, String key)
+        public override void encrypt(String message, String key)
         {
             Sample[] output = new Sample[samples.Length];
 
             output = samples.Clone() as Sample[];
 
-            LSBControl view = base.view as LSBControl;
+            LSBEncryptControl encryptView = base.EncryptView as LSBEncryptControl;
 
-            int bitsPerSampleMessage = int.Parse(view.bitPerSampleMessageTextBox.Text);
+            int bitsPerSampleMessage = int.Parse(encryptView.bitPerSampleMessageTextBox.Text);
 
-            int seed = int.Parse(view.seedTextBox.Text);
+            int seed = int.Parse(encryptView.seedTextBox.Text);
             Random rnd = new Random(seed);
             List<int> usedIndexSamples = new List<int>();
 
             byte[] xoredMessage = Util.XorMessageWithKey(message, key);
-            BitArray xoresMessageArray = new BitArray(xoredMessage);
+            BitArray xoredMessageArray = new BitArray(xoredMessage);
 
             int messageBitArrayIndex = 0;
             
-            while (messageBitArrayIndex < xoresMessageArray.Length)
+            while (messageBitArrayIndex < xoredMessageArray.Length)
             {
                 int sampleIndex = generateSampleIndex(rnd, usedIndexSamples);
                 usedIndexSamples.Add(sampleIndex);
 
-                Sample s = samples[sampleIndex];
+                Sample s1 = samples[sampleIndex];
 
                 for (int t = bitsPerSample - bitsPerSampleMessage; t < bitsPerSample ; t++)
                 {
-                    output[sampleIndex].data[t] = s.data[t] ^ xoresMessageArray[messageBitArrayIndex++];
+                    output[sampleIndex].data[t] = xoredMessageArray[messageBitArrayIndex++];
                 }
             }
 
-            FileStream fs = new FileStream(fileOutput, FileMode.Create | FileMode.CreateNew, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(filenameOut, FileMode.Create | FileMode.CreateNew, FileAccess.ReadWrite);
 
             fs.Write(header.data, 0, header.data.Length);
 
@@ -99,6 +100,40 @@ namespace Steganos_Cripto
         }
 
 
+        public override void decrypt(String key)
+        {
+            LSBDecryptControl decryptView = base.DecryptView as LSBDecryptControl;
+
+            int bitsPerSampleMessage = int.Parse(decryptView.bitPerSampleMessageTextBox.Text);
+            int messageLength = int.Parse(decryptView.numCharTextBox.Text);
+            int seed = int.Parse(decryptView.seedTextBox.Text);
+
+            Random rnd = new Random(seed);
+            List<int> usedIndexSamples = new List<int>();
+
+            int size = messageLength * 8;
+            BitArray xoredMessageArray = new BitArray(size);
+
+            int bitCount = 0;
+            
+            while (bitCount < size)
+            {
+                int sampleIndex = generateSampleIndex(rnd, usedIndexSamples);
+                usedIndexSamples.Add(sampleIndex);
+
+                Sample s = samples[sampleIndex];
+
+                for (int t = bitsPerSample - bitsPerSampleMessage; t < bitsPerSample; t++)
+                {
+                    xoredMessageArray[bitCount++] = s.data[t];
+                }
+            }
+
+            //keda terminar el lsb de los cojones
+            //byte[] xoredMessage = Util.XorMessageWithKey(message, key);
+
+        }
+
         private int generateSampleIndex(Random rnd, List<int> usedIndexSamples)
         {
             int sampleIndex;
@@ -112,22 +147,21 @@ namespace Steganos_Cripto
         }
 
 
-        public override void init(string fileInput)
+        public override void init(string fileInput, String fileOutput)
         {
-            LSBControl view = base.view as LSBControl;
+            base.filenameIn = fileInput;
+            base.filenameOut = fileOutput;
 
-            setSamples(fileInput);
+            setData();
 
-            int bitPerSampleMessage = int.Parse(view.bitPerSampleMessageTextBox.Text);
+            LSBEncryptControl encrypyView = base.EncryptView as LSBEncryptControl;
+
+            int bitPerSampleMessage = int.Parse(encrypyView.bitPerSampleMessageTextBox.Text);
 
             float maxMessage = (samples.Length*bitPerSampleMessage)/8;
 
-            view.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
+            encrypyView.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
         }
 
-        public override string ToString()
-        {
-            return "LSB";
-        }
     }
 }

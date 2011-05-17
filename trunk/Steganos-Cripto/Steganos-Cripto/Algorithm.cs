@@ -9,9 +9,20 @@ namespace Steganos_Cripto
     abstract class Algorithm
     {
         public String Name { get; set; }
-        public Control view { get; set; }
+        public Control EncryptView { get; set; }
+        public Control DecryptView { get; set; }
 
-        public abstract void init(String fileInput);
-        public abstract void run(String fileOutput, String message, String key);
+        public String filenameIn { get; set; }
+        public String filenameOut { get; set; }
+
+        public abstract void init(String fileInput, String fileOut);
+
+        public abstract void encrypt(String message, String key);
+        public abstract void decrypt(String key);
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -47,13 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
-    <Compile Include="Header.cs" />
-    <Compile Include="LSB.cs" />
-    <Compile Include="LSBControl.cs">
+    <Compile Include="LSBDecryptControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LSBControl.Designer.cs">
-      <DependentUpon>LSBControl.cs</DependentUpon>
+    <Compile Include="LSBDecryptControl.Designer.cs">
+      <DependentUpon>LSBDecryptControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Header.cs" />
+    <Compile Include="LSB.cs" />
+    <Compile Include="LSBEncryptControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LSBEncryptControl.Designer.cs">
+      <DependentUpon>LSBEncryptControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -65,8 +71,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sample.cs" />
     <Compile Include="Util.cs" />
-    <EmbeddedResource Include="LSBControl.resx">
-      <DependentUpon>LSBControl.cs</DependentUpon>
+    <EmbeddedResource Include="LSBDecryptControl.resx">
+      <DependentUpon>LSBDecryptControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LSBEncryptControl.resx">
+      <DependentUpon>LSBEncryptControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

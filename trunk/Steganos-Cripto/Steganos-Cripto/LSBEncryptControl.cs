@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Steganos_Cripto
 {
-    public partial class LSBControl : UserControl
+    public partial class LSBEncryptControl : UserControl
     {
-        public LSBControl()
+        public LSBEncryptControl()
         {
             InitializeComponent();
         }
