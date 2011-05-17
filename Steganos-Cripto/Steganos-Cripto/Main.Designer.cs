@@ -38,25 +38,35 @@
             this.label4 = new System.Windows.Forms.Label();
             this.keyTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.playOriginalButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.algoritmosComboBox = new System.Windows.Forms.ComboBox();
             this.playModifiedButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.aplicarButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.reproducirModificadoPanel = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.reproducirModificadoPanel.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.infoToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 262);
+            this.statusStrip.Location = new System.Drawing.Point(0, 336);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(840, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1066, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -72,7 +82,7 @@
             this.soToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(840, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1066, 24);
             this.menuStrip.TabIndex = 2;
             // 
             // toolStripMenuItem1
@@ -80,35 +90,35 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(55, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(60, 20);
             this.toolStripMenuItem1.Text = "Archivo";
             // 
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // soToolStripMenuItem
             // 
             this.soToolStripMenuItem.Name = "soToolStripMenuItem";
-            this.soToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.soToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.soToolStripMenuItem.Text = "Acerca";
             this.soToolStripMenuItem.Click += new System.EventHandler(this.soToolStripMenuItem_Click);
             // 
             // messageTextBox
             // 
-            this.messageTextBox.Location = new System.Drawing.Point(78, 161);
+            this.messageTextBox.Location = new System.Drawing.Point(59, 37);
             this.messageTextBox.Multiline = true;
             this.messageTextBox.Name = "messageTextBox";
-            this.messageTextBox.Size = new System.Drawing.Size(234, 53);
+            this.messageTextBox.Size = new System.Drawing.Size(237, 146);
             this.messageTextBox.TabIndex = 15;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 161);
+            this.label4.Location = new System.Drawing.Point(3, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 14;
@@ -116,106 +126,163 @@
             // 
             // keyTextBox
             // 
-            this.keyTextBox.Location = new System.Drawing.Point(78, 97);
+            this.keyTextBox.Location = new System.Drawing.Point(83, 95);
             this.keyTextBox.Multiline = true;
             this.keyTextBox.Name = "keyTextBox";
-            this.keyTextBox.Size = new System.Drawing.Size(125, 20);
+            this.keyTextBox.Size = new System.Drawing.Size(122, 20);
             this.keyTextBox.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 104);
+            this.label3.Location = new System.Drawing.Point(30, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Clave:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Original:";
-            // 
             // playOriginalButton
             // 
-            this.playOriginalButton.Location = new System.Drawing.Point(89, 47);
+            this.playOriginalButton.Location = new System.Drawing.Point(83, 177);
             this.playOriginalButton.Name = "playOriginalButton";
-            this.playOriginalButton.Size = new System.Drawing.Size(75, 23);
+            this.playOriginalButton.Size = new System.Drawing.Size(83, 31);
             this.playOriginalButton.TabIndex = 8;
             this.playOriginalButton.Text = "Reproducir";
             this.playOriginalButton.UseVisualStyleBackColor = true;
-            this.playOriginalButton.Click += new System.EventHandler(this.button1_Click);
+            this.playOriginalButton.Click += new System.EventHandler(this.play_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 193);
+            this.label2.Location = new System.Drawing.Point(6, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Modificado:";
             // 
-            // comboBox1
+            // algoritmosComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(170, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 16;
-            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
+            this.algoritmosComboBox.FormattingEnabled = true;
+            this.algoritmosComboBox.Location = new System.Drawing.Point(83, 22);
+            this.algoritmosComboBox.Name = "algoritmosComboBox";
+            this.algoritmosComboBox.Size = new System.Drawing.Size(125, 21);
+            this.algoritmosComboBox.TabIndex = 16;
+            this.algoritmosComboBox.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             // 
             // playModifiedButton
             // 
-            this.playModifiedButton.Location = new System.Drawing.Point(351, 188);
+            this.playModifiedButton.Location = new System.Drawing.Point(74, 5);
             this.playModifiedButton.Name = "playModifiedButton";
-            this.playModifiedButton.Size = new System.Drawing.Size(97, 23);
+            this.playModifiedButton.Size = new System.Drawing.Size(70, 20);
             this.playModifiedButton.TabIndex = 11;
             this.playModifiedButton.Text = "Reproducir";
             this.playModifiedButton.UseVisualStyleBackColor = true;
             this.playModifiedButton.Click += new System.EventHandler(this.playModifiedButton_Click);
             // 
-            // button1
+            // aplicarButton
             // 
-            this.button1.Location = new System.Drawing.Point(19, 193);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Aplicar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.aplicarButton.Location = new System.Drawing.Point(527, 234);
+            this.aplicarButton.Name = "aplicarButton";
+            this.aplicarButton.Size = new System.Drawing.Size(101, 37);
+            this.aplicarButton.TabIndex = 17;
+            this.aplicarButton.Text = "Aplicar";
+            this.aplicarButton.UseVisualStyleBackColor = true;
+            this.aplicarButton.Visible = false;
+            this.aplicarButton.Click += new System.EventHandler(this.aplicar_Click);
             // 
-            // groupBox1
+            // panel1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.playModifiedButton);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(369, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(471, 232);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.panel1.Location = new System.Drawing.Point(341, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(424, 143);
+            this.panel1.TabIndex = 19;
+            // 
+            // reproducirModificadoPanel
+            // 
+            this.reproducirModificadoPanel.Controls.Add(this.playModifiedButton);
+            this.reproducirModificadoPanel.Controls.Add(this.label2);
+            this.reproducirModificadoPanel.Location = new System.Drawing.Point(89, 250);
+            this.reproducirModificadoPanel.Name = "reproducirModificadoPanel";
+            this.reproducirModificadoPanel.Size = new System.Drawing.Size(155, 29);
+            this.reproducirModificadoPanel.TabIndex = 18;
+            this.reproducirModificadoPanel.Visible = false;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(260, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(806, 333);
+            this.tabControl1.TabIndex = 19;
+            this.tabControl1.Visible = false;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(798, 307);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Cifrado";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(798, 307);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Descifrado";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Algoritmo:";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.playOriginalButton);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.algoritmosComboBox);
+            this.panel2.Controls.Add(this.keyTextBox);
+            this.panel2.Location = new System.Drawing.Point(0, 27);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(258, 306);
+            this.panel2.TabIndex = 21;
+            this.panel2.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.messageTextBox);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.reproducirModificadoPanel);
+            this.panel3.Controls.Add(this.aplicarButton);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Location = new System.Drawing.Point(6, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(786, 295);
+            this.panel3.TabIndex = 20;
+            this.panel3.Visible = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 284);
-            this.Controls.Add(this.messageTextBox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.keyTextBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.playOriginalButton);
+            this.ClientSize = new System.Drawing.Size(1066, 358);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
-            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
@@ -226,8 +293,14 @@
             this.statusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.reproducirModificadoPanel.ResumeLayout(false);
+            this.reproducirModificadoPanel.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,13 +318,19 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox keyTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button playOriginalButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox algoritmosComboBox;
         private System.Windows.Forms.Button playModifiedButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button aplicarButton;
+        private System.Windows.Forms.Panel reproducirModificadoPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
