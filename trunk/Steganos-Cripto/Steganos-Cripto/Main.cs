@@ -25,7 +25,7 @@ namespace Steganos_Cripto
             algorithms = new List<Algorithm>();
             algorithms.Add(new LSB());
 
-            comboBox1.Items.AddRange(algorithms.ToArray<Algorithm>());
+            algoritmosComboBox.Items.AddRange(algorithms.ToArray<Algorithm>());
         }
 
         private void soToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,10 +44,13 @@ namespace Steganos_Cripto
                 this.Text = "Esteganografía en audio - " + dlg.SafeFileName;
 
                 filenameIn = dlg.FileName;
+                panel2.Visible = true;
+                tabControl1.Visible = true;
+                panel3.Visible = true;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void play_Click(object sender, EventArgs e)
         {
             SoundPlayer simpleSound = new SoundPlayer(filenameIn);
             simpleSound.Play();
@@ -61,16 +64,20 @@ namespace Steganos_Cripto
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            activeAlgorithm = comboBox1.SelectedItem as Algorithm;
-            activeAlgorithm.view.Location = new Point(80, 45);
+            activeAlgorithm = algoritmosComboBox.SelectedItem as Algorithm;
 
             activeAlgorithm.init(filenameIn);
-            this.groupBox1.Controls.Add(activeAlgorithm.view);
+            this.panel1.Controls.Add(activeAlgorithm.view);
+
+            aplicarButton.Visible = true;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void aplicar_Click(object sender, EventArgs e)
         {
             activeAlgorithm.run(filenameOut, messageTextBox.Text, keyTextBox.Text);
+
+            this.infoToolStripStatusLabel.Text = "Algoritmo aplicado";
+            reproducirModificadoPanel.Visible = true;
         }
     }
 }
