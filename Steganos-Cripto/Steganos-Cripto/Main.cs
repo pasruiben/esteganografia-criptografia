@@ -66,18 +66,30 @@ namespace Steganos_Cripto
         {
             activeAlgorithm = algoritmosComboBox.SelectedItem as Algorithm;
 
-            activeAlgorithm.init(filenameIn);
-            this.panel1.Controls.Add(activeAlgorithm.view);
+            activeAlgorithm.init(filenameIn, filenameOut);
 
-            aplicarButton.Visible = true;
+            this.panel1.Controls.Add(activeAlgorithm.EncryptView);
+            this.panel5.Controls.Add(activeAlgorithm.DecryptView);
+
+            aplicarCifradoButton.Visible = true;
         }
 
-        private void aplicar_Click(object sender, EventArgs e)
+        private void aplicar_Cifrado_Click(object sender, EventArgs e)
         {
-            activeAlgorithm.run(filenameOut, messageTextBox.Text, keyTextBox.Text);
+            activeAlgorithm.encrypt(messageTextBox.Text, keyTextBox.Text);
 
-            this.infoToolStripStatusLabel.Text = "Algoritmo aplicado";
+            this.infoToolStripStatusLabel.Text = "Algoritmo de cifrado aplicado";
             reproducirModificadoPanel.Visible = true;
+        }
+
+        private void AplicarDescifradoButton_Click(object sender, EventArgs e)
+        {
+            activeAlgorithm.decrypt(keyTextBox.Text);
+        }
+
+        private void messageTextBox_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.Text = messageTextBox.Text;
         }
     }
 }

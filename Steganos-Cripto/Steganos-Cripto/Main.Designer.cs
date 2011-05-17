@@ -42,22 +42,31 @@
             this.label2 = new System.Windows.Forms.Label();
             this.algoritmosComboBox = new System.Windows.Forms.ComboBox();
             this.playModifiedButton = new System.Windows.Forms.Button();
-            this.aplicarButton = new System.Windows.Forms.Button();
+            this.aplicarCifradoButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.reproducirModificadoPanel = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.AplicarDescifradoButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.reproducirModificadoPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -114,6 +123,7 @@
             this.messageTextBox.Name = "messageTextBox";
             this.messageTextBox.Size = new System.Drawing.Size(237, 146);
             this.messageTextBox.TabIndex = 15;
+            this.messageTextBox.TextChanged += new System.EventHandler(this.messageTextBox_TextChanged);
             // 
             // label4
             // 
@@ -179,16 +189,16 @@
             this.playModifiedButton.UseVisualStyleBackColor = true;
             this.playModifiedButton.Click += new System.EventHandler(this.playModifiedButton_Click);
             // 
-            // aplicarButton
+            // aplicarCifradoButton
             // 
-            this.aplicarButton.Location = new System.Drawing.Point(527, 234);
-            this.aplicarButton.Name = "aplicarButton";
-            this.aplicarButton.Size = new System.Drawing.Size(101, 37);
-            this.aplicarButton.TabIndex = 17;
-            this.aplicarButton.Text = "Aplicar";
-            this.aplicarButton.UseVisualStyleBackColor = true;
-            this.aplicarButton.Visible = false;
-            this.aplicarButton.Click += new System.EventHandler(this.aplicar_Click);
+            this.aplicarCifradoButton.Location = new System.Drawing.Point(527, 234);
+            this.aplicarCifradoButton.Name = "aplicarCifradoButton";
+            this.aplicarCifradoButton.Size = new System.Drawing.Size(101, 37);
+            this.aplicarCifradoButton.TabIndex = 17;
+            this.aplicarCifradoButton.Text = "Aplicar";
+            this.aplicarCifradoButton.UseVisualStyleBackColor = true;
+            this.aplicarCifradoButton.Visible = false;
+            this.aplicarCifradoButton.Click += new System.EventHandler(this.aplicar_Cifrado_Click);
             // 
             // panel1
             // 
@@ -211,10 +221,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(260, 0);
+            this.tabControl1.Location = new System.Drawing.Point(273, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(806, 333);
+            this.tabControl1.Size = new System.Drawing.Size(793, 333);
             this.tabControl1.TabIndex = 19;
             this.tabControl1.Visible = false;
             // 
@@ -224,20 +234,82 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(798, 307);
+            this.tabPage1.Size = new System.Drawing.Size(785, 307);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cifrado";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.messageTextBox);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.reproducirModificadoPanel);
+            this.panel3.Controls.Add(this.aplicarCifradoButton);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Location = new System.Drawing.Point(6, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(786, 295);
+            this.panel3.TabIndex = 20;
+            this.panel3.Visible = false;
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.panel5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(798, 307);
+            this.tabPage2.Size = new System.Drawing.Size(785, 307);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Descifrado";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.AplicarDescifradoButton);
+            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Controls.Add(this.panel4);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Location = new System.Drawing.Point(6, 6);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(786, 295);
+            this.panel5.TabIndex = 22;
+            // 
+            // AplicarDescifradoButton
+            // 
+            this.AplicarDescifradoButton.Location = new System.Drawing.Point(187, 208);
+            this.AplicarDescifradoButton.Name = "AplicarDescifradoButton";
+            this.AplicarDescifradoButton.Size = new System.Drawing.Size(101, 37);
+            this.AplicarDescifradoButton.TabIndex = 20;
+            this.AplicarDescifradoButton.Text = "Aplicar";
+            this.AplicarDescifradoButton.UseVisualStyleBackColor = true;
+            this.AplicarDescifradoButton.Visible = false;
+            this.AplicarDescifradoButton.Click += new System.EventHandler(this.AplicarDescifradoButton_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(537, 15);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(237, 146);
+            this.textBox1.TabIndex = 17;
+            // 
+            // panel4
+            // 
+            this.panel4.Location = new System.Drawing.Point(17, 18);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(424, 143);
+            this.panel4.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(466, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Mensaje:";
             // 
             // label5
             // 
@@ -261,18 +333,22 @@
             this.panel2.TabIndex = 21;
             this.panel2.Visible = false;
             // 
-            // panel3
+            // label6
             // 
-            this.panel3.Controls.Add(this.messageTextBox);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.reproducirModificadoPanel);
-            this.panel3.Controls.Add(this.aplicarButton);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(6, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(786, 295);
-            this.panel3.TabIndex = 20;
-            this.panel3.Visible = false;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Num car:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(59, 204);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(66, 20);
+            this.textBox2.TabIndex = 21;
+            this.textBox2.Text = "0";
             // 
             // Main
             // 
@@ -297,10 +373,13 @@
             this.reproducirModificadoPanel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,7 +401,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox algoritmosComboBox;
         private System.Windows.Forms.Button playModifiedButton;
-        private System.Windows.Forms.Button aplicarButton;
+        private System.Windows.Forms.Button aplicarCifradoButton;
         private System.Windows.Forms.Panel reproducirModificadoPanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
@@ -331,6 +410,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button AplicarDescifradoButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace Steganos_Cripto
 {
-    partial class LSBControl
+    partial class LSBDecryptControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,13 +32,14 @@
             this.bitPerSampleMessageTextBox = new System.Windows.Forms.TextBox();
             this.seedTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.infoLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numCharTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 79);
+            this.label1.Location = new System.Drawing.Point(23, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 0;
@@ -46,7 +47,7 @@
             // 
             // bitPerSampleMessageTextBox
             // 
-            this.bitPerSampleMessageTextBox.Location = new System.Drawing.Point(112, 76);
+            this.bitPerSampleMessageTextBox.Location = new System.Drawing.Point(110, 18);
             this.bitPerSampleMessageTextBox.Name = "bitPerSampleMessageTextBox";
             this.bitPerSampleMessageTextBox.Size = new System.Drawing.Size(40, 20);
             this.bitPerSampleMessageTextBox.TabIndex = 1;
@@ -54,7 +55,7 @@
             // 
             // seedTextBox
             // 
-            this.seedTextBox.Location = new System.Drawing.Point(252, 76);
+            this.seedTextBox.Location = new System.Drawing.Point(250, 18);
             this.seedTextBox.Name = "seedTextBox";
             this.seedTextBox.Size = new System.Drawing.Size(50, 20);
             this.seedTextBox.TabIndex = 2;
@@ -63,32 +64,41 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(192, 79);
+            this.label2.Location = new System.Drawing.Point(190, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Semilla:";
             // 
-            // infoLabel
+            // label3
             // 
-            this.infoLabel.AutoSize = true;
-            this.infoLabel.Location = new System.Drawing.Point(25, 26);
-            this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(148, 13);
-            this.infoLabel.TabIndex = 4;
-            this.infoLabel.Text = "Longitud máxima del mensaje:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(336, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Num car:";
             // 
-            // LSBControl
+            // numCharTextBox
+            // 
+            this.numCharTextBox.Location = new System.Drawing.Point(396, 18);
+            this.numCharTextBox.Name = "numCharTextBox";
+            this.numCharTextBox.Size = new System.Drawing.Size(50, 20);
+            this.numCharTextBox.TabIndex = 4;
+            this.numCharTextBox.Text = "11";
+            // 
+            // LSBDecryptControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.infoLabel);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.numCharTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.seedTextBox);
             this.Controls.Add(this.bitPerSampleMessageTextBox);
             this.Controls.Add(this.label1);
-            this.Name = "LSBControl";
-            this.Size = new System.Drawing.Size(394, 124);
+            this.Name = "LSBDecryptControl";
+            this.Size = new System.Drawing.Size(482, 62);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,7 +110,8 @@
         public System.Windows.Forms.TextBox bitPerSampleMessageTextBox;
         public System.Windows.Forms.TextBox seedTextBox;
         public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label infoLabel;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox numCharTextBox;
 
     }
 }
