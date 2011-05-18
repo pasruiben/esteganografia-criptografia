@@ -48,6 +48,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.AplicarDescifradoButton = new System.Windows.Forms.Button();
@@ -56,8 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.reproducirModificadoPanel.SuspendLayout();
@@ -254,6 +254,23 @@
             this.panel3.TabIndex = 20;
             this.panel3.Visible = false;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(59, 204);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(66, 20);
+            this.textBox2.TabIndex = 21;
+            this.textBox2.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Num car:";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel5);
@@ -273,7 +290,7 @@
             this.panel5.Controls.Add(this.label1);
             this.panel5.Location = new System.Drawing.Point(6, 6);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(786, 295);
+            this.panel5.Size = new System.Drawing.Size(773, 295);
             this.panel5.TabIndex = 22;
             // 
             // AplicarDescifradoButton
@@ -284,12 +301,11 @@
             this.AplicarDescifradoButton.TabIndex = 20;
             this.AplicarDescifradoButton.Text = "Aplicar";
             this.AplicarDescifradoButton.UseVisualStyleBackColor = true;
-            this.AplicarDescifradoButton.Visible = false;
             this.AplicarDescifradoButton.Click += new System.EventHandler(this.AplicarDescifradoButton_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(537, 15);
+            this.textBox1.Location = new System.Drawing.Point(526, 15);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(237, 146);
@@ -299,7 +315,7 @@
             // 
             this.panel4.Location = new System.Drawing.Point(17, 18);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(424, 143);
+            this.panel4.Size = new System.Drawing.Size(443, 143);
             this.panel4.TabIndex = 21;
             // 
             // label1
@@ -332,23 +348,6 @@
             this.panel2.Size = new System.Drawing.Size(258, 306);
             this.panel2.TabIndex = 21;
             this.panel2.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 207);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Num car:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(59, 204);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(66, 20);
-            this.textBox2.TabIndex = 21;
-            this.textBox2.Text = "0";
             // 
             // Main
             // 
@@ -412,7 +411,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button AplicarDescifradoButton;
-        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBox2;
