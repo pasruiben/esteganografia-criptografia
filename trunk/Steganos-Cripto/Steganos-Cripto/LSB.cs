@@ -61,7 +61,7 @@ namespace Steganos_Cripto
             Random rnd = new Random(seed);
             List<int> usedIndexSamples = new List<int>();
 
-            byte[] xoredMessage = Util.XorMessageWithKey(message, key);
+            byte[] xoredMessage = Util.XorMessageWithKey(Encoding.ASCII.GetBytes(message), key);
             BitArray xoredMessageArray = new BitArray(xoredMessage);
 
             int messageBitArrayIndex = 0;
@@ -115,7 +115,6 @@ namespace Steganos_Cripto
             BitArray xoredMessageArray = new BitArray(size);
 
             int bitCount = 0;
-            
             while (bitCount < size)
             {
                 int sampleIndex = generateSampleIndex(rnd, usedIndexSamples);
@@ -129,9 +128,14 @@ namespace Steganos_Cripto
                 }
             }
 
-            //keda terminar el lsb de los cojones
-            //byte[] xoredMessage = Util.XorMessageWithKey(message, key);
+            byte[] messageXor = Util.ToByteArray(xoredMessageArray);
+            byte[] message = Util.XorMessageWithKey(messageXor, key);
 
+            string res = Encoding.ASCII.GetString(message);
+
+            Main m = decryptView.Parent.Parent.Parent.Parent.Parent as Main;
+
+            m.textBox1.Text = res;
         }
 
         private int generateSampleIndex(Random rnd, List<int> usedIndexSamples)

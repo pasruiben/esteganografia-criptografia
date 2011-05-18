@@ -8,7 +8,9 @@ namespace Steganos_Cripto
 {
     class Util
     {
-        public static byte[] XorMessageWithKey(string message, string key)
+        
+
+        public static byte[] XorMessageWithKey(byte[] message, string key)
         {
             byte[] res = new byte[message.Length];
             

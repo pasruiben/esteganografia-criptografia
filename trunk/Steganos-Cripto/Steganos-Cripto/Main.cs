@@ -69,7 +69,7 @@ namespace Steganos_Cripto
             activeAlgorithm.init(filenameIn, filenameOut);
 
             this.panel1.Controls.Add(activeAlgorithm.EncryptView);
-            this.panel5.Controls.Add(activeAlgorithm.DecryptView);
+            this.panel4.Controls.Add(activeAlgorithm.DecryptView);
 
             aplicarCifradoButton.Visible = true;
         }
@@ -89,7 +89,7 @@ namespace Steganos_Cripto
 
         private void messageTextBox_TextChanged(object sender, EventArgs e)
         {
-            textBox2.Text = messageTextBox.Text;
+            textBox2.Text = messageTextBox.Text.Length.ToString();
         }
     }
 }
