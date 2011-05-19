@@ -38,12 +38,12 @@ La figura \ref{prisioneros} ilustra un ejemplo simple de un problema en el que e
 
 \begin{figure}[h]
   \centering
-    \includegraphics[width=\textwidth]{img/prisoners}
+    \includegraphics[width=\textwidth]{img/illustration2}
   \caption{Problema de los prisioneros}
   \label{prisioneros}
 \end{figure}
 
-Tyler y Dave están en la cárcel. Necesitan comunicarse para ultimar los detalles de un plan de fuga, pero tienen un gran problema: Julie, guardia de la prisión, tiene acceso a toda la correspondencia entre los prisioneros. La criptografía por sí sola no es una solución. Un mensaje cifrado levantaría todo tipo de sospechas. Los prisioneros deben idear un sistema que les permita pasar mensajes de apariencia inocente, con información oculta que sólo ellos puedan entender.
+Dos prisioneros en una cárcel necesitan comunicarse para ultimar los detalles de un plan de fuga, pero tienen un gran problema: el guardia de la prisión tiene acceso a toda la correspondencia entre los prisioneros. La criptografía por sí sola no es una solución. Un mensaje cifrado levantaría todo tipo de sospechas. Los prisioneros deben idear un sistema que les permita pasar mensajes de apariencia inocente, con información oculta que sólo ellos puedan entender. Esto es exactamente lo que persigue la esteganografía.
 
 La esteganografía puede además combinarse con la criptografía para crear sistemas más seguros. Así, distinguimos:
 
@@ -83,28 +83,39 @@ En un sistema de estaganografía digital informatizado, se ocultan mensajes secr
 
 Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en mayor detalle en la sección ``Soluciones presentadas".
 
-\newpage
 \section{Descripción del problema}
 
-\newpage
 \section{Soluciones presentadas}
 
-\newpage
+En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se han preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a lectores con conocimientos básicos de esteganografía.
+
+\subsection{Codificación en el bit menos significativo (LSB Coding)}
+
+Es el método más simple de inclusión de información en un archivo de audio digital. Se basa en sustituir el bit menos significativo de cada sample (porción de sonido) con un bit del mensaje a ocultar. Este método permite ocultar grandes cantidades de información. La figura \ref{lsbcoding} ilustra cómo se oculta el mensaje ``HEY'' en un archivo de audio compuesto por samples de 16 bits.
+
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=\textwidth]{img/lsbimage}
+  \caption{LSB Coding}
+  \label{lsbcoding}
+\end{figure}
+
+Algunas implementaciones de este método utilizan los dos (o más) bits menos significativos de cada sample para ocultar información. Esto hace que la cantidad de información que se puede insertar aumente, pero también eleva la cantidad de ruido que es introducida en la señal de audio resultante. Por ello, es importante considerar el tipo de señal de audio antes de decidir el número de bits por sample a utilizar. Por ejemplo, un archivo de sonido grabado en una estación de metro con gran cantidad de ruido de fondo podría soportar la inclusión de dos o más bits de información en cada sample, ya que el ruido de fondo enmascararía el ruido introducido en el proceso de ocultación de información. Por contra, un archivo de sonido que contenga un solo de piano será mucho más sensible a estas modificaciones, por lo que el uso de más de un bit por sample podría hacer que las modificaciones resultaran perceptibles al oído humano.
+
+Para poder extraer un mensaje secreto codificado utilizando LSB, el receptor necesita tener acceso a la secuencia de samples utilizada en el proceso de inserción de información. Normalmente, la longitud del mensaje secreto a ocultar es mucho menor que el número total de samples del archivo de sonido. Una decisión a tomar consiste por tanto en cómo elegir qué subconjunto de samples del archivo original se usarán para contener información. El emisor y el receptor deben ponerse de acuerdo en esta cuestión. Una técnica trivial consiste en comenzar en el inicio del archivo de sonido y llevar a cabo la inserción de información en los primeros samples, hasta que el mensaje ha sido completamente introducido. A partir de ahí, el resto de samples quedarían inalterados. El problema de esta técnica radica en que la primera parte del archivo de sonido tendrá propiedades estadísticas diferentes a la del resto del archivo, que no fue modificado. Una solución a este problema es añadir al mensaje secreto una secuencia de bits aleatorio de manera que la longitud total del mensaje fuera igual al número total de samples. El inconveniente es que el proceso de inserción modificaría ahora muchos más samples de los que la transmisión del mensaje original requería, lo cual hace que sea más sencillo detectar la existencia del mensaje oculto.
+
+Una solución más sofisticada se basa en usar un generador de números pseudoaleatorios para distribuir el mensaje entre los samples del archivo de sonido. Para poder hacer esto, el emisor y el receptor deben ponerse de acuerdo en la semilla que utilizarán para generar la secuencia pseudoaleatoria de samples a utilizar. De esta manera el receptor puede reconstruir la secuencia y averiguar cuáles son los samples que contienen el mensaje oculto. Hay que tener cuidado con que el generador produzca el mismo sample dos veces. Si esto ocurriese, se modificaría el bit menos significativo de un sample cuyos bits menos significativos ya habían sido modificados, produciéndose una colisión. Una manera de evitar esto es almacenar en una lista los samples que ya han sido modificados, de manera que si el generador indica que se vuelva a utilizar un sample ya empleado, se ignora. Otra alternativa consiste en calcular una permutación pseudoaleatoria del conjunto de samples del archivo de audio, y seleccionar los primeros. Con esta técnica es imposible que se utilice el mismo sample más de una vez.
+
 \section{Conclusiones}
 
-\newpage
 \section{Problemas abiertos}
 
-\newpage
 \section{Implementación realizada}
 
-\newpage
 \section{Manual de instalación y manejo de la aplicación}
 
-\newpage
 \section{Bibliografía}
 
-\newpage
-\section{Tabla de tiempo}
+\section{Tabla de tiempos}
 
 \end{document}
