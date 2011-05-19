@@ -4,11 +4,12 @@
 \contentsline {subsection}{\numberline {2.1}Esteganograf\IeC {\'\i }a}{3}
 \contentsline {subsection}{\numberline {2.2}Audio digital}{5}
 \contentsline {subsection}{\numberline {2.3}Esteganograf\IeC {\'\i }a de audio}{6}
-\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{7}
-\contentsline {section}{\numberline {4}Soluciones presentadas}{8}
+\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{6}
+\contentsline {section}{\numberline {4}Soluciones presentadas}{6}
+\contentsline {subsection}{\numberline {4.1}Codificaci\IeC {\'o}n en el bit menos significativo (LSB Coding)}{7}
 \contentsline {section}{\numberline {5}Conclusiones}{9}
-\contentsline {section}{\numberline {6}Problemas abiertos}{10}
-\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{11}
-\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{12}
-\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{13}
-\contentsline {section}{\numberline {10}Tabla de tiempo}{14}
+\contentsline {section}{\numberline {6}Problemas abiertos}{9}
+\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{9}
+\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{9}
+\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{9}
+\contentsline {section}{\numberline {10}Tabla de tiempos}{9}
