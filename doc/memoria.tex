@@ -93,7 +93,7 @@ En esta sección presentamos algunos de los métodos más comúnmente utilizados
 
 Es el método más simple de inclusión de información en un archivo de audio digital. Se basa en sustituir el bit menos significativo de cada sample (porción de sonido) con un bit del mensaje a ocultar. Este método permite ocultar grandes cantidades de información. La figura \ref{lsbcoding} ilustra cómo se oculta el mensaje ``HEY'' en un archivo de audio compuesto por samples de 16 bits.
 
-\begin{figure}[h]
+\begin{figure}
   \centering
     \includegraphics[width=\textwidth]{img/lsbimage}
   \caption{LSB Coding}
@@ -105,6 +105,25 @@ Algunas implementaciones de este método utilizan los dos (o más) bits menos si
 Para poder extraer un mensaje secreto codificado utilizando LSB, el receptor necesita tener acceso a la secuencia de samples utilizada en el proceso de inserción de información. Normalmente, la longitud del mensaje secreto a ocultar es mucho menor que el número total de samples del archivo de sonido. Una decisión a tomar consiste por tanto en cómo elegir qué subconjunto de samples del archivo original se usarán para contener información. El emisor y el receptor deben ponerse de acuerdo en esta cuestión. Una técnica trivial consiste en comenzar en el inicio del archivo de sonido y llevar a cabo la inserción de información en los primeros samples, hasta que el mensaje ha sido completamente introducido. A partir de ahí, el resto de samples quedarían inalterados. El problema de esta técnica radica en que la primera parte del archivo de sonido tendrá propiedades estadísticas diferentes a la del resto del archivo, que no fue modificado. Una solución a este problema es añadir al mensaje secreto una secuencia de bits aleatorio de manera que la longitud total del mensaje fuera igual al número total de samples. El inconveniente es que el proceso de inserción modificaría ahora muchos más samples de los que la transmisión del mensaje original requería, lo cual hace que sea más sencillo detectar la existencia del mensaje oculto.
 
 Una solución más sofisticada se basa en usar un generador de números pseudoaleatorios para distribuir el mensaje entre los samples del archivo de sonido. Para poder hacer esto, el emisor y el receptor deben ponerse de acuerdo en la semilla que utilizarán para generar la secuencia pseudoaleatoria de samples a utilizar. De esta manera el receptor puede reconstruir la secuencia y averiguar cuáles son los samples que contienen el mensaje oculto. Hay que tener cuidado con que el generador produzca el mismo sample dos veces. Si esto ocurriese, se modificaría el bit menos significativo de un sample cuyos bits menos significativos ya habían sido modificados, produciéndose una colisión. Una manera de evitar esto es almacenar en una lista los samples que ya han sido modificados, de manera que si el generador indica que se vuelva a utilizar un sample ya empleado, se ignora. Otra alternativa consiste en calcular una permutación pseudoaleatoria del conjunto de samples del archivo de audio, y seleccionar los primeros. Con esta técnica es imposible que se utilice el mismo sample más de una vez.
+
+\subsection{Codificación de paridad (Parity Coding)}
+
+En lugar de dividir la señal en samples individuales, este método divide la señal en regiones disjuntas. Una región es un conjunto de samples, de un tamaño determinado (todas las regiones tendrán el mismo tamaño, excepto quizás la última). El método oculta un bit del mensaje secreto en el bit de paridad de cada región. El bit de paridad de una región se define como el resultado de aplicar la operación lógica XOR a todos los bits de la región. Si el bit de paridad de la región seleccionada (aquella en la que se ha decidido ocultar un bit del mensaje) no coincide con el bit secreto a incrustar, se modifica el bit menos significativo de uno de los samples de la región (no importa cual). De esta manera, el emisor tiene una serie de samples entre los que elegir a la hora de ocultar cada bit.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth]{img/parity}
+  \caption{Parity Coding}
+  \label{paritycoding}
+\end{figure}
+
+La figura \ref{paritycoding} ilustra cómo se ocultan, usando este método, los tres primeros bits del mensaje ``HEY'' (010 ya que en formato ASCII la `H'\space se representa por el número 72 en decimal, 01001000 en binario).
+
+Para poder llevar a cabo el proceso de extracción de la información el receptor debe conocer el tamaño de las regiones así como el orden en el que éstas fueron utilizadas a la hora de ocultar la información. Como en el método anterior, puedo optarse por utilizar las primeras regiones del archivo de sonido de manera secuencial, o bien por usar un generador pseudoaleatorio que, a partir de una semilla, determine el orden en que deben escogerse las regiones en las que ocultar información. En caso de utilizar este último método, la semilla y el generador pseudoaleatorio deben ser compartidos por emisor y receptor, evidentemente.
+
+El proceso de obtención de la información oculta se limita a calcular los bits de paridad de las regiones empleadas durante el proceso de inserción del mensaje. La concatenación de estos bits de paridad dará como resultado el mensaje original. Como puede observarse, el receptor no necesita conocer en ningún momento qué samples concretos se han visto modificados con respecto al archivo de sonido original.
+
+Los métodos de codificación en el bit menos significativo y codificación de paridad presentan dos desventajas fundamentales. En primer lugar, ambos introducen ruido en la señal original, y el oído humano es muy sensible al ruido, a menudo siendo capaz de detectar cantidades de ruido muy pequeñas. El método de codificación de paridad es ligeramente mejor en este aspecto, ya que asegura que sólo se modificará un bit de cada región. La otra gran desventaja que presentan estos métodos es que no son robustos. Pequeñas modificaciones en el archivo de sonido que contiene el mensaje secreto podrían destruir dicho mensaje. La robustez de estos métodos puede aumentar ligeramente si se utilizan técnicas de redundancia, ocultando cada bit del mensaje secreto en dos o más localizaciones del archivo de audio. El problema que presenta esta solución es que aumenta la cantidad de bits a incrustar en el archivo de sonido original, lo cual reduce el tamaño máximo del mensaje que se puede ocultar en una señal de audio determinada a la vez que aumenta la perceptibilidad de las modificaciones realizadas.
 
 \section{Conclusiones}
 
