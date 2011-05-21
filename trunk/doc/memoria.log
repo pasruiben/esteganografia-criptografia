@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  19 MAY 2011 22:53
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  21 MAY 2011 14:25
 entering extended mode
 **memoria.tex
 ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.tex"
@@ -359,23 +359,28 @@ alaudio.png (PNG copy)>] <img/lsbimage.png, id=26, 526.96875pt x 451.6875pt>
 File: img/lsbimage.png Graphic file (type png)
 
 <use img/lsbimage.png> [7 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/tra
-bajoC/doc/img/lsbimage.png (PNG copy)>] [8] [9]
+bajoC/doc/img/lsbimage.png (PNG copy)>] [8]
+<img/parity.png, id=35, 526.96875pt x 501.875pt>
+File: img/parity.png Graphic file (type png)
+ <use img/parity.png> [9]
+[10 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/parity.p
+ng (PNG copy)>] [11]
 ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.aux") )
  
 Here is how much of TeX's memory you used:
- 1851 strings out of 494053
- 22949 string characters out of 3148610
- 83592 words of memory out of 3000000
- 5155 multiletter control sequences out of 15000+200000
+ 1858 strings out of 494053
+ 23068 string characters out of 3148610
+ 84601 words of memory out of 3000000
+ 5161 multiletter control sequences out of 15000+200000
  8808 words of font info for 31 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  25i,7n,27p,1387b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on memoria.pdf (9 pages, 102284 bytes).
+Output written on memoria.pdf (11 pages, 133239 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
