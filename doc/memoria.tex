@@ -3,6 +3,7 @@
 \usepackage[spanish,activeacute]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{amsmath}
 %\usepackage{fullpage}
 
 \title{Ocultar datos en archivos de sonido}
@@ -89,7 +90,7 @@ Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocul
 
 En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se han preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a lectores con conocimientos básicos de esteganografía.
 
-\subsection{Codificación en el bit menos significativo (LSB Coding)}
+\subsection{Codificación en el bit menos significativo (LSB coding)}
 
 Es el método más simple de inclusión de información en un archivo de audio digital. Se basa en sustituir el bit menos significativo de cada sample (porción de sonido) con un bit del mensaje a ocultar. Este método permite ocultar grandes cantidades de información. La figura \ref{lsbcoding} ilustra cómo se oculta el mensaje ``HEY'' en un archivo de audio compuesto por samples de 16 bits.
 
@@ -106,7 +107,7 @@ Para poder extraer un mensaje secreto codificado utilizando LSB, el receptor nec
 
 Una solución más sofisticada se basa en usar un generador de números pseudoaleatorios para distribuir el mensaje entre los samples del archivo de sonido. Para poder hacer esto, el emisor y el receptor deben ponerse de acuerdo en la semilla que utilizarán para generar la secuencia pseudoaleatoria de samples a utilizar. De esta manera el receptor puede reconstruir la secuencia y averiguar cuáles son los samples que contienen el mensaje oculto. Hay que tener cuidado con que el generador produzca el mismo sample dos veces. Si esto ocurriese, se modificaría el bit menos significativo de un sample cuyos bits menos significativos ya habían sido modificados, produciéndose una colisión. Una manera de evitar esto es almacenar en una lista los samples que ya han sido modificados, de manera que si el generador indica que se vuelva a utilizar un sample ya empleado, se ignora. Otra alternativa consiste en calcular una permutación pseudoaleatoria del conjunto de samples del archivo de audio, y seleccionar los primeros. Con esta técnica es imposible que se utilice el mismo sample más de una vez.
 
-\subsection{Codificación de paridad (Parity Coding)}
+\subsection{Codificación en paridad (Parity Coding)}
 
 En lugar de dividir la señal en samples individuales, este método divide la señal en regiones disjuntas. Una región es un conjunto de samples, de un tamaño determinado. Todas las regiones tendrán el mismo tamaño, excepto quizás la última, si el número de samples del archivo no es múltiplo del número de samples por región. El método oculta un bit del mensaje secreto en el bit de paridad de cada región. El bit de paridad de una región se define como el resultado de aplicar la operación lógica XOR a todos los bits de todos los samples de la región. Si el bit de paridad de la región seleccionada (aquella en la que se ha decidido ocultar un bit del mensaje) no coincide con el bit secreto a incrustar, se modifica el bit menos significativo de uno de los samples de la región (no importa cual). Si coincide, no es necesario llevar a cabo ninguna modificación. De esta manera, el emisor tiene una serie de samples entre los que elegir a la hora de ocultar cada bit.
 
@@ -126,6 +127,68 @@ El proceso de obtención de la información oculta se limita a calcular los bits
 \bigskip
 
 Los métodos de codificación en el bit menos significativo y codificación de paridad presentan dos desventajas fundamentales. En primer lugar, ambos introducen ruido en la señal original, y el oído humano es muy sensible al ruido, a menudo siendo capaz de detectar incluso las cantidades más insignificantes. El método de codificación de paridad es ligeramente mejor en este aspecto, ya que asegura que sólo se modificará como máximo un bit en cada región. La otra gran desventaja que presentan estos métodos es que no son robustos. Pequeñas modificaciones en el archivo de sonido que contiene el mensaje secreto podrían destruir dicho mensaje. La robustez de estos métodos puede aumentar en cierta medida si se utilizan técnicas de redundancia, ocultando cada bit del mensaje secreto en dos o más localizaciones del archivo de audio. El problema que presenta esta solución es que aumenta la cantidad de bits a incrustar en el archivo de sonido original, lo cual reduce el tamaño máximo del mensaje que se puede ocultar en una señal de audio determinada a la vez que se incrementa la probabilidad de que las modificaciones realizadas resulten perceptibles.
+
+\subsection{Codificación en fase (Phase coding)}
+
+A diferencia de los métodos anteriores, el método de codificación en fase no está basado en la inserción de ruido y por tanto no comparte los inconvenientes previamente señalados. La idea centra en codificación en fase es que las componentes de fase del sonido no resultan tan perceptibles al oído humano como el ruido. Por ello, en lugar de introducir perturbaciones, esta técnica codifica los bits del mensaje como desplazamientos de fase en el espectro de fases de la señal digital.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth]{img/phaseshift}
+  \caption{Phase Coding}
+  \label{phasecoding}
+\end{figure}
+
+El procedimiento es el siguiente:
+
+\begin{enumerate}
+
+\item La señal de sonido original se divide en segmentos cuya longitud es igual al tamaño del mensaje a ocultar.
+
+\item Se aplica la transformada discreta de Fourier a cada segmento para crear una matriz de las fases y magnitudes de la transformada de Fourier.
+
+\item Se calculan las diferencias de fase entre segmentos adyacentes.
+
+\item Desplazamientos de fase entre segmentos consecutivos serían fácilmente detectables. En otras palabras, las fases absolutas de los segmentos pueden cambiarse pero las diferencias relativas de fase entre segmentos adyacentes deben preservarse. Por este motivo, el mensaje secreto sólo se inserta en el vector de fases del primer segmento de la señal, de manera que la nueva fase será:
+
+\[
+\text{nueva\_fase }=\left\{
+\begin{array}{ccc}
+\pi /2 & \text{si} & \text{bit del mensaje = 0} \\
+&  &  \\
+-\pi /2 & \text{si} & \text{bit del mensaje = 1}
+\end{array}
+\right.
+\]
+
+\item Se crea una nueva matriz de fases usando las nuevas fases del primer segmento y respetando las diferencias de fase originales.
+
+\item Usando la nueva matriz de fases y la matriz de magnitudes original, se reconstruye la señal de sonido aplicando la transformada discreta de Fourier inversa, y después concatenando los segmentos.
+
+\end{enumerate}
+
+Para extraer el mensaje secreto del archivo de sonido, el receptor debe conocer la longitud del segmento. Entonces puede usar la transformada discreta de Fourier para obtener las fases y extraer la información.
+
+\medskip
+
+Una desventaja del método de codificación en fase es su baja tasa de transferencia de información, debida al hecho de que el mensaje secreto sólo se codifica en el primer segmento de la señal. Este inconveniente podría mitigarse aumentando la longitud de los segmentos de la señal. Sin embargo, esto haría que las relaciones de fase entre cada componente de frecuencia cambiase de manera más drástica, haciendo más sencillo detectar la existencia del mensaje oculto. Por tanto, el método de codificación en fase se usa cuando sólo es necesario transmitir una pequeña cantidad de datos.
+
+\subsection{Espectro ensanchado (Spread spectrum)}
+
+En el contexto de la esteganografía de audio, el método básico de ensanchado del espectro intenta expandir la información secreta lo máximo posible en el espectro de frecuencia de la señal de audio. Esto es análogo a un sistema de codificación en el bit menos significativo en el que el mensaje se ocultara en bits elegidos aleatoriamente de entre todos los bits del archivo de sonido. Sin embargo, a diferencia de lo que ocurre en LSB coding, el método de espectro ensanchado distribuye los bits del mensaje secreto en el espectro de frecuencia del archivo de sonido, usando un código que es independiente de la señal. Como resultado, la señal final ocupa un ancho de banda mayor al originalmente requerido para la transmisión.
+
+Se pueden usar dos versiones del método de espectro ensanchado en esteganografía de audio: el esquema de secuencia directa y el esquema de salto de frecuencia. En secuencia directa, el mensaje secreto se distribuye utilizando una constante llamada ``chip rate'' y luego se modula con una señal pseudoaleatoria. Después se entrelaza con la señal original. En salto de frecuencia, el espectro de frecuencia del archivo de audio es alterado para que salte rápidamente entre frecuencias.
+
+La teoría matemática en la que se basa este método es bastante complicada y va más allá de los objetivos de este proyecto. El diagrama de la figura \ref{spreadspectrum} ilustra el diseño de un sistema de esteganografía de audio basado en espectro ensanchado utilizando el esquema de secuencia directa.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth]{img/spreadspectrum}
+  \caption{Spread Spectrum}
+  \label{spreadspectrum}
+\end{figure}
+
+El método de espectro ensanchado ofrece una tasa de transmisión de datos moderada y un nivel de robustez alto (más alto que el obtenido con cualquiera de los métodos anteriores). Sin embargo, comparte una desventaja con los métodos de codificación en el bit menos significativo y codificación en paridad: introduce ruido en el archivo de sonido.
 
 \section{Conclusiones}
 
