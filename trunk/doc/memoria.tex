@@ -4,7 +4,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
 %\usepackage{fullpage}
+
+\lstdefinestyle{mycode} 
+{language=C++, basicstyle=\small,frame=tb,rulecolor=\color{blue},aboveskip=0.35cm,belowskip=0.35cm,commentstyle=\color{gray20}}
+
 
 \title{Ocultar datos en archivos de sonido}
 \author{Juan Antonio Cano Salado \and Borja Moreno Fernández \and Pascual Javier Ruiz Benítez}
@@ -189,6 +195,76 @@ La teoría matemática en la que se basa este método es bastante complicada y v
 \end{figure}
 
 El método de espectro ensanchado ofrece una tasa de transmisión de datos moderada y un nivel de robustez alto (más alto que el obtenido con cualquiera de los métodos anteriores). Sin embargo, comparte una desventaja con los métodos de codificación en el bit menos significativo y codificación en paridad: introduce ruido en el archivo de sonido.
+
+\subsection{Ocultamiento en eco (Echo hiding)}
+
+En este método la información es insertada en el archivo de sonido introduciendo un eco en la señal discreta. Como el método de espectro ensanchado, ofrece una tasa de transmisión de datos alta y proporciona una robustez elevada.
+
+Para ocultar la información con éxito, se utilizan tres parámetros del eco: amplitud, decadencia y offset (retraso) de la señal original. Todos estos parámetros se establecen en valores inferiores al umbral de perceptibilidad que marca el oído humano. El offset varía según el bit del mensaje original a insertar. Un valor de offset representa el uno binario y un segundo valor de offset representa el cero binario.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.5\textwidth]{img/echooffsets}
+  \caption{Offsets del eco}
+  \label{echooffsets}
+\end{figure}
+
+Si sólo se produjera un eco a partir de la señal original, sólo podría insertarse un bit de información. Por ello, la señal original se divide en bloques antes de que comience el proceso de inserción de información. Una vez que el proceso termina, los bloques son concatenados para crear la señal de audio final.
+
+A continuación describiremos una versión sencilla del método de ocultamiento de eco. Dividiremos la señal completa en bloques, aunque en circunstancias normales debería dejarse un número aleatorio de samples sin usar entre cada par de bloques, para reducir la probabilidad de detección.
+
+En primer lugar la señal se divide en bloques, y a cada bloque se le asigna un uno o un cero en función del mensaje secreto a ocultar. En nuestro ejemplo, el mensaje será la secuencia binaria asociada a `HEY' (véase figura \ref{echodividesignal}).
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth]{img/echodividesignal}
+  \caption{Señal dividida en bloques y bit asociado a cada bloque}
+  \label{echodividesignal}
+\end{figure}
+
+A continuación se usa el siguiente algoritmo (se muestra pseudocódigo) para insertar la información necesaria en cada bloque:
+
+\begin{lstlisting}[style=mycode]
+init(Block blocks[]) { 
+   for (int i=0; i < blocks.length; i++) { 
+      if (blocks[i].echoValue() == 0) 
+         blocks[i] = offset0(blocks[i]); 
+      else 
+         blocks[i] = offset1(blocks[i]); 
+   } 
+}
+Block offset0(Block block) { 
+   return (block + (block - OFFSET_0)); 
+}
+
+Block offset1(Block block) { 
+   return (block + (block - OFFSET_1)); 
+}
+\end{lstlisting}
+
+Por último, los bloques se recombinan para producir la señal final.
+
+Usar la implementación descrita del proceso de ocultación de eco usualmente resultará en una señal con una mezcla de ecos considerable, lo que incrementa el riesgo de detección. Describimos ahora una segunda implementación que intenta solventar este problema. Primero se crea una señal de eco de la señal original completa utilizando el offset asociado al cero binario. Luego generamos una segunda señal de eco asociada a la señal original global, usando el valor de offset asociado al uno binario. La señal ``uno'' sólo contiene unos, y la señal ``cero'' sólo contiene ceros. Para combinar las dos señales de eco y conseguir la señal final, se usan dos señales de mezcla. Las señales de mezcla tienen un valor de uno o cero, según el bit a insertar en el bloque. En nuestro ejemplo, para ocultar el mensaje ``HEY'' obtendríamos las señales de mezcla mostradas en la figura \ref{mixersignals}.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth]{img/mixersignals}
+  \caption{Señales de mezcla}
+  \label{mixersignals}
+\end{figure}
+
+La señal de eco ``uno'' se multiplica por la señal de mezcla ``uno'' y la señal de eco ``cero'' se multiplica por la señal de mezcla ``cero''. Hecho esto, las dos señales resultantes se suman para obtener la señal final. La señal final obtenida utilizando este procedimiento es menos abrupta que la obtenida usando el primer procedimiento descrito. Esto se debe a que las dos señales de mezcla son complementarias y a que se usan transiciones lineales suaves.
+
+El diagrama de la figura \ref{echo2ndimp} resume esta segunda implementación del método de ocultamiento en eco.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth]{img/echo2ndimp}
+  \caption{Ocultamiento en eco: segundo procedimiento}
+  \label{echo2ndimp}
+\end{figure}
+
+Para extraer el mensaje secreto, el receptor debe ser capaz de dividir la señal en el mismo conjunto de bloques usado durante el proceso de inserción de la información. Hecho esto, puede usarse la función de autocorrelación del cepstrum de la señal (el cepstrum es la transformada de Fourier del espectro de frecuencias de la señal) para extraer el mensaje, ya que ésta muestra un pico en cada offset de eco en el tiempo, lo que permite reconstruir el mensaje.
 
 \section{Conclusiones}
 
