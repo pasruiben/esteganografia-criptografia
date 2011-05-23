@@ -3,17 +3,17 @@
 \contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{3}
 \contentsline {subsection}{\numberline {2.1}Esteganograf\IeC {\'\i }a}{3}
 \contentsline {subsection}{\numberline {2.2}Audio digital}{5}
-\contentsline {subsection}{\numberline {2.3}Esteganograf\IeC {\'\i }a de audio}{6}
-\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{6}
-\contentsline {section}{\numberline {4}Soluciones presentadas}{6}
-\contentsline {subsection}{\numberline {4.1}Codificaci\IeC {\'o}n en el bit menos significativo (LSB coding)}{7}
-\contentsline {subsection}{\numberline {4.2}Codificaci\IeC {\'o}n en paridad (Parity Coding)}{9}
-\contentsline {subsection}{\numberline {4.3}Codificaci\IeC {\'o}n en fase (Phase coding)}{11}
-\contentsline {subsection}{\numberline {4.4}Espectro ensanchado (Spread spectrum)}{13}
-\contentsline {subsection}{\numberline {4.5}Ocultamiento en eco (Echo hiding)}{15}
-\contentsline {section}{\numberline {5}Conclusiones}{18}
-\contentsline {section}{\numberline {6}Problemas abiertos}{19}
-\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{19}
-\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{19}
-\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{19}
-\contentsline {section}{\numberline {10}Tabla de tiempos}{19}
+\contentsline {subsubsection}{\numberline {2.2.1}El formato WAV}{6}
+\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{10}
+\contentsline {section}{\numberline {4}Soluciones presentadas}{10}
+\contentsline {subsection}{\numberline {4.1}Codificaci\IeC {\'o}n en el bit menos significativo (LSB coding)}{10}
+\contentsline {subsection}{\numberline {4.2}Codificaci\IeC {\'o}n en paridad (Parity Coding)}{13}
+\contentsline {subsection}{\numberline {4.3}Codificaci\IeC {\'o}n en fase (Phase coding)}{15}
+\contentsline {subsection}{\numberline {4.4}Espectro ensanchado (Spread spectrum)}{17}
+\contentsline {subsection}{\numberline {4.5}Ocultamiento en eco (Echo hiding)}{19}
+\contentsline {section}{\numberline {5}Conclusiones}{22}
+\contentsline {section}{\numberline {6}Problemas abiertos}{23}
+\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{23}
+\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{23}
+\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{23}
+\contentsline {section}{\numberline {10}Tabla de tiempos}{23}
