@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  22 MAY 2011 20:25
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  23 MAY 2011 18:52
 entering extended mode
 **memoria.tex
 ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.tex"
@@ -503,8 +503,13 @@ File: img/echo2ndimp.png Graphic file (type png)
 <use img/echo2ndimp.png> [17 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/
 trabajoC/doc/img/mixersignals.png (PNG copy)>] [18 <C:/Users/BMF/Desktop/escuel
 a/5º/Cuatrimestre 2/C/trabajoC/doc/img/echo2ndimp.png (PNG copy)>]
-("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.aux") )
- 
+Overfull \hbox (4.79721pt too wide) in paragraph at lines 273--274
+\OT1/cmr/m/n/12 pro-tec-cion de pri-va-ci-dad y vi-gi-lan-cia, cree-mos que la
+ es-te-ga-no-grafa se-guira au-
+ []
+
+[19] ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.au
+x") ) 
 Here is how much of TeX's memory you used:
  4575 strings out of 494053
  58824 string characters out of 3148610
@@ -513,18 +518,18 @@ Here is how much of TeX's memory you used:
  11381 words of font info for 41 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  38i,9n,67p,1387b,1452s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on memoria.pdf (18 pages, 264912 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb>
+Output written on memoria.pdf (19 pages, 267618 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
+ 119 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
