@@ -1,3 +1,6 @@
 http://www.snotmonkey.com/work/school/405/
 http://www.codeproject.com/KB/security/steganodotnet8.aspx
 http://es.wikipedia.org/wiki/Waveform_Audio_Format
+https://ccrma.stanford.edu/courses/422/projects/WaveFormat/
+
+libro (pág 17)
