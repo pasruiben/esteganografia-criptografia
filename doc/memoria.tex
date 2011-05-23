@@ -191,6 +191,20 @@ En un sistema de estaganografía de audio, se ocultan mensajes secretos en audio
 
 Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en mayor detalle en la sección ``Soluciones presentadas".
 
+\subsection{Aplicaciones}
+
+Podemos clasificar las aplicaciones de la esteganografía de audio en dos campos fundamentales: privacidad y protección de copyright.
+
+\subsubsection{Privacidad}
+
+La esteganografía, y en particular la esteganografía de audio, tiene un campo de aplicación muy evidente en el envío de mensajes secretos. En este caso, el objetivo es proteger las comunicaciones entre un emisor y un receptor, de manera que una tercera parte (un enemigo) no pueda tener acceso a la información. El hecho de que la esteganografía pueda ser combinada con técnicas de criptografía la convierte en una herramienta muy potente. Así, la esteganografía añade una primera ``barrera de defensa''. El atacante tendrá que ser capaz de detectar la mera existencia de la información, para posteriormente enfrentarse al criptoanálisis de la misma.
+
+\subsubsection{Protección de copyright}
+
+El desarrollo de software fácil de usar y la bajada de precios de los dispositivos digitales han hecho posibles que consumidores de todo el mundo puedan hoy en día crear e intercambiar datos multimedia de manera sencilla. Las banda ancha en Internet y las transmisiones de datos casi sin errores han facilitado que cualquiera pueda distribuir archivos multimedia de gran tamaño y hacer copias exactas de los mismos. Esta capacidad de llevar a cabo copias perfectas ha dificulta la protección de los derechos de protección intelectual.
+
+Las marcas de agua digitales son una nueva alternativa para proteger los derechos de copyright. Éstas se definen como la comunicación de datos relacionados con la señal portadora, de manera imperceptible, robusta y segura.
+
 \section{Soluciones presentadas}
 
 En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se han preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a lectores con conocimientos básicos de esteganografía.
@@ -372,6 +386,15 @@ La esteganografía de audio es muy flexible y esto es lo que la hace tan interes
 En resumen, con el crecimiento de áreas como protección de copyright, protección de privacidad y vigilancia, creemos que la esteganografía seguirá aumentando en importancia. La esteganografía de audio, en particular, se centra en problemas que se originaron con la aparición del audio digital (y su espectacular auge con el formato MP3), el software P2P, y la necesidad de un esquema de comunicaciones seguro que pueda mantener el secreto de la información transmitida incluso si ésta debe atravesar canales inseguros.
 
 \section{Problemas abiertos}
+
+what is the highest watermark bit
+rate obtainable, under the perceptual transparency constraint, and how to approach the limit?
+
+how can the detection performance of a watermarking system be improved using algorithms based on
+communications models for that system?
+
+how can overall robustness to attacks to a watermark
+system be increased using attack characterization at the embedding side?
 
 \section{Implementación realizada}
 
