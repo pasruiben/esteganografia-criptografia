@@ -12,8 +12,8 @@
 \contentsline {subsection}{\numberline {4.4}Espectro ensanchado (Spread spectrum)}{13}
 \contentsline {subsection}{\numberline {4.5}Ocultamiento en eco (Echo hiding)}{15}
 \contentsline {section}{\numberline {5}Conclusiones}{18}
-\contentsline {section}{\numberline {6}Problemas abiertos}{18}
-\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{18}
-\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{18}
-\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{18}
-\contentsline {section}{\numberline {10}Tabla de tiempos}{18}
+\contentsline {section}{\numberline {6}Problemas abiertos}{19}
+\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{19}
+\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{19}
+\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{19}
+\contentsline {section}{\numberline {10}Tabla de tiempos}{19}
