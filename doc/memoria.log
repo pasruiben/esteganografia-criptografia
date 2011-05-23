@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  23 MAY 2011 18:52
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  23 MAY 2011 19:29
 entering extended mode
 **memoria.tex
 ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.tex"
@@ -439,31 +439,37 @@ File: img/digitalaudio.png Graphic file (type png)
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5] [6 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/digit
-alaudio.png (PNG copy)>] <img/lsbimage.png, id=26, 526.96875pt x 451.6875pt>
+alaudio.png (PNG copy)>]
+<img/wavsoundformat.png, id=26, 614.295pt x 569.12625pt>
+File: img/wavsoundformat.png Graphic file (type png)
+
+<use img/wavsoundformat.png> [7] [8 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimest
+re 2/C/trabajoC/doc/img/wavsoundformat.png (PNG copy)>] [9]
+<img/lsbimage.png, id=38, 526.96875pt x 451.6875pt>
 File: img/lsbimage.png Graphic file (type png)
-
-<use img/lsbimage.png> [7 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/tra
-bajoC/doc/img/lsbimage.png (PNG copy)>] [8]
-<img/parity.png, id=35, 526.96875pt x 501.875pt>
+ <use img/lsbimage.png>
+[10] [11 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/lsb
+image.png (PNG copy)>] [12] <img/parity.png, id=49, 526.96875pt x 501.875pt>
 File: img/parity.png Graphic file (type png)
- <use img/parity.png> [9]
-[10 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/parity.p
-ng (PNG copy)>] <img/phaseshift.png, id=43, 472.76625pt x 224.84pt>
-File: img/phaseshift.png Graphic file (type png)
 
-<use img/phaseshift.png> [11] [12 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre
- 2/C/trabajoC/doc/img/phaseshift.png (PNG copy)>]
-<img/spreadspectrum.png, id=54, 526.96875pt x 602.25pt>
+<use img/parity.png> [13] [14 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C
+/trabajoC/doc/img/parity.png (PNG copy)>]
+<img/phaseshift.png, id=58, 472.76625pt x 224.84pt>
+File: img/phaseshift.png Graphic file (type png)
+ <use img/phaseshift.png>
+[15] [16 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/pha
+seshift.png (PNG copy)>]
+<img/spreadspectrum.png, id=69, 526.96875pt x 602.25pt>
 File: img/spreadspectrum.png Graphic file (type png)
 
-<use img/spreadspectrum.png> [13] [14 <C:/Users/BMF/Desktop/escuela/5º/Cuatrime
+<use img/spreadspectrum.png> [17] [18 <C:/Users/BMF/Desktop/escuela/5º/Cuatrime
 stre 2/C/trabajoC/doc/img/spreadspectrum.png (PNG copy)>]
-<img/echooffsets.png, id=63, 233.87375pt x 291.0875pt>
+<img/echooffsets.png, id=77, 233.87375pt x 291.0875pt>
 File: img/echooffsets.png Graphic file (type png)
 
-<use img/echooffsets.png> [15 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C
+<use img/echooffsets.png> [19 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C
 /trabajoC/doc/img/echooffsets.png (PNG copy)>]
-<img/echodividesignal.png, id=68, 507.8975pt x 89.33376pt>
+<img/echodividesignal.png, id=83, 507.8975pt x 89.33376pt>
 File: img/echodividesignal.png Graphic file (type png)
 
 <use img/echodividesignal.png>
@@ -476,60 +482,64 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 228.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 327.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 228.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 229.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 327.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 328.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 229.
- [16 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/echodiv
-idesignal.png (PNG copy)>] <img/mixersignals.png, id=76, 526.96875pt x 274.0237
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 328.
+ [20 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/echodiv
+idesignal.png (PNG copy)>] <img/mixersignals.png, id=91, 526.96875pt x 274.0237
 4pt>
 File: img/mixersignals.png Graphic file (type png)
 
-<use img/mixersignals.png> <img/echo2ndimp.png, id=77, 491.8375pt x 252.945pt>
+<use img/mixersignals.png> <img/echo2ndimp.png, id=92, 491.8375pt x 252.945pt>
 File: img/echo2ndimp.png Graphic file (type png)
 
-<use img/echo2ndimp.png> [17 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/
-trabajoC/doc/img/mixersignals.png (PNG copy)>] [18 <C:/Users/BMF/Desktop/escuel
+<use img/echo2ndimp.png> [21 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/
+trabajoC/doc/img/mixersignals.png (PNG copy)>] [22 <C:/Users/BMF/Desktop/escuel
 a/5º/Cuatrimestre 2/C/trabajoC/doc/img/echo2ndimp.png (PNG copy)>]
-Overfull \hbox (4.79721pt too wide) in paragraph at lines 273--274
+Overfull \hbox (4.79721pt too wide) in paragraph at lines 372--373
 \OT1/cmr/m/n/12 pro-tec-cion de pri-va-ci-dad y vi-gi-lan-cia, cree-mos que la
  es-te-ga-no-grafa se-guira au-
  []
 
-[19] ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.au
-x") ) 
+[23] ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.au
+x")
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4575 strings out of 494053
- 58824 string characters out of 3148610
- 147560 words of memory out of 3000000
- 7820 multiletter control sequences out of 15000+200000
+ 4581 strings out of 494053
+ 58965 string characters out of 3148610
+ 147624 words of memory out of 3000000
+ 7825 multiletter control sequences out of 15000+200000
  11381 words of font info for 41 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  38i,9n,67p,1387b,1452s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb>
-Output written on memoria.pdf (19 pages, 267618 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb>
+Output written on memoria.pdf (23 pages, 289743 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
+ 133 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -84,13 +84,112 @@ En dicha figura se ha exagerado la naturaleza discreta de la señal digital. Sin
 
 Los archivos de audio digital se almacenan en el ordenador como una secuencia de ceros y unos. Con las herramientas apropiadas, es posible alterar individualmente los bits que componen estos archivos. Esto hará posible llevar a cabo modificaciones a la secuencia binaria que produzcan cambios en la señal de audio que no sean perceptibles al oído humano.
 
-\subsection{Esteganografía de audio}
+\subsubsection{El formato WAV}
 
-En un sistema de estaganografía digital informatizado, se ocultan mensajes secretos en audio digital. El mensaje secreto se introduce alterando ligeramente la secuencia binaria del archivo de audio. Existen aplicaciones de esteganografía de audio que permiten ocultar mensajes en archivos de audio en formato WAV, AU e incluso MP3.
+WAV (o WAVE), apócope de WAVEform audio file format, es un formato de audio digital normalmente sin compresión de datos desarrollado y propiedad de Microsoft y de IBM que se utiliza para almacenar sonidos en el PC. Admite archivos mono y estéreo a diversas resoluciones y velocidades de muestreo. Su extensión es .wav.
 
-Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en mayor detalle en la sección ``Soluciones presentadas".
+Es una variante del formato RIFF (Resource Interchange File Format, formato de fichero para intercambio de recursos). El formato toma en cuenta algunas peculiaridades de la CPU Intel, y es el formato principal usado por Windows.
+A pesar de que el formato WAV es compatible con casi cualquier códec de audio, se utiliza principalmente con el formato PCM (no comprimido) y, al no tener pérdida de calidad, es adecuado para uso profesional. Para tener calidad CD de audio se necesita que el sonido se grabe a 44100 Hz y a 16 bits. Por cada minuto de grabación de sonido se consumen unos 10 megabytes de espacio en disco. Una de sus grandes limitaciones es que solo se pueden grabar archivos de 4 gigabytes como máximo, lo cual equivale aproximadamente a 6,6 horas en calidad de CD de audio. Es una limitación propia del formato, independientemente de que el sistema operativo donde se utilice sea MS Windows u otro distinto, y se debe a que en la cabecera del fichero se indica la longitud del mismo con un número entero de 32 bits.
+
+En Internet no es popular, fundamentalmente porque los archivos sin compresión son muy grandes. Son más frecuentes los formatos comprimidos con pérdida, como el MP3 o el Ogg Vorbis. Como éstos son más pequeños, la transferencia a través de Internet es mucho más rápida. Además, existen códecs de compresión sin pérdida más eficaces, como Apple Lossless o FLAC.
+
+Estudiaremos este formato debido a su sencillez. Será además el formato empleado por la aplicación desarrollada (véase sección ``Implementación realizada'').
+
+Los archivos RIFF comienzan con una cabecera seguida de una secuencia de chunks de datos (fragmentos de información). Los archivos WAVE son archivos RIFF con un único chunk llamado ``WAVE'' que se divide en dos sub-chunks:
+
+\begin{itemize}
+
+\item fmt
+
+Especifica el formato de los datos.
+
+\item data
+
+Contiene la información de sonido dividida en samples (porciones de audio).
+
+\end{itemize}
+
+La figura \ref{wavsoundformat} muestra gráficamente la organización de un archivo WAV de audio digital. Podemos observar la división en tres partes claramente diferenciadas (RIFF, fmt y data) así como los campos que componen cada una de ellas (incluyendo tamaño, nombre, posición relativa en el archivo, etc.). En conjunto, la cabecera del archivo (compuesta por RIFF, fmt, y parte de data) tiene un tamaño de 44 bytes. Tras esta cabecera se encontraría la información de sonido real. A continuación ofrecemos una pequeña descripción de cada uno de los campos que componen esta cabecera.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=\textwidth]{img/wavsoundformat}
+  \caption{Formato WAV}
+  \label{wavsoundformat}
+\end{figure}
+
+\begin{itemize}
+
+\item ChunkID          
+
+Contiene las letras ``RIFF'' en formato ASCII.
+
+\item ChunkSize
+
+36 + SubChunk2Size, o, más detallado:
+4 + (8 + SubChunk1Size) + (8 + SubChunk2Size)
+                               
+Es el tamaño del archivo a partir de este punto. Es decir, el tamaño total del archivo menos los 8 bytes ya tratados (campos ChunkID y ChunkSize).
+
+\item Format
+
+Contiene las letras ``WAVE''.
+
+\item Subchunk1ID
+
+Contiene las letras ``fmt ''.
+
+\item Subchunk1Size
+
+16 en caso de usar PCM. Es el tamaño del resto de la sección ``fmt''.
+
+\item AudioFormat
+
+1 para PCM. Otros valores para otros tipos de compresión.
+
+\item NumChannels
+
+Número de canales. Mono = 1, Stereo = 2, etc.
+
+\item SampleRate
+
+Frecuencia de muestreo. 8000, 44100, etc.
+
+\item ByteRate
+
+SampleRate * NumChannels * BitsPerSample/8
+
+\item BlockAlign
+
+NumChannels * BitsPerSample/8
+                               
+El número de bytes para cada sample incluyendo todos los canales.
+
+\item BitsPerSample
+
+8 bits = 8, 16 bits = 16, etc.
+
+\item Subchunk2ID
+
+Contiene las letras ``data''.
+
+\item Subchunk2Size
+
+NumSamples * NumChannels * BitsPerSample/8
+                               
+Número de bytes de datos.
+
+\item Data
+
+Los datos de sonido.
+
+\end{itemize}
 
 \section{Descripción del problema}
+
+En un sistema de estaganografía de audio, se ocultan mensajes secretos en audio digital. El mensaje secreto se introduce alterando ligeramente la secuencia binaria del archivo de audio. Existen aplicaciones de esteganografía de audio que permiten ocultar mensajes en archivos de audio en formato WAV, AU e incluso MP3.
+
+Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en mayor detalle en la sección ``Soluciones presentadas".
 
 \section{Soluciones presentadas}
 
