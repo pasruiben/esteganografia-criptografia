@@ -3,12 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.IO;
 
 namespace Steganos_Cripto
 {
     class Util
     {
-        
+        public static int bitsPerSample = 16;
+        public static int samplesOffsetWav = 44;
+
+
+        public static int getFileSize(String fileName)
+        {
+            return (int)new FileInfo(fileName).Length;
+        }
+        public static int generateUnusedIndex(Random rnd, List<int> usedIndex, int size)
+        {
+            int index;
+            do
+            {
+                index = rnd.Next(size);
+            }
+            while (usedIndex.Contains(index));
+
+            usedIndex.Add(index);
+
+            return index;
+        }
 
         public static byte[] XorMessageWithKey(byte[] message, string key)
         {
@@ -44,6 +65,21 @@ namespace Steganos_Cripto
             }
 
             return bytes;
+        }
+
+        public static bool Parity(Sample[] s1)
+        {
+            bool res = false;
+
+            foreach (Sample s in s1)
+            {
+                foreach (bool b in s.data)
+                {
+                    res ^= b;
+                }
+            }
+
+            return res;
         }
     }
 }

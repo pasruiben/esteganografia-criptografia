@@ -12,8 +12,6 @@ namespace Steganos_Cripto
         Header header = null;
         Sample[] samples = null;
 
-        int bitsPerSample = 16;
-
         public LSB()
         {
             base.EncryptView = new LSBEncryptControl();
@@ -27,13 +25,13 @@ namespace Steganos_Cripto
             BinaryReader br = new BinaryReader(fs);
 
             header = new Header();
-            header.data = br.ReadBytes(44);
+            header.data = br.ReadBytes(Util.samplesOffsetWav);
 
             //los samples empiezan a partir del offset 44. (en los wav)
-            int numBytes = ((int) new FileInfo(filenameIn).Length) - 44;
+            int numBytes = ((int) new FileInfo(filenameIn).Length) - Util.samplesOffsetWav;
             byte[] buffer = br.ReadBytes((int)numBytes);
 
-            int numSamples = (numBytes * 8 / bitsPerSample);
+            int numSamples = (numBytes * 8 / Util.bitsPerSample);
             samples = new Sample[numSamples];
             
             int j = 0;
@@ -68,12 +66,11 @@ namespace Steganos_Cripto
             
             while (messageBitArrayIndex < xoredMessageArray.Length)
             {
-                int sampleIndex = generateSampleIndex(rnd, usedIndexSamples);
-                usedIndexSamples.Add(sampleIndex);
+                int sampleIndex = Util.generateUnusedIndex(rnd, usedIndexSamples, samples.Length);
 
                 Sample s1 = samples[sampleIndex];
 
-                for (int t = bitsPerSample - bitsPerSampleMessage; t < bitsPerSample ; t++)
+                for (int t = Util.bitsPerSample - bitsPerSampleMessage; t < Util.bitsPerSample ; t++)
                 {
                     output[sampleIndex].data[t] = xoredMessageArray[messageBitArrayIndex++];
                 }
@@ -83,7 +80,8 @@ namespace Steganos_Cripto
 
             fs.Write(header.data, 0, header.data.Length);
 
-            byte[] finalDataWav = new byte[samples.Length * 2];
+            int numBytes = Util.getFileSize(filenameIn) - Util.samplesOffsetWav;
+            byte[] finalDataWav = new byte[numBytes];
             int j = 0;
             foreach (Sample s in samples)
             {
@@ -117,12 +115,11 @@ namespace Steganos_Cripto
             int bitCount = 0;
             while (bitCount < size)
             {
-                int sampleIndex = generateSampleIndex(rnd, usedIndexSamples);
-                usedIndexSamples.Add(sampleIndex);
+                int sampleIndex = Util.generateUnusedIndex(rnd, usedIndexSamples, samples.Length);
 
                 Sample s = samples[sampleIndex];
 
-                for (int t = bitsPerSample - bitsPerSampleMessage; t < bitsPerSample; t++)
+                for (int t = Util.bitsPerSample - bitsPerSampleMessage; t < Util.bitsPerSample; t++)
                 {
                     xoredMessageArray[bitCount++] = s.data[t];
                 }
@@ -136,18 +133,6 @@ namespace Steganos_Cripto
             Main m = decryptView.Parent.Parent.Parent.Parent.Parent as Main;
 
             m.textBox1.Text = res;
-        }
-
-        private int generateSampleIndex(Random rnd, List<int> usedIndexSamples)
-        {
-            int sampleIndex;
-            do
-            {
-                sampleIndex = rnd.Next(samples.Length);
-            }
-            while (usedIndexSamples.Contains(sampleIndex));
-
-            return sampleIndex;
         }
 
 
