@@ -1,22 +1,24 @@
 \select@language {spanish}
+\contentsline {section}{\'Indice}{2}
 \contentsline {section}{\numberline {1}Resumen}{3}
-\contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{3}
-\contentsline {subsection}{\numberline {2.1}Esteganograf\IeC {\'\i }a}{3}
-\contentsline {subsection}{\numberline {2.2}Audio digital}{5}
+\contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{4}
+\contentsline {subsection}{\numberline {2.1}Esteganograf\IeC {\'\i }a}{4}
+\contentsline {subsection}{\numberline {2.2}Audio digital}{6}
 \contentsline {subsubsection}{\numberline {2.2.1}El formato WAV}{6}
-\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{10}
-\contentsline {subsection}{\numberline {3.1}Aplicaciones}{10}
-\contentsline {subsubsection}{\numberline {3.1.1}Privacidad}{10}
-\contentsline {subsubsection}{\numberline {3.1.2}Protecci\IeC {\'o}n de copyright}{10}
-\contentsline {section}{\numberline {4}Soluciones presentadas}{11}
-\contentsline {subsection}{\numberline {4.1}Codificaci\IeC {\'o}n en el bit menos significativo (LSB coding)}{11}
-\contentsline {subsection}{\numberline {4.2}Codificaci\IeC {\'o}n en paridad (Parity Coding)}{14}
-\contentsline {subsection}{\numberline {4.3}Codificaci\IeC {\'o}n en fase (Phase coding)}{16}
-\contentsline {subsection}{\numberline {4.4}Espectro ensanchado (Spread spectrum)}{18}
-\contentsline {subsection}{\numberline {4.5}Ocultamiento en eco (Echo hiding)}{18}
-\contentsline {section}{\numberline {5}Conclusiones}{22}
-\contentsline {section}{\numberline {6}Problemas abiertos}{24}
-\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{24}
-\contentsline {section}{\numberline {8}Manual de instalaci\IeC {\'o}n y manejo de la aplicaci\IeC {\'o}n}{24}
-\contentsline {section}{\numberline {9}Bibliograf\IeC {\'\i }a}{24}
-\contentsline {section}{\numberline {10}Tabla de tiempos}{24}
+\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{11}
+\contentsline {subsection}{\numberline {3.1}Aplicaciones}{11}
+\contentsline {subsubsection}{\numberline {3.1.1}Privacidad}{11}
+\contentsline {subsubsection}{\numberline {3.1.2}Protecci\IeC {\'o}n de copyright}{11}
+\contentsline {section}{\numberline {4}Soluciones presentadas}{14}
+\contentsline {subsection}{\numberline {4.1}Codificaci\IeC {\'o}n en el bit menos significativo (LSB coding)}{14}
+\contentsline {subsection}{\numberline {4.2}Codificaci\IeC {\'o}n en paridad (Parity Coding)}{16}
+\contentsline {subsection}{\numberline {4.3}Codificaci\IeC {\'o}n en fase (Phase coding)}{18}
+\contentsline {subsection}{\numberline {4.4}Espectro ensanchado (Spread spectrum)}{20}
+\contentsline {subsection}{\numberline {4.5}Ocultamiento en eco (Echo hiding)}{22}
+\contentsline {section}{\numberline {5}Conclusiones}{25}
+\contentsline {section}{\numberline {6}Problemas abiertos}{27}
+\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{28}
+\contentsline {subsection}{\numberline {7.1}Manual de instalaci\IeC {\'o}n}{28}
+\contentsline {subsection}{\numberline {7.2}Manual de uso}{28}
+\contentsline {section}{\numberline {8}Tabla de tiempos}{29}
+\contentsline {section}{Bibliograf\'{\i }a}{30}
