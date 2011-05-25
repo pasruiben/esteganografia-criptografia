@@ -15,8 +15,6 @@
 \title{Ocultar datos en archivos de sonido}
 \author{Juan Antonio Cano Salado \and Borja Moreno Fernández \and Pascual Javier Ruiz Benítez}
 
-\renewcommand{\refname}{\section{Sources}} % Using "Sources" as the title of the section
-
 \begin{document}
 
 \maketitle
@@ -29,22 +27,23 @@
 
 Este trabajo aborda la ocultación de datos en archivos de sonido o, lo que es lo mismo, la esteganografía de audio. El objetivo de esta disciplina consiste básicamente en ocultar información (de cualquier tipo) en archivos de sonido, de forma que los cambios llevados a cabo en el archivo original resulten imperceptibles para una persona.
 
-Comenzaremos estudiando los principios básicos de la esteganografía en general, y de la esteganografía de audio en particular. A continuación, analizaremos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Hecho esto, estudiaremos uno de los formatos de audio más populares: el formato WAV. Finalmente, incluiremos una descripción de la implementación realizada y proporcionaremos un manual de instalación y manejo de la aplicación desarrollada.
+Comenzaremos estudiando los principios básicos de la esteganografía y el audio digital, con especial énfasis en uno de los formatos de audio más populares: WAV. Hecho esto, presentaremos el problema de la esteganografía de audio y sus aplicaciones más destacadas. A continuación, analizaremos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Completaremos esta información con unas conclusiones y una exposición de los problemas que quedan abiertos. Finalmente, incluiremos una descripción de la implementación realizada y proporcionaremos un manual de instalación y manejo de la aplicación desarrollada.
 
 \newpage
 \section{Introducción}
 
 \subsection{Esteganografía}
 
-La esteganografía es la disciplina en la que se estudian y aplican técnicas que permiten el ocultamiento de mensajes u objetos, dentro de otros, llamados portadores, de modo que no se perciba su existencia.
+La esteganografía es la disciplina en la que se estudian y aplican técnicas que permiten el ocultamiento de mensajes u objetos dentro de otros, llamados portadores, de modo que no se perciba su existencia.
 
-Los orígenes de la esteganografía datan de la antigua Grecia. Heródoto, famoso historiador griego, informa del uso de la esteganografía en informes de Grecia a Persia. El método consistía en afeitar la cabeza de un esclavo y tatuar allí un mensaje. Dicho mensaje quedaba oculto cuando el pelo del esclavo volvía a crecer. Para leer el mensaje sólo era necesario volver a afeitarle la cabeza al esclavo. La idea era que nadie sospechase de la existencia de dicho mensaje.
+Los orígenes de la esteganografía datan de la antigua Grecia. Heródoto, famoso historiador griego, informa del uso de la esteganografía en informes de Grecia a Persia. El método consistía en afeitar la cabeza de un esclavo y tatuar un mensaje en la cabeza rapada. Dicho mensaje quedaba oculto cuando el pelo del esclavo volvía a crecer. Para leer el mensaje sólo era necesario volver a afeitarle la cabeza al esclavo. La idea clave en la que residía la seguridad del método era que nadie sospechase de la existencia misma del mensaje.
 
-La esteganografía ha sido usada en numerosas ocasiones a lo largo de la historia: tintas invisibles, acrósticos o mensajes microscópicos son sólo algunas de sus formas. Recientemente, en plena era digital, la estaganografía ha adquirido gran importancia como tecnología utilizada en el campo de la seguridad informática. Pueden ocultarse mensajes secretos en correos electrónicos, imágenes, audio e incluso vídeo.
+La esteganografía ha sido usada en numerosas ocasiones a lo largo de la historia: tintas invisibles, acrósticos o mensajes microscópicos son sólo algunas de sus formas. Recientemente, en plena era digital, la estaganografía ha adquirido gran importancia como tecnología utilizada en el campo de la seguridad informática. Es posible ocultar mensajes secretos en correos electrónicos, imágenes, audio e incluso vídeo.
 
 Diversos grupos han mostrado tener un gran interés en las aplicaciones de la esteganografía. Algunos, interesados en la protección de derechos de autor. Otros, preocupados por proteger la privacidad de sus mensajes. Muchos gobiernos temen que la esteganografía podría convertirse en una herramienta de gran utilidad para criminales y grupos terroristas. En cualquier caso, parece claro que existen multitud de aplicaciones y usos para la esteganografía, y la mayoría de los expertos están de acuerdo en que será un tema de gran interés durante los próximos años.
 
 La figura \ref{prisioneros} ilustra un ejemplo simple de un problema en el que el uso de la esteganografía puede ser de utilidad.
+Dos prisioneros en una cárcel necesitan comunicarse para ultimar los detalles de un plan de fuga, pero tienen un gran problema: el guardia de la prisión tiene acceso a toda la correspondencia entre los prisioneros. La criptografía por sí sola no es una solución. Un mensaje cifrado levantaría todo tipo de sospechas. Los prisioneros deben idear un sistema que les permita pasar mensajes de apariencia inocente, con información oculta que sólo ellos puedan entender. Esto es exactamente lo que persigue la esteganografía.
 
 \begin{figure}[h]
   \centering
@@ -52,8 +51,6 @@ La figura \ref{prisioneros} ilustra un ejemplo simple de un problema en el que e
   \caption{Problema de los prisioneros}
   \label{prisioneros}
 \end{figure}
-
-Dos prisioneros en una cárcel necesitan comunicarse para ultimar los detalles de un plan de fuga, pero tienen un gran problema: el guardia de la prisión tiene acceso a toda la correspondencia entre los prisioneros. La criptografía por sí sola no es una solución. Un mensaje cifrado levantaría todo tipo de sospechas. Los prisioneros deben idear un sistema que les permita pasar mensajes de apariencia inocente, con información oculta que sólo ellos puedan entender. Esto es exactamente lo que persigue la esteganografía.
 
 La esteganografía puede además combinarse con la criptografía para crear sistemas más seguros. Así, distinguimos:
 
@@ -76,7 +73,7 @@ Basada en unir esteganografía pura y criptosistemas de clave pública. De esta 
 \subsection{Audio digital}
 
 El audio digital se diferencia del sonido analógico tradicional en que es una señal discreta en lugar de una señal continua. Esta señal discreta es creada llevando a cabo un proceso de muestreo y cuantización de una señal analógica continua. La frecuencia de muestro varía según los propósitos. Por ejemplo, la frecuencia de muestreo estándar para un CD de audio digital es de alrededor de 44kHz. La figura \ref{audiodigital} ilustra el proceso de muestro y cuantización para producir una señal de audio digital a partir de una señal continua de audio analógico.
-En dicha figura se ha exagerado la naturaleza discreta de la señal digital. Sin embargo, las frecuencias de muestreo usuales permiten que el audio digital sea prácticamente idéntico a la señal de audio analógica original.
+En dicha figura se ha exagerado la naturaleza discreta de la señal digital. Sin embargo, las frecuencias de muestreo usuales permiten que las diferencias entre el audio digital y la señal analógica original sean mínimas.
 
 \begin{figure}[h]
   \centering
@@ -129,7 +126,7 @@ Contiene las letras ``RIFF'' en formato ASCII.
 
 \item ChunkSize
 
-36 + SubChunk2Size, o, más detallado:
+36 + SubChunk2Size, o, más en concreto:
 4 + (8 + SubChunk1Size) + (8 + SubChunk2Size)
                                
 Es el tamaño del archivo a partir de este punto. Es decir, el tamaño total del archivo menos los 8 bytes ya tratados (campos ChunkID y ChunkSize).
@@ -184,16 +181,16 @@ Número de bytes de datos.
 
 \item Data
 
-Los datos de sonido.
+Los datos de sonido, divididos en samples.
 
 \end{itemize}
 
 \newpage
 \section{Descripción del problema}
 
-En un sistema de estaganografía de audio, se ocultan mensajes secretos en audio digital. El mensaje secreto se introduce alterando ligeramente la secuencia binaria del archivo de audio. Existen aplicaciones de esteganografía de audio que permiten ocultar mensajes en archivos de audio en formato WAV, AU e incluso MP3.
+En un sistema de estaganografía de audio, se ocultan mensajes secretos en audio digital. El mensaje secreto se introduce alterando ligeramente la secuencia binaria del archivo de audio. Existen aplicaciones de esteganografía de audio que permiten ocultar mensajes en archivos de sonido en formato WAV, AU e incluso MP3.
 
-Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en mayor detalle en la sección ``Soluciones presentadas".
+Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en detalle en la sección ``Soluciones presentadas".
 
 \subsection{Aplicaciones}
 
@@ -207,20 +204,20 @@ La esteganografía, y en particular la esteganografía de audio, tiene un campo 
 
 El rápido desarrollo del software y la bajada de precios de los dispositivos digitales han hecho posible que consumidores de todo el mundo puedan hoy en día crear e intercambiar datos multimedia con gran facilidad. Internet de banda ancha proporciona transmisiones de datos a gran velocidad con una tasa de errores muy baja. Esto ha facilitado que cualquiera pueda distribuir archivos multimedia de gran tamaño y hacer copias exactas de los mismos. La capacidad de llevar a cabo estas copias perfectas dificulta la protección de los derechos de propiedad intelectual. La posibilidad de crear y distribuir un número ilimitado de copias de sus obras causa un daño económico considerable para los autores.
 
-Los métodos tradicionales de protección de copyright ya no son suficiente. Los métodos de protección hardware no son una opción, ya que el mercado se está alejando cada vez más de los dispositivos físicos. Los métodos básicos de protección software basados en la inclusión de información en la cabecera de los archivos multimedia tampoco son de utilidad, ya que la cabecera de los archivos puede ser fácilmente sustituida por otra, sin que los datos multimedia sufran ningún tipo de deterioro.
+Los métodos tradicionales de protección de copyright ya no son suficientes. Los métodos de protección hardware no son una opción, ya que el mercado se está alejando cada vez más de los dispositivos físicos. Los métodos básicos de protección software basados en la inclusión de información en la cabecera de los archivos multimedia tampoco son de utilidad, ya que la cabecera de los archivos puede ser fácilmente sustituida por otra, sin que los datos multimedia sufran ningún tipo de deterioro.
 
-Algunos proveedores buscaron la solución en la criptografía. Su idea era distribuir los archivos cifrados, con una clave diferente para cada cliente. De esta manera sólo el cliente que hubiese pagado su licencia podría descifrar los contenidos del archivo y disfrutar de su contenido multimedia. El problema es que una vez un cliente legítimo ha descifrado su archivo, nada le impide llevar a cabo copias del mismo y distribuirlas. Por tanto, el sistema sólo sirve para garantizar la comunicación segura entre el proveedor y el cliente, pero no pone ningún impedimento a la difusión un número ilimitado de copias por parte de dicho cliente.
+Algunos proveedores buscaron la solución en la criptografía. Su idea era distribuir los archivos cifrados, con una clave diferente para cada cliente. De esta manera sólo el cliente que hubiese pagado su licencia podría descifrar los contenidos del archivo. El problema es que una vez que un cliente legítimo ha descifrado su archivo, nada le impide llevar a cabo copias del mismo y distribuirlas. Por tanto, el sistema sólo sirve para garantizar la comunicación segura entre el proveedor y el cliente, pero no pone ningún impedimento a la difusión un número ilimitado de copias por parte de dicho cliente.
 
-Las marcas de agua digitales son una nueva alternativa para tratar de proteger el copyright. Se definen como la comunicación de datos relacionados con una señal portadora, de manera imperceptible, robusta y segura. En el caso de archivos de audio, la señal portadora es el archivo de sonido original. La información a comunicar de forma imperceptible, robusta y segura sería una firma digital que informa acerca de quién es el ``dueño'' de dicho archivo. Pese a ser transparente a la percepción humana, esta firma digital debería poder ser leída con las herramientas adecuadas.
+Las marcas de agua digitales son una nueva alternativa para tratar de proteger el copyright. Se definen como la comunicación de datos relacionados con una señal portadora, de manera imperceptible, robusta y segura. En el caso de archivos de audio, la señal portadora es el archivo de sonido original. La información a comunicar de forma imperceptible, robusta y segura sería una firma digital que informara acerca de quién es el ``dueño'' de dicho archivo. Pese a ser transparente a la percepción humana, esta firma digital debería poder ser leída con las herramientas adecuadas.
 
 Una diferencia fundamental entre la esteganografía general y la esteganografía de marcas de agua es que en el caso de las marcas de agua, la información que se inserta tiene que ver con la señal portadora (por ejemplo, indica quién es su propietario). La diferencia es de concepto, las técnicas empleadas son las mismas.
 
-En resumen1, el uso de esteganografía de audio en protección de derechos de propiedad intelectual se basa en la capacidad de ocultar información en los archivos multimedia. Esta información debe resultar imperceptible: el cliente no debe poder apreciar ningún tipo de pérdida de calidad en su archivo multimedia. Esta información incluye información acerca de quién es el legítimo propietario de esa copia de dicho archivo. De esta manera, en caso de producirse la copia y distribución masiva de dicho archivo, sería posible localizar a su propietario original. Esta información debe además ser robusta y segura (no debería ser posible modificarla ni eliminarla fácilmente). Para ello es fundamental que se incluya en los mismos datos digitales, y no en la cabecera de los archivos.
+En resumen, el uso de esteganografía de audio en protección de derechos de propiedad intelectual se basa en la capacidad de ocultar información en los archivos multimedia. Esta información debe resultar imperceptible: el cliente no debe apreciar ningún tipo de pérdida de calidad en su archivo multimedia. Los datos insertados informan acerca de quién es el legítimo propietario de esa copia de dicho archivo. De esta manera, en caso de producirse su copia y distribución masiva, sería posible localizar a su propietario original. Esta información debe además ser robusta y segura (no debería ser posible modificarla ni eliminarla fácilmente). Para ello es fundamental que se incluya en los mismos datos digitales, y no en la cabecera de los archivos.
 
 \newpage
 \section{Soluciones presentadas}
 
-En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se han preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a lectores con conocimientos básicos de esteganografía.
+En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se ha preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a lectores con conocimientos básicos de esteganografía.
 
 \subsection{Codificación en el bit menos significativo (LSB coding)}
 
@@ -233,13 +230,13 @@ Es el método más simple de inclusión de información en un archivo de audio d
   \label{lsbcoding}
 \end{figure}
 
-Algunas implementaciones de este método utilizan los dos (o más) bits menos significativos de cada sample para ocultar información. Esto hace que la cantidad de información que se puede insertar aumente, pero también eleva la cantidad de ruido que es introducida en la señal de audio resultante. Por ello, es importante considerar el tipo de señal de audio antes de decidir el número de bits por sample a utilizar. Por ejemplo, un archivo de sonido grabado en una estación de metro con gran cantidad de ruido de fondo podría soportar la inclusión de dos o más bits de información en cada sample, ya que el ruido de fondo enmascararía el ruido introducido en el proceso de ocultación de información. Por contra, un archivo de sonido que contenga un solo de piano será mucho más sensible a estas modificaciones, por lo que el uso de más de un bit por sample podría hacer que las modificaciones resultaran perceptibles al oído humano.
+Algunas implementaciones de este método utilizan los dos (o más) bits menos significativos de cada sample para ocultar información. Esto hace que la cantidad de información que se puede insertar aumente, pero también eleva la cantidad de ruido que se introduce en la señal de audio resultante. Por ello, es importante considerar el tipo de señal de audio antes de decidir el número de bits a utilizar por cada sample. Por ejemplo, un archivo de sonido grabado en una estación de metro con gran cantidad de ruido de fondo podría soportar la inclusión de dos o más bits de información en cada sample, ya que el ruido de fondo enmascararía el ruido introducido en el proceso de ocultación de información. Por contra, un archivo de sonido que contenga un solo de piano será mucho más sensible a estas modificaciones, por lo que el uso de más de un bit por sample podría hacer que los cambios resultaran perceptibles al oído humano.
 
-Para poder extraer un mensaje secreto codificado utilizando LSB, el receptor necesita tener acceso a la secuencia de samples utilizada en el proceso de inserción de información. Normalmente, la longitud del mensaje secreto a ocultar es mucho menor que el número total de samples del archivo de sonido. Una decisión a tomar consiste por tanto en cómo elegir qué subconjunto de samples del archivo original se usarán para contener información. El emisor y el receptor deben ponerse de acuerdo en esta cuestión. Una técnica trivial consiste en comenzar en el inicio del archivo de sonido y llevar a cabo la inserción de información en los primeros samples, hasta que el mensaje ha sido completamente introducido. A partir de ahí, el resto de samples quedarían inalterados. El problema de esta técnica radica en que la primera parte del archivo de sonido tendrá propiedades estadísticas diferentes a la del resto del archivo, que no fue modificado. Una solución a este problema es añadir al mensaje secreto una secuencia de bits aleatorio de manera que la longitud total del mensaje fuera igual al número total de samples. El inconveniente es que el proceso de inserción modificaría ahora muchos más samples de los que la transmisión del mensaje original requería, lo cual hace que sea más sencillo detectar la existencia del mensaje oculto.
+Para poder extraer un mensaje secreto codificado utilizando LSB, el receptor necesita tener acceso a la secuencia de samples utilizada en el proceso de inserción de información. Normalmente, la longitud del mensaje secreto a ocultar es mucho menor que el número total de samples del archivo de sonido. Una decisión a tomar consiste por tanto en cómo elegir qué subconjunto de samples del archivo original se usarán para contener información. El emisor y el receptor deben ponerse de acuerdo en esta cuestión. Una técnica trivial consiste en comenzar en el inicio del archivo de sonido y llevar a cabo la inserción de información en los primeros samples, hasta que el mensaje haya sido completamente introducido. A partir de ahí, el resto de samples quedarían inalterados. El problema de esta técnica radica en que la primera parte del archivo de sonido tendrá propiedades estadísticas diferentes a las del resto del archivo, que no fue modificado. Una solución a este problema es añadir al mensaje secreto una secuencia de bits aleatoria de manera que la longitud total del mensaje sea igual al número total de samples. El inconveniente es que el proceso de inserción modificaría ahora muchos más samples de los que la transmisión del mensaje original requería, lo cual hace que sea más sencillo detectar la existencia del mensaje oculto.
 
-Una solución más sofisticada se basa en usar un generador de números pseudoaleatorios para distribuir el mensaje entre los samples del archivo de sonido. Para poder hacer esto, el emisor y el receptor deben ponerse de acuerdo en la semilla que utilizarán para generar la secuencia pseudoaleatoria de samples a utilizar. De esta manera el receptor puede reconstruir la secuencia y averiguar cuáles son los samples que contienen el mensaje oculto. Hay que tener cuidado con que el generador produzca el mismo sample dos veces. Si esto ocurriese, se modificaría el bit menos significativo de un sample cuyos bits menos significativos ya habían sido modificados, produciéndose una colisión. Una manera de evitar esto es almacenar en una lista los samples que ya han sido modificados, de manera que si el generador indica que se vuelva a utilizar un sample ya empleado, se ignora. Otra alternativa consiste en calcular una permutación pseudoaleatoria del conjunto de samples del archivo de audio, y seleccionar los primeros. Con esta técnica es imposible que se utilice el mismo sample más de una vez.
+Una solución más sofisticada se basa en usar un generador de números pseudoaleatorios para distribuir el mensaje entre los samples del archivo de sonido. Para poder hacer esto, el emisor y el receptor deben ponerse de acuerdo en la semilla que utilizarán para generar la secuencia pseudoaleatoria de samples a utilizar. De esta manera el receptor puede reconstruir la secuencia y averiguar cuáles son los samples que contienen el mensaje oculto. Hay que tener cuidado con que el generador no produzca el mismo sample dos veces. Si esto ocurriese, se modificaría el bit menos significativo de un sample cuyo bit menos significativo ya había sido modificado, produciéndose una colisión. Una manera de evitar esto es almacenar en una lista los samples que ya han sido modificados, de manera que si el generador indica que se vuelva a utilizar un sample ya empleado, se ignora. Otra alternativa consiste en calcular una permutación pseudoaleatoria del conjunto de samples del archivo de audio, y seleccionar los primeros. Con esta técnica es imposible que se utilice el mismo sample más de una vez.
 
-\subsection{Codificación en paridad (Parity Coding)}
+\subsection{Codificación en paridad (Parity coding)}
 
 En lugar de dividir la señal en samples individuales, este método divide la señal en regiones disjuntas. Una región es un conjunto de samples, de un tamaño determinado. Todas las regiones tendrán el mismo tamaño, excepto quizás la última, si el número de samples del archivo no es múltiplo del número de samples por región. El método oculta un bit del mensaje secreto en el bit de paridad de cada región. El bit de paridad de una región se define como el resultado de aplicar la operación lógica XOR a todos los bits de todos los samples de la región. Si el bit de paridad de la región seleccionada (aquella en la que se ha decidido ocultar un bit del mensaje) no coincide con el bit secreto a incrustar, se modifica el bit menos significativo de uno de los samples de la región (no importa cual). Si coincide, no es necesario llevar a cabo ninguna modificación. De esta manera, el emisor tiene una serie de samples entre los que elegir a la hora de ocultar cada bit.
 
@@ -262,7 +259,7 @@ Los métodos de codificación en el bit menos significativo y codificación de p
 
 \subsection{Codificación en fase (Phase coding)}
 
-A diferencia de los métodos anteriores, el método de codificación en fase no está basado en la inserción de ruido y por tanto no comparte los inconvenientes previamente señalados. La idea centra en codificación en fase es que las componentes de fase del sonido no resultan tan perceptibles al oído humano como el ruido. Por ello, en lugar de introducir perturbaciones, esta técnica codifica los bits del mensaje como desplazamientos de fase en el espectro de fases de la señal digital.
+A diferencia de los métodos anteriores, el método de codificación en fase no está basado en la inserción de ruido y por tanto no comparte los inconvenientes previamente señalados. La idea central en codificación en fase es que las componentes de fase del sonido no resultan tan perceptibles al oído humano como el ruido. Por ello, en lugar de introducir perturbaciones, esta técnica codifica los bits del mensaje como desplazamientos de fase en el espectro de fases de la señal digital.
 
 \begin{figure}
   \centering
@@ -281,7 +278,7 @@ El procedimiento es el siguiente:
 
 \item Se calculan las diferencias de fase entre segmentos adyacentes.
 
-\item Desplazamientos de fase entre segmentos consecutivos serían fácilmente detectables. En otras palabras, las fases absolutas de los segmentos pueden cambiarse pero las diferencias relativas de fase entre segmentos adyacentes deben preservarse. Por este motivo, el mensaje secreto sólo se inserta en el vector de fases del primer segmento de la señal, de manera que la nueva fase será:
+\item Desplazamientos de fase entre segmentos consecutivos serían fácilmente detectables. En otras palabras, las fases absolutas de los segmentos pueden cambiarse pero las diferencias de fase relativas entre segmentos adyacentes deben preservarse. Por este motivo, el mensaje secreto sólo se inserta en el vector de fases del primer segmento de la señal, de manera que la nueva fase será:
 
 \[
 \text{nueva\_fase }=\left\{
@@ -311,7 +308,7 @@ En el contexto de la esteganografía de audio, el método básico de ensanchado 
 
 Se pueden usar dos versiones del método de espectro ensanchado en esteganografía de audio: el esquema de secuencia directa y el esquema de salto de frecuencia. En secuencia directa, el mensaje secreto se distribuye utilizando una constante llamada ``chip rate'' y luego se modula con una señal pseudoaleatoria. Después se entrelaza con la señal original. En salto de frecuencia, el espectro de frecuencia del archivo de audio es alterado para que salte rápidamente entre frecuencias.
 
-La teoría matemática en la que se basa este método es bastante complicada y va más allá de los objetivos de este proyecto. El diagrama de la figura \ref{spreadspectrum} ilustra el diseño de un sistema de esteganografía de audio basado en espectro ensanchado utilizando el esquema de secuencia directa.
+La teoría matemática en la que se basa este método es bastante complicada y va más allá de los objetivos de este trabajo. El diagrama de la figura \ref{spreadspectrum} ilustra el diseño de un sistema de esteganografía de audio basado en espectro ensanchado utilizando el esquema de secuencia directa.
 
 \begin{figure}
   \centering
@@ -370,7 +367,7 @@ Block offset1(Block block) {
 
 Por último, los bloques se recombinan para producir la señal final.
 
-Usar la implementación descrita del proceso de ocultación de eco usualmente resultará en una señal con una mezcla de ecos considerable, lo que incrementa el riesgo de detección. Describimos ahora una segunda implementación que intenta solventar este problema. Primero se crea una señal de eco de la señal original completa utilizando el offset asociado al cero binario. Luego generamos una segunda señal de eco asociada a la señal original global, usando el valor de offset asociado al uno binario. La señal ``uno'' sólo contiene unos, y la señal ``cero'' sólo contiene ceros. Para combinar las dos señales de eco y conseguir la señal final, se usan dos señales de mezcla. Las señales de mezcla tienen un valor de uno o cero, según el bit a insertar en el bloque. En nuestro ejemplo, para ocultar el mensaje ``HEY'' obtendríamos las señales de mezcla mostradas en la figura \ref{mixersignals}.
+Usar la implementación descrita normalmente resultará en una señal con una mezcla de ecos considerable, lo que incrementa el riesgo de detección. Describimos ahora una segunda implementación que intenta solventar este problema. Primero se crea una señal de eco de la señal original completa utilizando el offset asociado al cero binario. Luego generamos una segunda señal de eco asociada a la señal original global, usando el valor de offset asociado al uno binario. La señal ``uno'' sólo contiene unos, y la señal ``cero'' sólo contiene ceros. Para combinar las dos señales de eco y conseguir la señal final, se usan dos señales de mezcla. Las señales de mezcla tienen un valor de uno o cero, según el bit a insertar en el bloque. En nuestro ejemplo, para ocultar el mensaje ``HEY'' obtendríamos las señales de mezcla mostradas en la figura \ref{mixersignals}.
 
 \begin{figure}
   \centering
@@ -402,7 +399,7 @@ En resumen, con el crecimiento de áreas como protección de copyright, protecci
 \newpage
 \section{Problemas abiertos}
 
-La principal dificultad en el campo de la ocultación de información en audio digital es comúnmente ilustrada utilizando el llamado ``triángulo mágico'' (figura \ref{magictriangle}). La inaudibilidad o imperceptibilidad, la robustez a ataques y la tasa de transferencia de datos son las tres esquinas del triángulo mágico. Estos tres requisitos son contradictorios. No es posible obtener todas estas características simultáneamente. Por ello, deberá estudiarse cada situación particular para elegir el método más apropiado a aplicar en cada caso.
+La principal dificultad en el campo de la ocultación de información en audio digital es comúnmente ilustrada utilizando el llamado ``triángulo mágico'' (figura \ref{magictriangle}). La inaudibilidad o imperceptibilidad, la robustez frente a ataques y la tasa de transferencia de datos son las tres esquinas del triángulo mágico. Estos tres requisitos son contradictorios. No es posible obtener todas estas características simultáneamente. Por ello, deberá estudiarse cada situación particular para elegir el método más apropiado a aplicar en cada caso.
 
 \begin{figure}[h]
   \centering
@@ -415,7 +412,7 @@ Otros problemas interesantes son:
 
 \begin{itemize}
 
-\item ¿Cuál es la máxima tasa de transferencia de datos que se puede conseguir con cada método, respetando la imperceptibilidad?
+\item ¿Cuál es la máxima tasa de transferencia de datos que se puede conseguir con cada método, respetando los límites que marca la necesidad de imperceptibilidad?
 
 \item ¿Cómo puede mejorarse la robustez frente a ataques (intencionados o no intencionados) de cada uno de estos métodos?
 
@@ -450,7 +447,7 @@ Otros problemas interesantes son:
 \hline 17-05-2011 & 10:30 & 12:30 & 2h & Borja & Memoria \\
 \hline 20-05-2011 & 16:00 & 18:00 & 2h & Pascual & Presentación \\
 \hline 21-05-2011 & 10:00 & 14:00 & 4h & Borja & Memoria \\
-\hline 21-05-2011 & 15:00 & 17:00 & 4h & Juan & Implementación \\
+\hline 21-05-2011 & 15:00 & 19:00 & 4h & Juan & Implementación \\
 \hline 25-05-2011 & 17:00 & 20:00 & 3h & Borja & Memoria \\
 \hline 
 \end{tabular}
