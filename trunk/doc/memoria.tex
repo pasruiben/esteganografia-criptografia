@@ -6,14 +6,16 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{color}
+\usepackage{tocbibind} 
 %\usepackage{fullpage}
 
 \lstdefinestyle{mycode} 
 {language=C++, basicstyle=\small,frame=tb,rulecolor=\color{blue},aboveskip=0.35cm,belowskip=0.35cm,commentstyle=\color{gray20}}
 
-
 \title{Ocultar datos en archivos de sonido}
 \author{Juan Antonio Cano Salado \and Borja Moreno Fernández \and Pascual Javier Ruiz Benítez}
+
+\renewcommand{\refname}{\section{Sources}} % Using "Sources" as the title of the section
 
 \begin{document}
 
@@ -29,6 +31,7 @@ Este trabajo aborda la ocultación de datos en archivos de sonido o, lo que es l
 
 Comenzaremos estudiando los principios básicos de la esteganografía en general, y de la esteganografía de audio en particular. A continuación, analizaremos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Hecho esto, estudiaremos uno de los formatos de audio más populares: el formato WAV. Finalmente, incluiremos una descripción de la implementación realizada y proporcionaremos un manual de instalación y manejo de la aplicación desarrollada.
 
+\newpage
 \section{Introducción}
 
 \subsection{Esteganografía}
@@ -185,6 +188,7 @@ Los datos de sonido.
 
 \end{itemize}
 
+\newpage
 \section{Descripción del problema}
 
 En un sistema de estaganografía de audio, se ocultan mensajes secretos en audio digital. El mensaje secreto se introduce alterando ligeramente la secuencia binaria del archivo de audio. Existen aplicaciones de esteganografía de audio que permiten ocultar mensajes en archivos de audio en formato WAV, AU e incluso MP3.
@@ -201,10 +205,19 @@ La esteganografía, y en particular la esteganografía de audio, tiene un campo 
 
 \subsubsection{Protección de copyright}
 
-El desarrollo de software fácil de usar y la bajada de precios de los dispositivos digitales han hecho posibles que consumidores de todo el mundo puedan hoy en día crear e intercambiar datos multimedia de manera sencilla. Las banda ancha en Internet y las transmisiones de datos casi sin errores han facilitado que cualquiera pueda distribuir archivos multimedia de gran tamaño y hacer copias exactas de los mismos. Esta capacidad de llevar a cabo copias perfectas ha dificulta la protección de los derechos de protección intelectual.
+El rápido desarrollo del software y la bajada de precios de los dispositivos digitales han hecho posible que consumidores de todo el mundo puedan hoy en día crear e intercambiar datos multimedia con gran facilidad. Internet de banda ancha proporciona transmisiones de datos a gran velocidad con una tasa de errores muy baja. Esto ha facilitado que cualquiera pueda distribuir archivos multimedia de gran tamaño y hacer copias exactas de los mismos. La capacidad de llevar a cabo estas copias perfectas dificulta la protección de los derechos de propiedad intelectual. La posibilidad de crear y distribuir un número ilimitado de copias de sus obras causa un daño económico considerable para los autores.
 
-Las marcas de agua digitales son una nueva alternativa para proteger los derechos de copyright. Éstas se definen como la comunicación de datos relacionados con la señal portadora, de manera imperceptible, robusta y segura.
+Los métodos tradicionales de protección de copyright ya no son suficiente. Los métodos de protección hardware no son una opción, ya que el mercado se está alejando cada vez más de los dispositivos físicos. Los métodos básicos de protección software basados en la inclusión de información en la cabecera de los archivos multimedia tampoco son de utilidad, ya que la cabecera de los archivos puede ser fácilmente sustituida por otra, sin que los datos multimedia sufran ningún tipo de deterioro.
 
+Algunos proveedores buscaron la solución en la criptografía. Su idea era distribuir los archivos cifrados, con una clave diferente para cada cliente. De esta manera sólo el cliente que hubiese pagado su licencia podría descifrar los contenidos del archivo y disfrutar de su contenido multimedia. El problema es que una vez un cliente legítimo ha descifrado su archivo, nada le impide llevar a cabo copias del mismo y distribuirlas. Por tanto, el sistema sólo sirve para garantizar la comunicación segura entre el proveedor y el cliente, pero no pone ningún impedimento a la difusión un número ilimitado de copias por parte de dicho cliente.
+
+Las marcas de agua digitales son una nueva alternativa para tratar de proteger el copyright. Se definen como la comunicación de datos relacionados con una señal portadora, de manera imperceptible, robusta y segura. En el caso de archivos de audio, la señal portadora es el archivo de sonido original. La información a comunicar de forma imperceptible, robusta y segura sería una firma digital que informa acerca de quién es el ``dueño'' de dicho archivo. Pese a ser transparente a la percepción humana, esta firma digital debería poder ser leída con las herramientas adecuadas.
+
+Una diferencia fundamental entre la esteganografía general y la esteganografía de marcas de agua es que en el caso de las marcas de agua, la información que se inserta tiene que ver con la señal portadora (por ejemplo, indica quién es su propietario). La diferencia es de concepto, las técnicas empleadas son las mismas.
+
+En resumen1, el uso de esteganografía de audio en protección de derechos de propiedad intelectual se basa en la capacidad de ocultar información en los archivos multimedia. Esta información debe resultar imperceptible: el cliente no debe poder apreciar ningún tipo de pérdida de calidad en su archivo multimedia. Esta información incluye información acerca de quién es el legítimo propietario de esa copia de dicho archivo. De esta manera, en caso de producirse la copia y distribución masiva de dicho archivo, sería posible localizar a su propietario original. Esta información debe además ser robusta y segura (no debería ser posible modificarla ni eliminarla fácilmente). Para ello es fundamental que se incluya en los mismos datos digitales, y no en la cabecera de los archivos.
+
+\newpage
 \section{Soluciones presentadas}
 
 En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se han preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a lectores con conocimientos básicos de esteganografía.
@@ -232,7 +245,7 @@ En lugar de dividir la señal en samples individuales, este método divide la se
 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth]{img/parity}
+    \includegraphics[width=0.8\textwidth]{img/parity}
   \caption{Parity Coding}
   \label{paritycoding}
 \end{figure}
@@ -253,7 +266,7 @@ A diferencia de los métodos anteriores, el método de codificación en fase no 
 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth]{img/phaseshift}
+    \includegraphics[width=0.8\textwidth]{img/phaseshift}
   \caption{Phase Coding}
   \label{phasecoding}
 \end{figure}
@@ -302,7 +315,7 @@ La teoría matemática en la que se basa este método es bastante complicada y v
 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth]{img/spreadspectrum}
+    \includegraphics[width=0.8\textwidth]{img/spreadspectrum}
   \caption{Spread Spectrum}
   \label{spreadspectrum}
 \end{figure}
@@ -317,7 +330,7 @@ Para ocultar la información con éxito, se utilizan tres parámetros del eco: a
 
 \begin{figure}
   \centering
-    \includegraphics[width=0.5\textwidth]{img/echooffsets}
+    \includegraphics[width=0.4\textwidth]{img/echooffsets}
   \caption{Offsets del eco}
   \label{echooffsets}
 \end{figure}
@@ -330,7 +343,7 @@ En primer lugar la señal se divide en bloques, y a cada bloque se le asigna un 
 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth]{img/echodividesignal}
+    \includegraphics[width=0.8\textwidth]{img/echodividesignal}
   \caption{Señal dividida en bloques y bit asociado a cada bloque}
   \label{echodividesignal}
 \end{figure}
@@ -361,7 +374,7 @@ Usar la implementación descrita del proceso de ocultación de eco usualmente re
 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth]{img/mixersignals}
+    \includegraphics[width=0.8\textwidth]{img/mixersignals}
   \caption{Señales de mezcla}
   \label{mixersignals}
 \end{figure}
@@ -372,36 +385,96 @@ El diagrama de la figura \ref{echo2ndimp} resume esta segunda implementación de
 
 \begin{figure}
   \centering
-    \includegraphics[width=\textwidth]{img/echo2ndimp}
+    \includegraphics[width=0.8\textwidth]{img/echo2ndimp}
   \caption{Ocultamiento en eco: segundo procedimiento}
   \label{echo2ndimp}
 \end{figure}
 
 Para extraer el mensaje secreto, el receptor debe ser capaz de dividir la señal en el mismo conjunto de bloques usado durante el proceso de inserción de la información. Hecho esto, puede usarse la función de autocorrelación del cepstrum de la señal (el cepstrum es la transformada de Fourier del espectro de frecuencias de la señal) para extraer el mensaje, ya que ésta muestra un pico en cada offset de eco en el tiempo, lo que permite reconstruir el mensaje.
 
+\newpage
 \section{Conclusiones}
 
 La esteganografía de audio es muy flexible y esto es lo que la hace tan interesante. Los cinco métodos analizados dan a los usuarios gran capacidad de decisión y hacen la tecnología accesible a un gran número de personas. A la hora de escoger qué método de esteganografía de audio emplear, debe estudiarse la importancia de factores como la tasa de transferencia de datos, el ancho de banda, la robustez y la perceptibilidad, para elegir el método que mejor se ajuste a las necesidades. Por ejemplo, dos personas que sólo necesitan enviarse un mensaje secreto ocasionalmente podrían usar el método de codificación en el bit menos significativo, fácil de implementar. Por contra, una gran multinacional con la intención de proteger su propiedad intelectual de ``piratas digitales'' probablemente consideraría métodos más sofisticados como codificación en fase, espectro ensanchado u ocultamiento de eco. Otro de los aspectos de la esteganografía de audio que la hace tan atractiva es su capacidad para combinarse con las tecnologías de criptografía ya existentes. Los usuarios no tienen que elegir cuál de los dos métodos utilizar, la información puede ir cifrada y oculta simultáneamente.
 
 En resumen, con el crecimiento de áreas como protección de copyright, protección de privacidad y vigilancia, creemos que la esteganografía seguirá aumentando en importancia. La esteganografía de audio, en particular, se centra en problemas que se originaron con la aparición del audio digital (y su espectacular auge con el formato MP3), el software P2P, y la necesidad de un esquema de comunicaciones seguro que pueda mantener el secreto de la información transmitida incluso si ésta debe atravesar canales inseguros.
 
+\newpage
 \section{Problemas abiertos}
 
-what is the highest watermark bit
-rate obtainable, under the perceptual transparency constraint, and how to approach the limit?
+La principal dificultad en el campo de la ocultación de información en audio digital es comúnmente ilustrada utilizando el llamado ``triángulo mágico'' (figura \ref{magictriangle}). La inaudibilidad o imperceptibilidad, la robustez a ataques y la tasa de transferencia de datos son las tres esquinas del triángulo mágico. Estos tres requisitos son contradictorios. No es posible obtener todas estas características simultáneamente. Por ello, deberá estudiarse cada situación particular para elegir el método más apropiado a aplicar en cada caso.
 
-how can the detection performance of a watermarking system be improved using algorithms based on
-communications models for that system?
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=0.5\textwidth]{img/magictriangle}
+  \caption{Triángulo mágico}
+  \label{magictriangle}
+\end{figure}
 
-how can overall robustness to attacks to a watermark
-system be increased using attack characterization at the embedding side?
+Otros problemas interesantes son:
 
+\begin{itemize}
+
+\item ¿Cuál es la máxima tasa de transferencia de datos que se puede conseguir con cada método, respetando la imperceptibilidad?
+
+\item ¿Cómo puede mejorarse la robustez frente a ataques (intencionados o no intencionados) de cada uno de estos métodos?
+
+\end{itemize}
+
+\newpage
 \section{Implementación realizada}
 
-\section{Manual de instalación y manejo de la aplicación}
+\subsection{Manual de instalación}
 
-\section{Bibliografía}
+\subsection{Manual de uso}
 
+\newpage
 \section{Tabla de tiempos}
+
+\begin{table}[h]
+
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline Fecha & Inicio & Fin & Duración & Miembro del grupo & Actividad  \\ 
+\hline 02-05-2011 & 15:30 & 19:30 & 4h & Juan, Borja, Pascual & Estudio referencias  \\
+\hline 04-05-2011 & 17:00 & 20:00 & 3h & Borja & Estudio referencias  \\
+\hline 06-05-2011 & 12:00 & 14:00 & 2h & Juan, Borja, Pascual & Estudio referencias  \\
+\hline 09-05-2011 & 19:00 & 22:00 & 3h & Juan & Implementación  \\
+\hline 10-05-2011 & 15:30 & 20:30 & 3h & Juan, Borja, Pascual & Implementación \\
+\hline 11-05-2011 & 17:30 & 19:30 & 2h & Pascual & Presentación \\
+\hline 13-05-2011 & 11:00 & 13:00 & 2h & Borja & Memoria \\
+\hline 16-05-2011 & 10:00 & 13:00 & 3h & Pascual & Presentación \\
+\hline 16-05-2011 & 16:00 & 18:00 & 2h & Borja & Estudio referencias \\
+\hline 16-05-2011 & 18:30 & 20:30 & 2h & Borja & Memoria \\
+\hline 16-05-2011 & 19:00 & 23:00 & 4h & Juan & Implementación \\
+\hline 17-05-2011 & 10:30 & 12:30 & 2h & Borja & Memoria \\
+\hline 20-05-2011 & 16:00 & 18:00 & 2h & Pascual & Presentación \\
+\hline 21-05-2011 & 10:00 & 14:00 & 4h & Borja & Memoria \\
+\hline 21-05-2011 & 15:00 & 17:00 & 4h & Juan & Implementación \\
+\hline 25-05-2011 & 17:00 & 20:00 & 3h & Borja & Memoria \\
+\hline 
+\end{tabular}
+
+\caption{Tabla de tiempos}
+\end{table}
+
+\newpage
+
+\begin{thebibliography}{99}
+
+\bibitem{cvejic}
+Cvejic, Nedeljko (2004). \emph{Algorithms for audio watermarking and steganography}. Oulu University Press. ISBN 951-42-7384-2. \emph{http://herkules.oulu.fi/isbn9514273842/}
+
+
+\bibitem{gibson}
+Gibson, Tyler (2003). \emph{Methods of audio steganography}. \emph{http://www.snotmonkey.com/work/school/405/}
+
+\bibitem{john}
+John, Corinna (2004). \emph{Hiding Data in Wave Audio Files}. \emph{http://www.codeproject.com/KB/security/steganodotnet8.aspx}
+
+\bibitem{wilson}
+Wilson, Scott (2003). \emph{WAVE PCM soundfile format}. \emph{https://ccrma.stanford.edu/courses/422/projects/WaveFormat/}
+
+\end{thebibliography}
 
 \end{document}

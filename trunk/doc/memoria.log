@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  23 MAY 2011 20:37
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  25 MAY 2011 20:23
 entering extended mode
 **memoria.tex
 ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.tex"
@@ -392,21 +392,31 @@ Package color Info: Driver file: pdftex.def on input line 130.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
 File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+("C:\Program Files\MiKTeX 2.9\tex\latex\tocbibind\tocbibind.sty"
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
 
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+
+Package tocbibind Note: Using section or other style headings.
+
+) ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.aux"
+
+LaTeX Warning: Label `gibson' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count111
 \scratchdimen=\dimen119
@@ -429,46 +439,47 @@ LaTeX Font Info:    ... okay on input line 18.
 [2] [3] <img/illustration2.png, id=14, 1018.80624pt x 659.46375pt>
 File: img/illustration2.png Graphic file (type png)
 
-<use img/illustration2.png> [4 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/
-C/trabajoC/doc/img/illustration2.png (PNG copy)>]
-<img/digitalaudio.png, id=18, 534.99875pt x 159.59625pt>
-File: img/digitalaudio.png Graphic file (type png)
-
-<use img/digitalaudio.png>
+<use img/illustration2.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5] [6 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/digit
-alaudio.png (PNG copy)>]
-<img/wavsoundformat.png, id=26, 614.295pt x 569.12625pt>
+[4] [5 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/illus
+tration2.png (PNG copy)>]
+<img/digitalaudio.png, id=21, 534.99875pt x 159.59625pt>
+File: img/digitalaudio.png Graphic file (type png)
+
+<use img/digitalaudio.png> [6 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C
+/trabajoC/doc/img/digitalaudio.png (PNG copy)>] [7]
+<img/wavsoundformat.png, id=30, 614.295pt x 569.12625pt>
 File: img/wavsoundformat.png Graphic file (type png)
 
-<use img/wavsoundformat.png> [7] [8 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimest
-re 2/C/trabajoC/doc/img/wavsoundformat.png (PNG copy)>] [9] [10]
-<img/lsbimage.png, id=41, 526.96875pt x 451.6875pt>
+<use img/wavsoundformat.png> [8] [9 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimest
+re 2/C/trabajoC/doc/img/wavsoundformat.png (PNG copy)>] [10] [11] [12] [13]
+<img/lsbimage.png, id=51, 526.96875pt x 451.6875pt>
 File: img/lsbimage.png Graphic file (type png)
  <use img/lsbimage.png>
-[11] [12 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/lsb
-image.png (PNG copy)>] [13] <img/parity.png, id=53, 526.96875pt x 501.875pt>
+[14] [15 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/lsb
+image.png (PNG copy)>] [16] <img/parity.png, id=62, 526.96875pt x 501.875pt>
 File: img/parity.png Graphic file (type png)
 
-<use img/parity.png> [14] [15 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C
-/trabajoC/doc/img/parity.png (PNG copy)>]
-<img/phaseshift.png, id=61, 472.76625pt x 224.84pt>
+<use img/parity.png> [17 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trab
+ajoC/doc/img/parity.png (PNG copy)>]
+<img/phaseshift.png, id=67, 472.76625pt x 224.84pt>
 File: img/phaseshift.png Graphic file (type png)
  <use img/phaseshift.png>
-[16] [17 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/pha
+[18] [19 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/pha
 seshift.png (PNG copy)>]
-<img/spreadspectrum.png, id=72, 526.96875pt x 602.25pt>
+<img/spreadspectrum.png, id=79, 526.96875pt x 602.25pt>
 File: img/spreadspectrum.png Graphic file (type png)
 
-<use img/spreadspectrum.png> [18] [19 <C:/Users/BMF/Desktop/escuela/5º/Cuatrime
+<use img/spreadspectrum.png> [20] [21 <C:/Users/BMF/Desktop/escuela/5º/Cuatrime
 stre 2/C/trabajoC/doc/img/spreadspectrum.png (PNG copy)>]
-<img/echooffsets.png, id=81, 233.87375pt x 291.0875pt>
+<img/echooffsets.png, id=87, 233.87375pt x 291.0875pt>
 File: img/echooffsets.png Graphic file (type png)
 
-<use img/echooffsets.png>
-<img/echodividesignal.png, id=82, 507.8975pt x 89.33376pt>
+<use img/echooffsets.png> [22 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C
+/trabajoC/doc/img/echooffsets.png (PNG copy)>]
+<img/echodividesignal.png, id=92, 507.8975pt x 89.33376pt>
 File: img/echodividesignal.png Graphic file (type png)
 
 <use img/echodividesignal.png>
@@ -480,54 +491,94 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-) [20 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/echoof
-fsets.png (PNG copy)>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 341.
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 354.
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 341.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 342.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 354.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 355.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 342.
-
-<img/mixersignals.png, id=87, 526.96875pt x 274.02374pt>
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 355.
+ [23 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/echodiv
+idesignal.png (PNG copy)>] <img/mixersignals.png, id=100, 526.96875pt x 274.023
+74pt>
 File: img/mixersignals.png Graphic file (type png)
 
-<use img/mixersignals.png> [21 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/
-C/trabajoC/doc/img/echodividesignal.png (PNG copy)>]
-<img/echo2ndimp.png, id=95, 491.8375pt x 252.945pt>
+<use img/mixersignals.png>
+<img/echo2ndimp.png, id=101, 491.8375pt x 252.945pt>
 File: img/echo2ndimp.png Graphic file (type png)
  <use img/echo2ndimp.png>
-[22 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/mixersig
+[24 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/mixersig
 nals.png (PNG copy)>]
-Overfull \hbox (4.79721pt too wide) in paragraph at lines 386--387
+Overfull \hbox (4.79721pt too wide) in paragraph at lines 400--401
 \OT1/cmr/m/n/12 pro-tec-cion de pri-va-ci-dad y vi-gi-lan-cia, cree-mos que la
  es-te-ga-no-grafa se-guira au-
  []
 
-[23 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/echo2ndi
-mp.png (PNG copy)>] [24]
-("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.aux")
+[25 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2/C/trabajoC/doc/img/echo2ndi
+mp.png (PNG copy)>] [26]
+<img/magictriangle.png, id=114, 336.25626pt x 176.66pt>
+File: img/magictriangle.png Graphic file (type png)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+<use img/magictriangle.png> [27 <C:/Users/BMF/Desktop/escuela/5º/Cuatrimestre 2
+/C/trabajoC/doc/img/magictriangle.png (PNG copy)>] [28]
+Overfull \hbox (42.67407pt too wide) in paragraph at lines 437--457
+ [][] 
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+[]\OT1/cmr/m/n/12 Cvejic, Ne-delj-ko (2004). \OT1/cmr/m/it/12 Al-go-rithms for 
+au-dio wa-ter-mar-king
+ []
+
+
+Underfull \hbox (badness 4048) in paragraph at lines 466--467
+\OT1/cmr/m/it/12 and ste-ga-no-graphy\OT1/cmr/m/n/12 . Ou-lu Uni-ver-sity Press
+. ISBN 951-42-7384-2.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
+[]\OT1/cmr/m/n/12 Gibson, Ty-ler (2003). \OT1/cmr/m/it/12 Met-hods of au-dio st
+e-ga-no-graphy\OT1/cmr/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
+[]\OT1/cmr/m/n/12 John, Co-rin-na (2004). \OT1/cmr/m/it/12 Hi-ding Da-ta in Wa-
+ve Au-dio Fi-les\OT1/cmr/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 476--477
+[]\OT1/cmr/m/n/12 Wilson, Scott (2003). \OT1/cmr/m/it/12 WA-VE PCM sound-fi-le 
+for-mat\OT1/cmr/m/n/12 .
+ []
+
+[30] ("C:\Users\BMF\Desktop\escuela\5º\Cuatrimestre 2\C\trabajoC\doc\memoria.au
+x")
+
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4582 strings out of 494053
- 58973 string characters out of 3148610
- 148319 words of memory out of 3000000
- 7826 multiletter control sequences out of 15000+200000
- 11381 words of font info for 41 fonts, out of 3000000 for 9000
+ 4680 strings out of 494053
+ 60383 string characters out of 3148610
+ 148027 words of memory out of 3000000
+ 7918 multiletter control sequences out of 15000+200000
+ 11728 words of font info for 42 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 38i,9n,67p,1387b,1782s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,9n,67p,1387b,1452s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
@@ -536,10 +587,10 @@ onts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb>
-Output written on memoria.pdf (24 pages, 292189 bytes).
+0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on memoria.pdf (30 pages, 322654 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
+ 160 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

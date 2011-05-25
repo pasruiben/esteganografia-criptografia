@@ -4,3 +4,4 @@ http://es.wikipedia.org/wiki/Waveform_Audio_Format
 https://ccrma.stanford.edu/courses/422/projects/WaveFormat/
 
 libro (pág 17)
+(pág 51)
