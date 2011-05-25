@@ -66,7 +66,7 @@ namespace Steganos_Cripto
         {
             activeAlgorithm = algoritmosComboBox.SelectedItem as Algorithm;
 
-            activeAlgorithm.init(filenameIn, filenameOut);
+            activeAlgorithm.init();
 
             this.panel1.Controls.Add(activeAlgorithm.EncryptView);
             this.panel4.Controls.Add(activeAlgorithm.DecryptView);

@@ -22,72 +22,62 @@ namespace Steganos_Cripto
         }
 
 
-        public override void init(string fileInput, String fileOutput)
+        public override void init()
         {
-            base.filenameIn = fileInput;
-            base.filenameOut = fileOutput;
-
-
             ParityEncryptControl encrypyView = base.EncryptView as ParityEncryptControl;
 
             int samplesPerRegion = int.Parse(encrypyView.samplesPerRegionTextBox.Text);
 
-            int numBytes = Util.getFileSize(fileInput) - Util.samplesOffsetWav;
-            int numSamples = (numBytes * 8 / Util.bitsPerSample);
-            int numRegions = numSamples / samplesPerRegion;
+            initData(samplesPerRegion);
 
-            setData(numBytes, numSamples, numRegions, samplesPerRegion);
-
-            float maxMessage = numRegions / 8;
+            float maxMessage = regions.Count / 8;
 
             encrypyView.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
         }
 
-
-        private void setData(int numBytes, int numSamples, int numRegions, int samplesPerRegion)
+        private void initData(int samplesPerRegion)
         {
-            header = new Header();
+            WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
+
+            header = wProcessor.header;
+
+            Sample[] samples = wProcessor.samples;
+
+            int numRegions = samples.Length / samplesPerRegion;
+
             regions = new List<Sample[]>();
 
-            FileStream fs = new FileStream(filenameIn, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-
-            header.data = br.ReadBytes(Util.samplesOffsetWav);
-            byte[] buffer = br.ReadBytes((int)numBytes);
 
             int j = 0;
             for (int t = 0; t < numRegions; t++)
             {
-                Sample[] samples = new Sample[samplesPerRegion];
+                Sample[] s = new Sample[samplesPerRegion];
 
-                for (int i = 0; i < samples.Length; i++)
+                for (int i = 0; i < s.Length; i++)
                 {
-                    samples[i] = new Sample(buffer[j++], buffer[j++]);
+                    s[i] = samples[j++];
                 }
-                regions.Add(samples);
+                regions.Add(s);
             }
 
-            int rest = numSamples % numRegions;
+            int rest = samples.Length % numRegions;
 
             if (rest != 0)
             {
-                Sample[] samples = new Sample[rest];
+                Sample[] s = new Sample[rest];
                 for (int i = 0; i < samples.Length; i++)
                 {
-                    samples[i] = new Sample(buffer[j++], buffer[j++]);
+                    s[i] = samples[j++];
                 }
-                regions.Add(samples);
+                regions.Add(s);
             }
-
-            fs.Close();
         }
+
 
         public override void encrypt(String message, String key)
         {
             IList<Sample[]> output = null;
-
             output = new List<Sample[]>();
-
             foreach (Sample[] s in regions)
             {
                 regions.Add(s.Clone() as Sample[]);
@@ -96,60 +86,90 @@ namespace Steganos_Cripto
             ParityEncryptControl encryptView = base.EncryptView as ParityEncryptControl;
 
             int seed = int.Parse(encryptView.seedTextBox.Text);
-            Random rnd = new Random(seed);
-            List<int> usedIndexRegions = new List<int>();
+            IndexRandomGenerator rnd = new IndexRandomGenerator(seed, regions.Count);
 
             Random rnd2 = new Random((int)DateTime.Now.Ticks);
 
-            byte[] xoredMessage = Util.XorMessageWithKey(Encoding.ASCII.GetBytes(message), key);
+            byte[] xoredMessage = Xor.XorMessageWithKey(Encoding.ASCII.GetBytes(message), key);
             BitArray xoredMessageArray = new BitArray(xoredMessage);
 
             int messageBitArrayIndex = 0;
             while (messageBitArrayIndex < xoredMessageArray.Length)
             {
-                int regionIndex = Util.generateUnusedIndex(rnd, usedIndexRegions, regions.Count);
+                int regionIndex = rnd.generateUnusedIndex();
                 
                 Sample[] s1 = regions[regionIndex];
 
-                bool parity = Util.Parity(s1);
+                bool parity = CalculateParity(s1);
 
                 if(parity != xoredMessageArray[messageBitArrayIndex])
                 {
                     int sampleIndex = rnd2.Next(s1.Length);
-                    output[regionIndex][sampleIndex].data[Util.bitsPerSample - 1] = !output[regionIndex][sampleIndex].data[Util.bitsPerSample - 1];
+                    output[regionIndex][sampleIndex].data[State.Instance.BitsPerSample - 1] = !output[regionIndex][sampleIndex].data[State.Instance.BitsPerSample - 1];
                 }  
             
                 messageBitArrayIndex++;
             }
 
-            FileStream fs = new FileStream(filenameOut, FileMode.Create | FileMode.CreateNew, FileAccess.ReadWrite);
-            fs.Write(header.data, 0, header.data.Length);
-
-            int numBytes = Util.getFileSize(filenameIn) - Util.samplesOffsetWav;
-            byte[] finalDataWav = new byte[numBytes];
-
-            int j = 0;
-            foreach (Sample[] s1 in regions)
+            IList<Sample> outputSamples = new List<Sample>();
+            foreach(Sample[] ss in regions)
             {
-                foreach (Sample s in s1)
+                foreach (Sample s in ss)
                 {
-                    byte[] d = Util.ToByteArray(s.data);
-                    for (int i = 1; i >= 0; i--)
-                    {
-                        finalDataWav[j++] = d[i];
-                    }
+                    outputSamples.Add(s);
                 }
             }
 
-            fs.Write(finalDataWav, 0, finalDataWav.Length);
-
-            fs.Close();
+            WavWriter.run(State.Instance.FileNameOut, header, outputSamples.ToArray<Sample>());
         }
 
         public override void decrypt(String key)
         {
+            ParityDecryptControl decryptView = base.DecryptView as ParityDecryptControl;
 
+            int messageLength = int.Parse(decryptView.numCharTextBox.Text);
+            int seed = int.Parse(decryptView.seedTextBox.Text);
 
+            IndexRandomGenerator rnd = new IndexRandomGenerator(seed, regions.Count);
+
+            int size = messageLength * 8;
+            BitArray xoredMessageArray = new BitArray(size);
+
+            int bitCount = 0;
+            while (bitCount < size)
+            {
+                int regionIndex = rnd.generateUnusedIndex();
+
+                Sample[] s1 = regions[regionIndex];
+
+                bool parity = CalculateParity(s1);
+
+                xoredMessageArray[bitCount++] = parity;
+            }
+
+            byte[] messageXor = Util.ToByteArray(xoredMessageArray);
+            byte[] message = Xor.XorMessageWithKey(messageXor, key);
+
+            string res = Encoding.ASCII.GetString(message);
+
+            Main m = decryptView.Parent.Parent.Parent.Parent.Parent as Main;
+
+            m.textBox1.Text = res;
+        }
+
+        private bool CalculateParity(Sample[] s1)
+        {
+            bool res = false;
+
+            foreach (Sample s in s1)
+            {
+                foreach (bool b in s.data)
+                {
+                    res ^= b;
+                }
+            }
+
+            return res;
         }
     }
 }
