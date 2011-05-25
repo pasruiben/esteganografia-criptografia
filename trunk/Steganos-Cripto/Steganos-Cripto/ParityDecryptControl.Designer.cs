@@ -28,26 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.infoLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.seedTextBox = new System.Windows.Forms.TextBox();
             this.samplesPerRegionTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numCharTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // infoLabel
-            // 
-            this.infoLabel.AutoSize = true;
-            this.infoLabel.Location = new System.Drawing.Point(24, 22);
-            this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(148, 13);
-            this.infoLabel.TabIndex = 9;
-            this.infoLabel.Text = "Longitud máxima del mensaje:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(191, 75);
+            this.label2.Location = new System.Drawing.Point(193, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 8;
@@ -55,7 +47,7 @@
             // 
             // seedTextBox
             // 
-            this.seedTextBox.Location = new System.Drawing.Point(251, 72);
+            this.seedTextBox.Location = new System.Drawing.Point(253, 23);
             this.seedTextBox.Name = "seedTextBox";
             this.seedTextBox.Size = new System.Drawing.Size(50, 20);
             this.seedTextBox.TabIndex = 7;
@@ -63,7 +55,7 @@
             // 
             // samplesPerRegionTextBox
             // 
-            this.samplesPerRegionTextBox.Location = new System.Drawing.Point(130, 72);
+            this.samplesPerRegionTextBox.Location = new System.Drawing.Point(120, 23);
             this.samplesPerRegionTextBox.Name = "samplesPerRegionTextBox";
             this.samplesPerRegionTextBox.Size = new System.Drawing.Size(40, 20);
             this.samplesPerRegionTextBox.TabIndex = 13;
@@ -72,23 +64,41 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 75);
+            this.label1.Location = new System.Drawing.Point(14, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Samples por región:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(347, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Num car:";
+            // 
+            // numCharTextBox
+            // 
+            this.numCharTextBox.Location = new System.Drawing.Point(407, 23);
+            this.numCharTextBox.Name = "numCharTextBox";
+            this.numCharTextBox.Size = new System.Drawing.Size(50, 20);
+            this.numCharTextBox.TabIndex = 14;
+            this.numCharTextBox.Text = "11";
+            // 
             // ParityDecryptControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.numCharTextBox);
             this.Controls.Add(this.samplesPerRegionTextBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.seedTextBox);
             this.Name = "ParityDecryptControl";
-            this.Size = new System.Drawing.Size(346, 118);
+            this.Size = new System.Drawing.Size(480, 78);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,10 +106,11 @@
 
         #endregion
 
-        public System.Windows.Forms.Label infoLabel;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox seedTextBox;
         public System.Windows.Forms.TextBox samplesPerRegionTextBox;
         public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox numCharTextBox;
     }
 }

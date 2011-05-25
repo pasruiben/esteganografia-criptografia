@@ -9,40 +9,6 @@ namespace Steganos_Cripto
 {
     class Util
     {
-        public static int bitsPerSample = 16;
-        public static int samplesOffsetWav = 44;
-
-
-        public static int getFileSize(String fileName)
-        {
-            return (int)new FileInfo(fileName).Length;
-        }
-        public static int generateUnusedIndex(Random rnd, List<int> usedIndex, int size)
-        {
-            int index;
-            do
-            {
-                index = rnd.Next(size);
-            }
-            while (usedIndex.Contains(index));
-
-            usedIndex.Add(index);
-
-            return index;
-        }
-
-        public static byte[] XorMessageWithKey(byte[] message, string key)
-        {
-            byte[] res = new byte[message.Length];
-            
-            for (int i = 0; i < message.Length; i++ )
-            {
-                res[i] = (byte)(message[i] ^ key[i % key.Length]);
-            }
-
-            return res;
-        }
-
         public static byte[] ToByteArray(BitArray bits)
         {
             int numBytes = bits.Count / 8;
@@ -65,21 +31,6 @@ namespace Steganos_Cripto
             }
 
             return bytes;
-        }
-
-        public static bool Parity(Sample[] s1)
-        {
-            bool res = false;
-
-            foreach (Sample s in s1)
-            {
-                foreach (bool b in s.data)
-                {
-                    res ^= b;
-                }
-            }
-
-            return res;
         }
     }
 }

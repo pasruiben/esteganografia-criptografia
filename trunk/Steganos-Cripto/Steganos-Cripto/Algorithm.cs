@@ -12,10 +12,7 @@ namespace Steganos_Cripto
         public Control EncryptView { get; set; }
         public Control DecryptView { get; set; }
 
-        public String filenameIn { get; set; }
-        public String filenameOut { get; set; }
-
-        public abstract void init(String fileInput, String fileOut);
+        public abstract void init();
 
         public abstract void encrypt(String message, String key);
         public abstract void decrypt(String key);

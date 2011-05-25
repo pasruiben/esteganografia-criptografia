@@ -12,7 +12,7 @@ namespace Steganos_Cripto
 
         public Sample(byte b1, byte b2)
         {
-            data = new BitArray(Util.bitsPerSample);
+            data = new BitArray(State.Instance.BitsPerSample);
             for (int i = 0; i < 8; i++)
             {
                 data[15-i] = (b1 & (1<<i)) >= 1;
