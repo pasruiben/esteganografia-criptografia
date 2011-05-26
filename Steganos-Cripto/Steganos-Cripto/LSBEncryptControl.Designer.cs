@@ -51,6 +51,7 @@
             this.bitPerSampleMessageTextBox.Size = new System.Drawing.Size(40, 20);
             this.bitPerSampleMessageTextBox.TabIndex = 1;
             this.bitPerSampleMessageTextBox.Text = "1";
+            this.bitPerSampleMessageTextBox.TextChanged += new System.EventHandler(this.bitPerSampleMessageTextBox_TextChanged);
             // 
             // seedTextBox
             // 
@@ -78,7 +79,7 @@
             this.infoLabel.TabIndex = 4;
             this.infoLabel.Text = "Longitud máxima del mensaje:";
             // 
-            // LSBControl
+            // LSBEncryptControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,7 +88,7 @@
             this.Controls.Add(this.seedTextBox);
             this.Controls.Add(this.bitPerSampleMessageTextBox);
             this.Controls.Add(this.label1);
-            this.Name = "LSBControl";
+            this.Name = "LSBEncryptControl";
             this.Size = new System.Drawing.Size(394, 124);
             this.ResumeLayout(false);
             this.PerformLayout();

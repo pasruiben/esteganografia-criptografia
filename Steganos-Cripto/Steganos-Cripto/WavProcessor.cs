@@ -38,5 +38,18 @@ namespace Steganos_Cripto
             fs.Close();
         }
 
+        public static int numSamples(String filename)
+        {
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+
+            br.BaseStream.Seek(40, SeekOrigin.Begin);
+            ulong numBytesSamples = br.ReadUInt64();
+
+            fs.Close();
+
+            return (int)(8 * numBytesSamples / (ulong)State.Instance.BitsPerSample);
+        }
+
     }
 }

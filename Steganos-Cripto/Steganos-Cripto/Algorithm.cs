@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Steganos_Cripto
 {
-    abstract class Algorithm
+    public abstract class Algorithm
     {
         public String Name { get; set; }
         public Control EncryptView { get; set; }
@@ -15,7 +15,7 @@ namespace Steganos_Cripto
         public abstract void init();
 
         public abstract void encrypt(String message, String key);
-        public abstract void decrypt(String key);
+        public abstract String decrypt(String key);
 
         public override string ToString()
         {

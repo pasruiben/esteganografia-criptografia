@@ -12,18 +12,15 @@ namespace Steganos_Cripto
 {
     public partial class Main : Form
     {
-        String filenameIn;
-        String filenameOut = @"C:\Users\jacano\out.wav";
-
-        List<Algorithm> algorithms = null;
-        Algorithm activeAlgorithm = null;
+        public static Algorithm activeAlgorithm { get; set; }
 
         public Main()
         {
             InitializeComponent();
 
-            algorithms = new List<Algorithm>();
+            List<Algorithm> algorithms = new List<Algorithm>();
             algorithms.Add(new LSB());
+            algorithms.Add(new Parity());
 
             algoritmosComboBox.Items.AddRange(algorithms.ToArray<Algorithm>());
         }
@@ -43,7 +40,12 @@ namespace Steganos_Cripto
                 this.infoToolStripStatusLabel.Text = "Audio cargado";
                 this.Text = "Esteganografía en audio - " + dlg.SafeFileName;
 
-                filenameIn = dlg.FileName;
+                State.Instance.FileNameIn = dlg.FileName;
+                State.Instance.FileNameOut = dlg.FileName + ".out.wav";
+
+                //TODO: Calcular de cuantos bits por sample tiene el fichero y modificar Wavprocessor y Sample para cada caso.
+                State.Instance.BitsPerSample = 16;
+
                 panel2.Visible = true;
                 tabControl1.Visible = true;
                 panel3.Visible = true;
@@ -52,13 +54,13 @@ namespace Steganos_Cripto
 
         private void play_Click(object sender, EventArgs e)
         {
-            SoundPlayer simpleSound = new SoundPlayer(filenameIn);
+            SoundPlayer simpleSound = new SoundPlayer(State.Instance.FileNameIn);
             simpleSound.Play();
         }
 
         private void playModifiedButton_Click(object sender, EventArgs e)
         {
-            SoundPlayer simpleSound = new SoundPlayer(filenameOut);
+            SoundPlayer simpleSound = new SoundPlayer(State.Instance.FileNameOut);
             simpleSound.Play();
         }
 
@@ -67,6 +69,9 @@ namespace Steganos_Cripto
             activeAlgorithm = algoritmosComboBox.SelectedItem as Algorithm;
 
             activeAlgorithm.init();
+
+            this.panel1.Controls.Clear();
+            this.panel4.Controls.Clear();
 
             this.panel1.Controls.Add(activeAlgorithm.EncryptView);
             this.panel4.Controls.Add(activeAlgorithm.DecryptView);
@@ -84,7 +89,8 @@ namespace Steganos_Cripto
 
         private void AplicarDescifradoButton_Click(object sender, EventArgs e)
         {
-            activeAlgorithm.decrypt(keyTextBox.Text);
+            String res = activeAlgorithm.decrypt(keyTextBox.Text);
+            textBox1.Text = res;
         }
 
         private void messageTextBox_TextChanged(object sender, EventArgs e)

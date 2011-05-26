@@ -68,6 +68,7 @@
             this.samplesPerRegionTextBox.Size = new System.Drawing.Size(40, 20);
             this.samplesPerRegionTextBox.TabIndex = 11;
             this.samplesPerRegionTextBox.Text = "32";
+            this.samplesPerRegionTextBox.TextChanged += new System.EventHandler(this.samplesPerRegionTextBox_TextChanged);
             // 
             // label1
             // 
