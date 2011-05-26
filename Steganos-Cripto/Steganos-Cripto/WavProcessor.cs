@@ -32,7 +32,8 @@ namespace Steganos_Cripto
             int j = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                samples[i] = new Sample(buffer[j++], buffer[j++]);
+                if(State.Instance.BitsPerSample == 16) samples[i] = new Sample(buffer[j++], buffer[j++]);
+                if (State.Instance.BitsPerSample == 8) samples[i] = new Sample(buffer[j++]);
             }
 
             fs.Close();
@@ -49,6 +50,19 @@ namespace Steganos_Cripto
             fs.Close();
 
             return (int)(8 * numBytesSamples / (ulong)State.Instance.BitsPerSample);
+        }
+
+        public static int numbitsPerSamples(String filename)
+        {
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+
+            br.BaseStream.Seek(34, SeekOrigin.Begin);
+            ushort numbitsPerSamples = br.ReadUInt16();
+
+            fs.Close();
+
+            return numbitsPerSamples;
         }
 
     }
