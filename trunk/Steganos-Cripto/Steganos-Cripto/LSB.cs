@@ -21,12 +21,7 @@ namespace Steganos_Cripto
         {
             LSBEncryptControl encrypyView = base.EncryptView as LSBEncryptControl;
 
-            int bitPerSampleMessage = 0;
-            try
-            {
-                bitPerSampleMessage = int.Parse(encrypyView.bitPerSampleMessageTextBox.Text);
-            }
-            catch (Exception) { }
+            int bitPerSampleMessage = State.Instance.BitsPerSampleLSBEncrypt;
 
             int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
             float maxMessage = (numSamples * bitPerSampleMessage) / 8;
@@ -40,11 +35,9 @@ namespace Steganos_Cripto
             Header header = wProcessor.header;
             Sample[] samples = wProcessor.samples;
 
-            LSBEncryptControl encryptView = base.EncryptView as LSBEncryptControl;
+            int bitsPerSampleMessage = State.Instance.BitsPerSampleLSBEncrypt;
+            int seed = State.Instance.SeedLSBEncrypt;
 
-            int bitsPerSampleMessage = int.Parse(encryptView.bitPerSampleMessageTextBox.Text);
-
-            int seed = int.Parse(encryptView.seedTextBox.Text);
             IndexRandomGenerator rnd = new IndexRandomGenerator(seed, samples.Length);
 
             byte[] xoredMessage = Xor.XorMessageWithKey(Encoding.ASCII.GetBytes(message), key);
@@ -73,11 +66,9 @@ namespace Steganos_Cripto
             WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
             Sample[] samples = wProcessor.samples;
 
-            LSBDecryptControl decryptView = base.DecryptView as LSBDecryptControl;
-
-            int bitsPerSampleMessage = int.Parse(decryptView.bitPerSampleMessageTextBox.Text);
-            int messageLength = int.Parse(decryptView.numCharTextBox.Text);
-            int seed = int.Parse(decryptView.seedTextBox.Text);
+            int bitsPerSampleMessage = State.Instance.BitsPerSampleLSBDecrypt;
+            int messageLength = State.Instance.MessageLengthLSBDecrypt;
+            int seed = State.Instance.SeedLSBDecrypt;
 
             IndexRandomGenerator rnd = new IndexRandomGenerator(seed, samples.Length); ;
 

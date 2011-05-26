@@ -24,5 +24,20 @@ namespace Steganos_Cripto
         public String FileNameIn { get; set; }
         public String FileNameOut { get; set; }
         public int BitsPerSample { get; set; }
+
+        public int BitsPerSampleLSBEncrypt { get; set; }
+        public int BitsPerSampleLSBDecrypt { get; set; }
+
+        public int SamplesPerRegionParityEncrypt { get; set; }
+        public int SamplesPerRegionParityDecrypt { get; set; }
+
+        public int SeedLSBEncrypt { get; set; }
+        public int SeedLSBDecrypt { get; set; }
+
+        public int SeedParityEncrypt { get; set; }
+        public int SeedParityDecrypt { get; set; }
+
+        public int MessageLengthLSBDecrypt { get; set; }
+        public int MessageLengthParityDecrypt { get; set; }
     }
 }

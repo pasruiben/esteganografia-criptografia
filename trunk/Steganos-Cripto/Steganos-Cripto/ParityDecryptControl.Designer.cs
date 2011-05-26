@@ -51,7 +51,8 @@
             this.seedTextBox.Name = "seedTextBox";
             this.seedTextBox.Size = new System.Drawing.Size(50, 20);
             this.seedTextBox.TabIndex = 7;
-            this.seedTextBox.Text = "55";
+            this.seedTextBox.Text = "0";
+            this.seedTextBox.TextChanged += new System.EventHandler(this.seedTextBox_TextChanged);
             // 
             // samplesPerRegionTextBox
             // 
@@ -59,7 +60,8 @@
             this.samplesPerRegionTextBox.Name = "samplesPerRegionTextBox";
             this.samplesPerRegionTextBox.Size = new System.Drawing.Size(40, 20);
             this.samplesPerRegionTextBox.TabIndex = 13;
-            this.samplesPerRegionTextBox.Text = "32";
+            this.samplesPerRegionTextBox.Text = "0";
+            this.samplesPerRegionTextBox.TextChanged += new System.EventHandler(this.samplesPerRegionTextBox_TextChanged);
             // 
             // label1
             // 
@@ -73,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(347, 26);
+            this.label3.Location = new System.Drawing.Point(336, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 15;
@@ -81,11 +83,12 @@
             // 
             // numCharTextBox
             // 
-            this.numCharTextBox.Location = new System.Drawing.Point(407, 23);
+            this.numCharTextBox.Location = new System.Drawing.Point(396, 23);
             this.numCharTextBox.Name = "numCharTextBox";
             this.numCharTextBox.Size = new System.Drawing.Size(50, 20);
             this.numCharTextBox.TabIndex = 14;
-            this.numCharTextBox.Text = "11";
+            this.numCharTextBox.Text = "0";
+            this.numCharTextBox.TextChanged += new System.EventHandler(this.numCharTextBox_TextChanged);
             // 
             // ParityDecryptControl
             // 

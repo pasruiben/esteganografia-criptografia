@@ -21,12 +21,7 @@ namespace Steganos_Cripto
         {
             ParityEncryptControl encryptView = base.EncryptView as ParityEncryptControl;
 
-            int samplesPerRegion = 1;
-            try
-            {
-                samplesPerRegion = int.Parse(encryptView.samplesPerRegionTextBox.Text);
-            }
-            catch (Exception) { }
+            int samplesPerRegion = State.Instance.SamplesPerRegionParityEncrypt;
 
             int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
             int numRegions = numSamples / samplesPerRegion;
@@ -38,10 +33,8 @@ namespace Steganos_Cripto
 
         public override void encrypt(String message, String key)
         {
-            ParityEncryptControl encryptView = base.EncryptView as ParityEncryptControl;
-
-            int samplesPerRegion = int.Parse(encryptView.samplesPerRegionTextBox.Text);
-            int seed = int.Parse(encryptView.seedTextBox.Text);
+            int samplesPerRegion = State.Instance.SamplesPerRegionParityEncrypt;
+            int seed = State.Instance.SeedParityEncrypt;
 
             WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
             Header header = wProcessor.header;
@@ -86,11 +79,9 @@ namespace Steganos_Cripto
 
         public override String decrypt(String key)
         {
-            ParityDecryptControl decryptView = base.DecryptView as ParityDecryptControl;
-
-            int samplesPerRegion = int.Parse(decryptView.samplesPerRegionTextBox.Text);
-            int messageLength = int.Parse(decryptView.numCharTextBox.Text);
-            int seed = int.Parse(decryptView.seedTextBox.Text);
+            int samplesPerRegion = State.Instance.SamplesPerRegionParityDecrypt;
+            int messageLength = State.Instance.MessageLengthParityDecrypt;
+            int seed = State.Instance.SeedParityDecrypt;
 
             WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
             IList<Sample[]> regions = getRegions(wProcessor.samples, samplesPerRegion);
