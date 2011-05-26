@@ -98,6 +98,7 @@ namespace Steganos_Cripto
             }
 
             byte[] messageXor = Util.ToByteArray(xoredMessageArray);
+            for (int i = 0; i < messageXor.Length; i++) messageXor[i] = BitReverser.Reverse(messageXor[i]);
             byte[] message = Xor.XorMessageWithKey(messageXor, key);
 
             string res = Encoding.ASCII.GetString(message);

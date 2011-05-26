@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
+    <Compile Include="BitReverser.cs" />
     <Compile Include="FileUtil.cs" />
     <Compile Include="IndexRandomGenerator.cs" />
     <Compile Include="LSBDecryptControl.cs">
