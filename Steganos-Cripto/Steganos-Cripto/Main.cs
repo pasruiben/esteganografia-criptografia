@@ -27,7 +27,7 @@ namespace Steganos_Cripto
 
         private void soToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hola");
+            MessageBox.Show("Esteganografía en audio.\nRealizado por Juan Antonio Cano Salado, Borja Moreno Fernandez y Pascual Javier Ruiz Benitez");
         }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace Steganos_Cripto
                 State.Instance.FileNameIn = dlg.FileName;
                 State.Instance.FileNameOut = dlg.FileName + ".out.wav";
 
-                //TODO: Calcular de cuantos bits por sample tiene el fichero y modificar Wavprocessor y Sample para cada caso.
+                //TODO: Calcular cuantos bits por sample tiene el fichero y modificar Wavprocessor y Sample para cada caso.
                 State.Instance.BitsPerSample = 16;
 
                 panel2.Visible = true;

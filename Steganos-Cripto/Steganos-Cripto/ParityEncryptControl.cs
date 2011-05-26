@@ -18,7 +18,28 @@ namespace Steganos_Cripto
 
         private void samplesPerRegionTextBox_TextChanged(object sender, EventArgs e)
         {
+            int samplesPerRegion = 1;
+            try
+            {
+                samplesPerRegion = int.Parse(samplesPerRegionTextBox.Text);
+            }
+            catch (Exception) { }
+
+            State.Instance.SamplesPerRegionParityEncrypt = samplesPerRegion;
+
             Main.activeAlgorithm.init();
+        }
+
+        private void seedTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int SeedParityEncrypt = 1;
+            try
+            {
+                SeedParityEncrypt = int.Parse(seedTextBox.Text);
+            }
+            catch (Exception) { }
+
+            State.Instance.SeedParityEncrypt = SeedParityEncrypt;
         }
     }
 }
