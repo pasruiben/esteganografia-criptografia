@@ -295,7 +295,7 @@
             // 
             // AplicarDescifradoButton
             // 
-            this.AplicarDescifradoButton.Location = new System.Drawing.Point(187, 208);
+            this.AplicarDescifradoButton.Location = new System.Drawing.Point(117, 221);
             this.AplicarDescifradoButton.Name = "AplicarDescifradoButton";
             this.AplicarDescifradoButton.Size = new System.Drawing.Size(101, 37);
             this.AplicarDescifradoButton.TabIndex = 20;
@@ -305,23 +305,23 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(526, 15);
+            this.textBox1.Location = new System.Drawing.Point(461, 34);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(237, 146);
+            this.textBox1.Size = new System.Drawing.Size(291, 224);
             this.textBox1.TabIndex = 17;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(11, 18);
+            this.panel4.Location = new System.Drawing.Point(31, 34);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(449, 143);
+            this.panel4.Size = new System.Drawing.Size(332, 143);
             this.panel4.TabIndex = 21;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(466, 18);
+            this.label1.Location = new System.Drawing.Point(405, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 16;

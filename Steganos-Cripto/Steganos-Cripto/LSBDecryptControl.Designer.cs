@@ -47,26 +47,26 @@
             // 
             // bitPerSampleMessageTextBox
             // 
-            this.bitPerSampleMessageTextBox.Location = new System.Drawing.Point(110, 18);
+            this.bitPerSampleMessageTextBox.Location = new System.Drawing.Point(123, 18);
             this.bitPerSampleMessageTextBox.Name = "bitPerSampleMessageTextBox";
             this.bitPerSampleMessageTextBox.Size = new System.Drawing.Size(40, 20);
             this.bitPerSampleMessageTextBox.TabIndex = 1;
-            this.bitPerSampleMessageTextBox.Text = State.Instance.BitsPerSampleLSBDecrypt.ToString();
+            this.bitPerSampleMessageTextBox.Text = "0";
             this.bitPerSampleMessageTextBox.TextChanged += new System.EventHandler(this.bitPerSampleMessageTextBox_TextChanged);
             // 
             // seedTextBox
             // 
-            this.seedTextBox.Location = new System.Drawing.Point(250, 18);
+            this.seedTextBox.Location = new System.Drawing.Point(240, 18);
             this.seedTextBox.Name = "seedTextBox";
-            this.seedTextBox.Size = new System.Drawing.Size(50, 20);
+            this.seedTextBox.Size = new System.Drawing.Size(41, 20);
             this.seedTextBox.TabIndex = 2;
-            this.seedTextBox.Text = State.Instance.SeedLSBDecrypt.ToString();
+            this.seedTextBox.Text = "0";
             this.seedTextBox.TextChanged += new System.EventHandler(this.seedTextBox_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(190, 21);
+            this.label2.Location = new System.Drawing.Point(191, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 3;
@@ -75,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(336, 21);
+            this.label3.Location = new System.Drawing.Point(54, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 5;
@@ -83,11 +83,11 @@
             // 
             // numCharTextBox
             // 
-            this.numCharTextBox.Location = new System.Drawing.Point(396, 18);
+            this.numCharTextBox.Location = new System.Drawing.Point(123, 73);
             this.numCharTextBox.Name = "numCharTextBox";
-            this.numCharTextBox.Size = new System.Drawing.Size(50, 20);
+            this.numCharTextBox.Size = new System.Drawing.Size(40, 20);
             this.numCharTextBox.TabIndex = 4;
-            this.numCharTextBox.Text = State.Instance.MessageLengthLSBDecrypt.ToString();
+            this.numCharTextBox.Text = "0";
             this.numCharTextBox.TextChanged += new System.EventHandler(this.numCharTextBox_TextChanged);
             // 
             // LSBDecryptControl
@@ -101,7 +101,7 @@
             this.Controls.Add(this.bitPerSampleMessageTextBox);
             this.Controls.Add(this.label1);
             this.Name = "LSBDecryptControl";
-            this.Size = new System.Drawing.Size(482, 62);
+            this.Size = new System.Drawing.Size(320, 135);
             this.ResumeLayout(false);
             this.PerformLayout();
 
