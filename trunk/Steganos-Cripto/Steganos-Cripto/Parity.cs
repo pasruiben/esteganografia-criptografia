@@ -43,8 +43,17 @@ namespace Steganos_Cripto
             IndexRandomGenerator rnd = new IndexRandomGenerator(seed, regions.Count);
             Random rnd2 = new Random((int)DateTime.Now.Ticks);
 
-            byte[] xoredMessage = Xor.XorMessageWithKey(Encoding.ASCII.GetBytes(message), key);
-            BitArray xoredMessageArray = new BitArray(xoredMessage);
+            byte[] messageBytes = null;
+            if (key.Equals(""))
+            {
+                messageBytes = Encoding.ASCII.GetBytes(message);
+            }
+            else
+            {
+                messageBytes = Xor.XorMessageWithKey(Encoding.ASCII.GetBytes(message), key);
+            }
+
+            BitArray xoredMessageArray = new BitArray(messageBytes);
 
             int messageBitArrayIndex = 0;
             while (messageBitArrayIndex < xoredMessageArray.Length)
@@ -106,9 +115,14 @@ namespace Steganos_Cripto
 
             byte[] messageXor = Util.ToByteArray(xoredMessageArray);
             for (int i = 0; i < messageXor.Length; i++) messageXor[i] = BitReverser.Reverse(messageXor[i]);
-            byte[] message = Xor.XorMessageWithKey(messageXor, key);
+            string res = "";
 
-            string res = Encoding.ASCII.GetString(message);
+            if (!key.Equals(""))
+            {
+                res = Encoding.ASCII.GetString(Xor.XorMessageWithKey(messageXor, key));
+            }
+
+            res = Encoding.ASCII.GetString(messageXor); ;
 
             return res;
         }

@@ -86,6 +86,7 @@ namespace Steganos_Cripto
 
         private void aplicar_Cifrado_Click(object sender, EventArgs e)
         {
+            ///if(keyTextBox.Text.)
             activeAlgorithm.encrypt(messageTextBox.Text, keyTextBox.Text);
 
             this.infoToolStripStatusLabel.Text = "Algoritmo de cifrado aplicado";

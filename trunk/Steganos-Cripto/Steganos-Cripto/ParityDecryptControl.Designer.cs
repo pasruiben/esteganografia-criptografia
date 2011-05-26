@@ -56,7 +56,7 @@
             // 
             // samplesPerRegionTextBox
             // 
-            this.samplesPerRegionTextBox.Location = new System.Drawing.Point(120, 23);
+            this.samplesPerRegionTextBox.Location = new System.Drawing.Point(124, 23);
             this.samplesPerRegionTextBox.Name = "samplesPerRegionTextBox";
             this.samplesPerRegionTextBox.Size = new System.Drawing.Size(40, 20);
             this.samplesPerRegionTextBox.TabIndex = 13;
@@ -75,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(336, 26);
+            this.label3.Location = new System.Drawing.Point(64, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 15;
@@ -83,9 +83,9 @@
             // 
             // numCharTextBox
             // 
-            this.numCharTextBox.Location = new System.Drawing.Point(396, 23);
+            this.numCharTextBox.Location = new System.Drawing.Point(124, 72);
             this.numCharTextBox.Name = "numCharTextBox";
-            this.numCharTextBox.Size = new System.Drawing.Size(50, 20);
+            this.numCharTextBox.Size = new System.Drawing.Size(40, 20);
             this.numCharTextBox.TabIndex = 14;
             this.numCharTextBox.Text = "0";
             this.numCharTextBox.TextChanged += new System.EventHandler(this.numCharTextBox_TextChanged);
@@ -101,7 +101,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.seedTextBox);
             this.Name = "ParityDecryptControl";
-            this.Size = new System.Drawing.Size(480, 78);
+            this.Size = new System.Drawing.Size(339, 116);
             this.ResumeLayout(false);
             this.PerformLayout();
 
