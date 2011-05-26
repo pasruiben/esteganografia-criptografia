@@ -12,23 +12,23 @@ namespace Steganos_Cripto
 
         public static void run(String filename, Header header, Sample[] samples)
         {
-            FileStream fs = new FileStream(filename, FileMode.Create | FileMode.CreateNew, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
 
             fs.Write(header.data, 0, header.data.Length);
 
-            int numBytes = FileUtil.getFileSize(filename) - samplesOffsetWav;
-            byte[] finalDataWav = new byte[numBytes];
-            int j = 0;
+            IList<byte> finalDataWav = new List<byte>();
             foreach (Sample s in samples)
             {
                 byte[] d = Util.ToByteArray(s.data);
                 for (int i = 1; i >= 0; i--)
                 {
-                    finalDataWav[j++] = d[i];
+                    finalDataWav.Add(d[i]);
                 }
             }
 
-            fs.Write(finalDataWav, 0, finalDataWav.Length);
+            byte[] data = finalDataWav.ToArray<byte>();
+
+            fs.Write(data, 0, data.Length);
 
             fs.Close();
         }

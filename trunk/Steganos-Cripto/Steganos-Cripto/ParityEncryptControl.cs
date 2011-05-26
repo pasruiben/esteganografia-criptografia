@@ -15,5 +15,10 @@ namespace Steganos_Cripto
         {
             InitializeComponent();
         }
+
+        private void samplesPerRegionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Main.activeAlgorithm.init();
+        }
     }
 }

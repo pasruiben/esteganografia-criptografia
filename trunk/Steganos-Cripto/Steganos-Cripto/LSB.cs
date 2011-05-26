@@ -9,8 +9,6 @@ namespace Steganos_Cripto
 {
     class LSB : Algorithm
     {
-        Header header = null;
-        Sample[] samples = null;
 
         public LSB()
         {
@@ -19,11 +17,28 @@ namespace Steganos_Cripto
             base.Name = "LSB";
         }
 
+        public override void init()
+        {
+            LSBEncryptControl encrypyView = base.EncryptView as LSBEncryptControl;
+
+            int bitPerSampleMessage = 0;
+            try
+            {
+                bitPerSampleMessage = int.Parse(encrypyView.bitPerSampleMessageTextBox.Text);
+            }
+            catch (Exception) { }
+
+            int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
+            float maxMessage = (numSamples * bitPerSampleMessage) / 8;
+
+            encrypyView.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
+        }
+
         public override void encrypt(String message, String key)
         {
-            Sample[] output = new Sample[samples.Length];
-
-            output = samples.Clone() as Sample[];
+            WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
+            Header header = wProcessor.header;
+            Sample[] samples = wProcessor.samples;
 
             LSBEncryptControl encryptView = base.EncryptView as LSBEncryptControl;
 
@@ -45,16 +60,19 @@ namespace Steganos_Cripto
 
                 for (int t = State.Instance.BitsPerSample - bitsPerSampleMessage; t < State.Instance.BitsPerSample; t++)
                 {
-                    output[sampleIndex].data[t] = xoredMessageArray[messageBitArrayIndex++];
+                    samples[sampleIndex].data[t] = xoredMessageArray[messageBitArrayIndex++];
                 }
             }
 
-            WavWriter.run(State.Instance.FileNameOut, header, output);
+            WavWriter.run(State.Instance.FileNameOut, header, samples);
         }
 
 
-        public override void decrypt(String key)
+        public override String decrypt(String key)
         {
+            WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
+            Sample[] samples = wProcessor.samples;
+
             LSBDecryptControl decryptView = base.DecryptView as LSBDecryptControl;
 
             int bitsPerSampleMessage = int.Parse(decryptView.bitPerSampleMessageTextBox.Text);
@@ -84,31 +102,7 @@ namespace Steganos_Cripto
 
             string res = Encoding.ASCII.GetString(message);
 
-            Main m = decryptView.Parent.Parent.Parent.Parent.Parent as Main;
-
-            m.textBox1.Text = res;
-        }
-
-
-        public override void init()
-        {
-            LSBEncryptControl encrypyView = base.EncryptView as LSBEncryptControl;
-
-            int bitPerSampleMessage = int.Parse(encrypyView.bitPerSampleMessageTextBox.Text);
-
-            initData();
-
-            float maxMessage = (samples.Length*bitPerSampleMessage)/8;
-
-            encrypyView.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
-        }
-
-        private void initData()
-        {
-            WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
-
-            header = wProcessor.header;
-            samples = wProcessor.samples;
+            return res;
         }
 
     }
