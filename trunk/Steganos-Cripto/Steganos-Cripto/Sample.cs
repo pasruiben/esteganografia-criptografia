@@ -20,6 +20,15 @@ namespace Steganos_Cripto
             }
         }
 
+        public Sample(byte b)
+        {
+            data = new BitArray(State.Instance.BitsPerSample);
+            for (int i = 0; i < 8; i++)
+            {
+                data[7 - i] = (b & (1 << i)) >= 1;
+            }
+        }
+
         public override string ToString()
         {
             byte[] value = Util.ToByteArray(this.data);

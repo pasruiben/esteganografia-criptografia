@@ -37,14 +37,19 @@ namespace Steganos_Cripto
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
+                State.Instance.BitsPerSample = WavProcessor.numbitsPerSamples(dlg.FileName);
+
+                if (!(State.Instance.BitsPerSample == 8 || State.Instance.BitsPerSample == 16))
+                {
+                    MessageBox.Show("Wav no válido!");
+                    return;
+                }
+
                 this.infoToolStripStatusLabel.Text = "Audio cargado";
                 this.Text = "Esteganografía en audio - " + dlg.SafeFileName;
 
                 State.Instance.FileNameIn = dlg.FileName;
                 State.Instance.FileNameOut = dlg.FileName + ".out.wav";
-
-                //TODO: Calcular cuantos bits por sample tiene el fichero y modificar Wavprocessor y Sample para cada caso.
-                State.Instance.BitsPerSample = 16;
 
                 panel2.Visible = true;
                 tabControl1.Visible = true;
