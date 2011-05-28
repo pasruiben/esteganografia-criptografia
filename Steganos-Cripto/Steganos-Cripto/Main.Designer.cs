@@ -38,13 +38,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.keyTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.playOriginalButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.algoritmosComboBox = new System.Windows.Forms.ComboBox();
-            this.playModifiedButton = new System.Windows.Forms.Button();
             this.aplicarCifradoButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.reproducirModificadoPanel = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -58,15 +54,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.reproducirModificadoPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -136,39 +138,20 @@
             // 
             // keyTextBox
             // 
-            this.keyTextBox.Location = new System.Drawing.Point(83, 95);
+            this.keyTextBox.Location = new System.Drawing.Point(83, 72);
             this.keyTextBox.Multiline = true;
             this.keyTextBox.Name = "keyTextBox";
-            this.keyTextBox.Size = new System.Drawing.Size(122, 20);
+            this.keyTextBox.Size = new System.Drawing.Size(125, 20);
             this.keyTextBox.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 99);
+            this.label3.Location = new System.Drawing.Point(24, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Clave:";
-            // 
-            // playOriginalButton
-            // 
-            this.playOriginalButton.Location = new System.Drawing.Point(83, 177);
-            this.playOriginalButton.Name = "playOriginalButton";
-            this.playOriginalButton.Size = new System.Drawing.Size(83, 31);
-            this.playOriginalButton.TabIndex = 8;
-            this.playOriginalButton.Text = "Reproducir";
-            this.playOriginalButton.UseVisualStyleBackColor = true;
-            this.playOriginalButton.Click += new System.EventHandler(this.play_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Modificado:";
             // 
             // algoritmosComboBox
             // 
@@ -178,16 +161,6 @@
             this.algoritmosComboBox.Size = new System.Drawing.Size(125, 21);
             this.algoritmosComboBox.TabIndex = 16;
             this.algoritmosComboBox.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
-            // 
-            // playModifiedButton
-            // 
-            this.playModifiedButton.Location = new System.Drawing.Point(74, 5);
-            this.playModifiedButton.Name = "playModifiedButton";
-            this.playModifiedButton.Size = new System.Drawing.Size(70, 20);
-            this.playModifiedButton.TabIndex = 11;
-            this.playModifiedButton.Text = "Reproducir";
-            this.playModifiedButton.UseVisualStyleBackColor = true;
-            this.playModifiedButton.Click += new System.EventHandler(this.playModifiedButton_Click);
             // 
             // aplicarCifradoButton
             // 
@@ -207,21 +180,11 @@
             this.panel1.Size = new System.Drawing.Size(424, 143);
             this.panel1.TabIndex = 19;
             // 
-            // reproducirModificadoPanel
-            // 
-            this.reproducirModificadoPanel.Controls.Add(this.playModifiedButton);
-            this.reproducirModificadoPanel.Controls.Add(this.label2);
-            this.reproducirModificadoPanel.Location = new System.Drawing.Point(89, 250);
-            this.reproducirModificadoPanel.Name = "reproducirModificadoPanel";
-            this.reproducirModificadoPanel.Size = new System.Drawing.Size(155, 29);
-            this.reproducirModificadoPanel.TabIndex = 18;
-            this.reproducirModificadoPanel.Visible = false;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(273, 0);
+            this.tabControl1.Location = new System.Drawing.Point(277, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(793, 333);
@@ -245,7 +208,6 @@
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.messageTextBox);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.reproducirModificadoPanel);
             this.panel3.Controls.Add(this.aplicarCifradoButton);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(6, 6);
@@ -338,16 +300,72 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.playOriginalButton);
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.algoritmosComboBox);
             this.panel2.Controls.Add(this.keyTextBox);
             this.panel2.Location = new System.Drawing.Point(0, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(258, 306);
+            this.panel2.Size = new System.Drawing.Size(275, 306);
             this.panel2.TabIndex = 21;
             this.panel2.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Location = new System.Drawing.Point(17, 126);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(245, 158);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ruido";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(123, 43);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(49, 20);
+            this.textBox3.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(70, 106);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 37);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Aplicar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Porcentaje de ruido: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Nivel del ruido:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(123, 72);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(49, 20);
+            this.textBox4.TabIndex = 21;
             // 
             // Main
             // 
@@ -368,8 +386,6 @@
             this.statusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.reproducirModificadoPanel.ResumeLayout(false);
-            this.reproducirModificadoPanel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -379,6 +395,8 @@
             this.panel5.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,12 +414,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox keyTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button playOriginalButton;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox algoritmosComboBox;
-        private System.Windows.Forms.Button playModifiedButton;
         private System.Windows.Forms.Button aplicarCifradoButton;
-        private System.Windows.Forms.Panel reproducirModificadoPanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -416,6 +430,12 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label7;
     }
 }
 

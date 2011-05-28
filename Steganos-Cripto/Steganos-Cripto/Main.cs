@@ -86,11 +86,9 @@ namespace Steganos_Cripto
 
         private void aplicar_Cifrado_Click(object sender, EventArgs e)
         {
-            ///if(keyTextBox.Text.)
             activeAlgorithm.encrypt(messageTextBox.Text, keyTextBox.Text);
 
             this.infoToolStripStatusLabel.Text = "Algoritmo de cifrado aplicado";
-            reproducirModificadoPanel.Visible = true;
         }
 
         private void AplicarDescifradoButton_Click(object sender, EventArgs e)
@@ -102,6 +100,46 @@ namespace Steganos_Cripto
         private void messageTextBox_TextChanged(object sender, EventArgs e)
         {
             textBox2.Text = messageTextBox.Text.Length.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
+            Header header = wProcessor.header;
+            Sample[] samples = wProcessor.samples;
+
+
+            int percent = int.Parse(textBox3.Text);
+            int numBitsToModify = int.Parse(textBox4.Text);
+
+            if (!(percent >= 0 && percent <= 100 && numBitsToModify >= 0 && numBitsToModify <= State.Instance.BitsPerSample))
+            {
+                MessageBox.Show("Valores incorrectos!");
+                return;
+            }
+
+            Random rnd = new Random((int)DateTime.Now.Ticks);
+
+            for (int i = 0; i < samples.Length; i++)
+            {
+                Sample s = samples[i];
+
+                int num = rnd.Next(percent);
+                if (num >= 0 && num < percent)
+                {
+                    IndexRandomGenerator irg = new IndexRandomGenerator((int)DateTime.Now.Ticks, State.Instance.BitsPerSample);
+
+                    for (int j = 0; j < numBitsToModify; j++)
+                    {
+                        int bitIndex = irg.generateUnusedIndex();
+                        s.data[bitIndex] = rnd.Next(2) == 1 ? true : false;
+                    }
+                }
+            }
+
+            WavWriter.run(State.Instance.FileNameIn, header, samples);
+
+            this.infoToolStripStatusLabel.Text = "Ruido aplicado";
         }
     }
 }
