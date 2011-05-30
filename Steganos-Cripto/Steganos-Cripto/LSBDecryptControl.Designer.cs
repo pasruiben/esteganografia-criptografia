@@ -87,7 +87,7 @@
             this.numCharTextBox.Name = "numCharTextBox";
             this.numCharTextBox.Size = new System.Drawing.Size(40, 20);
             this.numCharTextBox.TabIndex = 4;
-            this.numCharTextBox.Text = "0";
+            this.numCharTextBox.Text = State.Instance.MessageLengthParityDecrypt.ToString();
             this.numCharTextBox.TextChanged += new System.EventHandler(this.numCharTextBox_TextChanged);
             // 
             // LSBDecryptControl
