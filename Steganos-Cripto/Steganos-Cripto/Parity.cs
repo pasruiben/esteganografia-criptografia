@@ -121,8 +121,10 @@ namespace Steganos_Cripto
             {
                 res = Encoding.ASCII.GetString(Xor.XorMessageWithKey(messageXor, key));
             }
-
-            res = Encoding.ASCII.GetString(messageXor); ;
+            else
+            {
+                res = Encoding.ASCII.GetString(messageXor);
+            }
 
             return res;
         }
