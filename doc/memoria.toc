@@ -20,5 +20,9 @@
 \contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{28}
 \contentsline {subsection}{\numberline {7.1}Manual de instalaci\IeC {\'o}n}{28}
 \contentsline {subsection}{\numberline {7.2}Manual de uso}{28}
-\contentsline {section}{\numberline {8}Tabla de tiempos}{29}
-\contentsline {section}{Bibliograf\'{\i }a}{30}
+\contentsline {subsubsection}{\numberline {7.2.1}Ocultaci\IeC {\'o}n en LSB}{29}
+\contentsline {subsubsection}{\numberline {7.2.2}Extracci\IeC {\'o}n en LSB}{30}
+\contentsline {subsubsection}{\numberline {7.2.3}Ocultaci\IeC {\'o}n en Parity Coding}{31}
+\contentsline {subsubsection}{\numberline {7.2.4}Extracci\IeC {\'o}n en Parity Coding}{31}
+\contentsline {section}{\numberline {8}Tabla de tiempos}{33}
+\contentsline {section}{Bibliograf\'{\i }a}{34}
