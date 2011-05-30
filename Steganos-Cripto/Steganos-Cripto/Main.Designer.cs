@@ -55,11 +55,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -325,12 +325,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ruido";
             // 
-            // textBox3
+            // textBox4
             // 
-            this.textBox3.Location = new System.Drawing.Point(123, 43);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(49, 20);
-            this.textBox3.TabIndex = 0;
+            this.textBox4.Location = new System.Drawing.Point(123, 72);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(49, 20);
+            this.textBox4.TabIndex = 21;
+            this.textBox4.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Nivel del ruido:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Porcentaje de ruido: ";
             // 
             // button1
             // 
@@ -342,30 +361,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2
+            // textBox3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Porcentaje de ruido: ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Nivel del ruido:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(123, 72);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(49, 20);
-            this.textBox4.TabIndex = 21;
+            this.textBox3.Location = new System.Drawing.Point(123, 43);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(49, 20);
+            this.textBox3.TabIndex = 0;
+            this.textBox3.Text = "0";
             // 
             // Main
             // 
