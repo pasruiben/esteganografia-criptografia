@@ -440,13 +440,13 @@ Tras arrancar, la aplicación muestra una ventana vacía. Para poner en marcha e
 
 En la región superior izquierda, se muestra un menú desplegable que permite seleccionar el algoritmo de esteganografía de audio a aplicar. Hay dos opciones: codificación en el bit menos significativo (\emph{LSB}) y codificación en paridad (\emph{Parity Coding}). Bajo el menú desplegable, un campo de texto nos permite introducir la clave con la que se cifrará el mensaje oculto. El algoritmo de cifrado empleado será XOR.
 
-También en la región izquierda encontramos una zona denominada \emph{Ruido}. Dos campos de texto nos permiten seleccionar el \emph{Porcentaje de ruido} (porcentaje de samples que se verán afectados por el ruido, de 0 a 100) y el \emph{Nivel de ruido} (número de bits afectados dentro de cada uno de estos samples, de 0 al número de bits por sample del archivo cargado). El botón \emph{Aplicar} lleva a cabo la inserción de ruido en el archivo de audio cargado, que se produce modificando de manera aleatoria los bits de este. La señal de audio resultante se graba al archivo de audio cargado, sobreescribiendo su contenido original. La utilidad de esta funcionalidad de adición de ruido está en permitir aplicar ruido a archivos de audio que contengan un mensaje oculto, y observar cómo afecta este ruido en el correcto descifrado del mensaje.
+También en la región izquierda encontramos una zona denominada \emph{Ruido}. Dos campos de texto nos permiten seleccionar el \emph{Porcentaje de ruido} (porcentaje de samples que se verán afectados por el ruido, de 0 a 100) y el \emph{Nivel de ruido} (número de bits afectados dentro de cada uno de estos samples, de 0 al número de bits por sample del archivo cargado). El botón \emph{Aplicar} lleva a cabo la inserción de ruido en el archivo de audio cargado. La señal de audio resultante se graba al archivo de audio cargado, sobreescribiendo su contenido original. La utilidad de esta funcionalidad de adición de ruido está en permitir aplicar ruido a archivos de audio que contengan un mensaje oculto, y observar cómo afecta este ruido en la correcta extracción del mensaje.
 
-La región derecha de la ventana se encuentra dividida en dos pestañas, dedicadas a los procesos de \emph{Cifrado} y \emph{Descifrado} respectivamente. Es necesario seleccionar un algoritmo de esteganografía para que se carguen las opciones específicas a dicho algoritmo en esta región de la ventana. Comentamos a continuación las diferentes opciones presentes en cada una de las combinaciones posibles.
+La región derecha de la ventana se encuentra dividida en dos pestañas, dedicadas a los procesos de \emph{Ocultación} y \emph{Extracción} respectivamente. Es necesario seleccionar un algoritmo de esteganografía para que se carguen las opciones específicas a dicho algoritmo en esta región de la ventana. Comentamos a continuación las diferentes opciones presentes en cada una de las combinaciones posibles.
 
 \subsubsection{Ocultación en LSB}
 
-La figura \ref{ss2} muestra la apariencia de la aplicación tras aplicar el algoritmo LSB para la ocultación de un mensaje en el archivo de sonido. En este caso, se ha empleado como clave la palabra ``sesamo'', para cifrar el mensaje  ``esto es un mensaje secreto''. Se ha decidido utilizar 2 bits por sample, lo que permite ocultar un mensaje de 189 caracteres para el archivo de sonido cargado. La longitud del mensaje (calculada automáticamente) es de 26 caracteres, por lo que el mensaje podrá ser incrustado en la señal de audio sin ningún problema. El campo \emph{Semilla} sirve para establecer la semilla a utilizar en el generador de números aleatorios, que genera la secuencia de samples en los que se ocultará la información. El botón \emph{Aplicar} lleva a cabo la inserción del mensaje secreto, y genera un archivo de salida en la carpeta en la que se encontrase el archivo de entrada, añadiéndole el sufijo ``out.wav''.
+La figura \ref{ss2} muestra la apariencia de la aplicación tras aplicar el algoritmo LSB para la ocultación de un mensaje en un archivo de sonido. En este caso, se ha empleado como clave la palabra ``sesamo'', para cifrar el mensaje  ``esto es un mensaje secreto''. Se ha decidido utilizar 2 bits por sample, lo que permite ocultar un mensaje de 189 caracteres para el archivo de sonido cargado. La longitud del mensaje (calculada automáticamente) es de 26 caracteres, por lo que el mensaje podrá ser incrustado en la señal de audio sin ningún problema. El campo \emph{Semilla} sirve para establecer la semilla a utilizar en el generador de números aleatorios que genera la secuencia de samples en los que se ocultará la información. El botón \emph{Aplicar} lleva a cabo la inserción del mensaje secreto, y genera un archivo de salida en la carpeta en la que se encontrase el archivo de entrada, añadiéndole el sufijo ``out.wav''.
 
 \begin{figure}[h]
   \centering
@@ -457,7 +457,7 @@ La figura \ref{ss2} muestra la apariencia de la aplicación tras aplicar el algo
 
 \subsubsection{Extracción en LSB}
 
-La figura \ref{ss3} muestra la apariencia de la aplicación tras aplicar el algoritmo LSB para extraer el mensaje insertado en el apartado anterior. Para la correcta extracción del mensaje, es fundamental que los campos \emph{Clave}, \emph{Bits por sample} y \emph{Semilla} tomen los mismos valores que se emplearon para ocultar el mensaje. El campo \emph{Num car} indica el número de caracteres que queremos extraer del archivo de sonido. Como en principio el receptor de un mensaje oculto no conoce la longitud del mensaje a recibir, habrá que ajustar este valor manualmente. En el ejemplo, se han descifrado 10 caracteres, lo que hace no se extraiga el contenido completo del mensaje secreto. El botón \emph{Aplicar} es el encargado de poner en marcha el proceso de extracción.
+La figura \ref{ss3} muestra la apariencia de la aplicación tras aplicar el algoritmo LSB para extraer el mensaje insertado en el apartado anterior. Para la correcta extracción del mensaje, es fundamental que los campos \emph{Clave}, \emph{Bits por sample} y \emph{Semilla} tomen los mismos valores que se emplearon para ocultar el mensaje. El campo \emph{Num car} indica el número de caracteres que queremos extraer del archivo de sonido. Como en principio el receptor de un mensaje oculto no conoce la longitud del mensaje secreto, habrá que ajustar este valor manualmente. En el ejemplo, se han extraído 10 caracteres, lo que hace que no se extraiga el contenido completo del mensaje secreto. El botón \emph{Aplicar} es el encargado de poner en marcha el proceso de extracción.
 
 \begin{figure}[h]
   \centering
@@ -468,7 +468,7 @@ La figura \ref{ss3} muestra la apariencia de la aplicación tras aplicar el algo
 
 \subsubsection{Ocultación en Parity Coding}
 
-La figura \ref{ss4} muestra la apariencia de la aplicación tras aplicar parity coding para ocultar un mensaje en el archivo de sonido. Esta vez se ha empleado la clave ``key'' para ocultar el mensaje ``otro mensaje que queremos ocultar''. Se han utilizado regiones de 32 samples y una semilla de 69 para el generador aleatorio. La longitud del mensaje a oculta res de 33 caracteres, muy inferior a los 594 que el archivo de sonido permite insertar. El botón \emph{Aplicar} pone en marcha el proceso de inserción del mensaje secreto, y genera un archivo de salida en la carpeta en la que se encontrase el archivo de entrada, añadiéndole el sufijo ``out.wav''.
+La figura \ref{ss4} muestra la apariencia de la aplicación tras aplicar parity coding para ocultar un mensaje en un archivo de sonido. Esta vez se ha empleado la clave ``key'' para ocultar el mensaje ``otro mensaje que queremos ocultar''. Se han utilizado regiones de 32 samples y una semilla de 69 para el generador aleatorio. La longitud del mensaje a ocultar es de 33 caracteres, muy inferior a los 594 que el archivo de sonido permite insertar. El botón \emph{Aplicar} pone en marcha el proceso de inserción del mensaje secreto, y genera un archivo de salida en la carpeta en la que se encontrase el archivo de entrada, añadiéndole el sufijo ``out.wav''.
 
 \begin{figure}[h]
   \centering
@@ -479,7 +479,7 @@ La figura \ref{ss4} muestra la apariencia de la aplicación tras aplicar parity 
 
 \subsubsection{Extracción en Parity Coding}
 
-La figura \ref{ss5} muestra la apariencia de la aplicación tras aplicar parity coding para extraer el mensaje insertado en el apartado anterior. Para la correcta extracción del mensaje, es fundamental que los campos \emph{Samples por región} y y \emph{Semilla} tomen los mismos valores que se emplearon para ocultar el mensaje. El campo \emph{Num car} indica el número de caracteres que queremos extraer del archivo de sonido. Como en principio el receptor de un mensaje oculto no conoce la longitud del mensaje a recibir, habrá que ajustar este valor manualmente. En el ejemplo, se han descifrado 40 caracteres, lo que hace se extraiga el contenido completo del mensaje secreto y algunos caracteres adicionales. El botón \emph{Aplicar} es el encargado de poner en marcha el proceso de extracción.
+La figura \ref{ss5} muestra la apariencia de la aplicación tras aplicar parity coding para extraer el mensaje insertado en el apartado anterior. Para la correcta extracción del mensaje, es fundamental que los campos \emph{Samples por región} y \emph{Semilla} tomen los mismos valores que se emplearon para ocultar el mensaje. El campo \emph{Num car} indica el número de caracteres que queremos extraer del archivo de sonido. Como en principio el receptor de un mensaje oculto no conoce la longitud del mensaje secreto, habrá que ajustar este valor manualmente. En el ejemplo, se han extraído 40 caracteres, lo que hace que se extraiga el contenido completo del mensaje secreto y algunos caracteres adicionales. El botón \emph{Aplicar} es el encargado de poner en marcha el proceso de extracción.
 
 \begin{figure}[h]
   \centering
@@ -497,6 +497,7 @@ La figura \ref{ss5} muestra la apariencia de la aplicación tras aplicar parity 
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline Fecha & Inicio & Fin & Duración & Miembro del grupo & Actividad  \\ 
 \hline 02-05-2011 & 15:30 & 19:30 & 4h & Juan, Borja, Pascual & Estudio referencias  \\
+\hline 02-05-2011 & 19:00 & 21:00 & 2h & Pascual & Estudio referencias  \\
 \hline 04-05-2011 & 17:00 & 20:00 & 3h & Borja & Estudio referencias  \\
 \hline 06-05-2011 & 12:00 & 14:00 & 2h & Juan, Borja, Pascual & Estudio referencias  \\
 \hline 07-05-2011 & 10:00 & 14:00 & 4h & Juan, Borja, Pascual & Estudio referencias  \\
@@ -517,7 +518,7 @@ La figura \ref{ss5} muestra la apariencia de la aplicación tras aplicar parity 
 \hline 25-05-2011 & 17:00 & 20:00 & 3h & Borja & Memoria \\
 \hline 26-05-2011 & 17:30 & 20:30 & 3h & Juan & Implementación \\
 \hline 26-05-2011 & 17:30 & 20:30 & 3h & Borja, Pascual & Presentación \\
-\hline 28-05-2011 & 10:00 & 13:00 & 3h & Juan & Implementación \\
+\hline 28-05-2011 & 10:00 & 13:00 & 3h & Juan, Pascual & Implementación \\
 \hline 29-05-2011 & 11:00 & 14:00 & 3h & Juan & Implementación \\
 \hline 30-05-2011 & 15:00 & 17:00 & 2h & Borja, Juan & Implementación \\
 \hline 30-05-2011 & 19:00 & 22:00 & 3h & Borja & Memoria \\
