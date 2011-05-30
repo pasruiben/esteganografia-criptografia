@@ -60,7 +60,7 @@ namespace Steganos_Cripto
 
                 Sample s1 = samples[sampleIndex];
 
-                for (int t = State.Instance.BitsPerSample - bitsPerSampleMessage; t < State.Instance.BitsPerSample; t++)
+                for (int t = State.Instance.BitsPerSample - bitsPerSampleMessage; t < State.Instance.BitsPerSample && messageBitArrayIndex < xoredMessageArray.Length; t++)
                 {
                     samples[sampleIndex].data[t] = xoredMessageArray[messageBitArrayIndex++];
                 }
@@ -91,7 +91,7 @@ namespace Steganos_Cripto
 
                 Sample s = samples[sampleIndex];
 
-                for (int t = State.Instance.BitsPerSample - bitsPerSampleMessage; t < State.Instance.BitsPerSample; t++)
+                for (int t = State.Instance.BitsPerSample - bitsPerSampleMessage; t < State.Instance.BitsPerSample && bitCount < size; t++)
                 {
                     xoredMessageArray[bitCount++] = s.data[t];
                 }
