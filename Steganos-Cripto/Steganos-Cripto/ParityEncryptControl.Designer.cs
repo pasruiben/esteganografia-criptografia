@@ -91,6 +91,7 @@
             this.Controls.Add(this.seedTextBox);
             this.Name = "ParityEncryptControl";
             this.Size = new System.Drawing.Size(295, 123);
+            this.Load += new System.EventHandler(this.ParityEncryptControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

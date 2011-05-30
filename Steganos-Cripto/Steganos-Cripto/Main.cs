@@ -73,8 +73,6 @@ namespace Steganos_Cripto
         {
             activeAlgorithm = algoritmosComboBox.SelectedItem as Algorithm;
 
-            activeAlgorithm.init();
-
             this.panel1.Controls.Clear();
             this.panel4.Controls.Clear();
 

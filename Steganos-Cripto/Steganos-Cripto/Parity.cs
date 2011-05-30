@@ -17,28 +17,20 @@ namespace Steganos_Cripto
             base.Name = "Parity";
         }
 
-        public override void init()
-        {
-            ParityEncryptControl encryptView = base.EncryptView as ParityEncryptControl;
-
-            int samplesPerRegion = State.Instance.SamplesPerRegionParityEncrypt;
-
-            int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
-            int numRegions = numSamples / samplesPerRegion;
-
-            float maxMessage = numRegions / 8;
-
-            encryptView.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
-        }
-
         public override void encrypt(String message, String key)
         {
+            
             int samplesPerRegion = State.Instance.SamplesPerRegionParityEncrypt;
             int seed = State.Instance.SeedParityEncrypt;
 
             WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
             Header header = wProcessor.header;
             IList<Sample[]> regions = getRegions(wProcessor.samples, samplesPerRegion);
+
+            if (message.Length > regions.Count)
+            {
+                return;
+            }
 
             IndexRandomGenerator rnd = new IndexRandomGenerator(seed, regions.Count);
             Random rnd2 = new Random((int)DateTime.Now.Ticks);
@@ -95,6 +87,10 @@ namespace Steganos_Cripto
             WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
             IList<Sample[]> regions = getRegions(wProcessor.samples, samplesPerRegion);
 
+            if (messageLength > regions.Count)
+            {
+                return "";
+            }
 
             IndexRandomGenerator rnd = new IndexRandomGenerator(seed, regions.Count);
 

@@ -91,6 +91,7 @@
             this.Controls.Add(this.label1);
             this.Name = "LSBEncryptControl";
             this.Size = new System.Drawing.Size(394, 124);
+            this.Load += new System.EventHandler(this.LSBEncryptControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
