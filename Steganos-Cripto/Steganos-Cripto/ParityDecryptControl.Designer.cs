@@ -51,7 +51,7 @@
             this.seedTextBox.Name = "seedTextBox";
             this.seedTextBox.Size = new System.Drawing.Size(50, 20);
             this.seedTextBox.TabIndex = 7;
-            this.seedTextBox.Text = "0";
+            this.seedTextBox.Text = State.Instance.SeedParityDecrypt.ToString();
             this.seedTextBox.TextChanged += new System.EventHandler(this.seedTextBox_TextChanged);
             // 
             // samplesPerRegionTextBox
@@ -60,7 +60,7 @@
             this.samplesPerRegionTextBox.Name = "samplesPerRegionTextBox";
             this.samplesPerRegionTextBox.Size = new System.Drawing.Size(40, 20);
             this.samplesPerRegionTextBox.TabIndex = 13;
-            this.samplesPerRegionTextBox.Text = "0";
+            this.samplesPerRegionTextBox.Text = State.Instance.SamplesPerRegionParityDecrypt.ToString();
             this.samplesPerRegionTextBox.TextChanged += new System.EventHandler(this.samplesPerRegionTextBox_TextChanged);
             // 
             // label1

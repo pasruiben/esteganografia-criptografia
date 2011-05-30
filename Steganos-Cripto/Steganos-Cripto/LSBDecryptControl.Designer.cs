@@ -51,7 +51,7 @@
             this.bitPerSampleMessageTextBox.Name = "bitPerSampleMessageTextBox";
             this.bitPerSampleMessageTextBox.Size = new System.Drawing.Size(40, 20);
             this.bitPerSampleMessageTextBox.TabIndex = 1;
-            this.bitPerSampleMessageTextBox.Text = "0";
+            this.bitPerSampleMessageTextBox.Text = State.Instance.BitsPerSampleLSBDecrypt.ToString();
             this.bitPerSampleMessageTextBox.TextChanged += new System.EventHandler(this.bitPerSampleMessageTextBox_TextChanged);
             // 
             // seedTextBox
@@ -60,7 +60,7 @@
             this.seedTextBox.Name = "seedTextBox";
             this.seedTextBox.Size = new System.Drawing.Size(41, 20);
             this.seedTextBox.TabIndex = 2;
-            this.seedTextBox.Text = "0";
+            this.seedTextBox.Text = State.Instance.SeedLSBDecrypt.ToString();
             this.seedTextBox.TextChanged += new System.EventHandler(this.seedTextBox_TextChanged);
             // 
             // label2

@@ -20,10 +20,12 @@ namespace Steganos_Cripto
             foreach (Sample s in samples)
             {
                 byte[] d = Util.ToByteArray(s.data);
-                for (int i = 1; i >= 0; i--)
+
+                if (State.Instance.BitsPerSample == 16)
                 {
-                    finalDataWav.Add(d[i]);
+                    finalDataWav.Add(d[1]);
                 }
+                finalDataWav.Add(d[0]);
             }
 
             byte[] data = finalDataWav.ToArray<byte>();
