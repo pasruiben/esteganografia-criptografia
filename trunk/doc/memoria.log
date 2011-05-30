@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  30 MAY 2011 21:12
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  30 MAY 2011 21:27
 entering extended mode
 **memoria.tex
 (C:\Users\BMF\Desktop\C\trabajoC\doc\memoria.tex
@@ -548,38 +548,38 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [31 <C:/Users/BMF/Desktop/C/trabajoC/doc/img/ss4.png (PNG copy)>] [32 <C:/Users
 /BMF/Desktop/C/trabajoC/doc/img/ss5.png (PNG copy)>]
-Overfull \hbox (42.67407pt too wide) in paragraph at lines 497--526
+Overfull \hbox (42.67407pt too wide) in paragraph at lines 497--527
  [][] 
  []
 
 [33
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 535--536
+Underfull \hbox (badness 10000) in paragraph at lines 536--537
 []\OT1/cmr/m/n/12 Cvejic, Ne-delj-ko (2004). \OT1/cmr/m/it/12 Al-go-rithms for 
 au-dio wa-ter-mar-king
  []
 
 
-Underfull \hbox (badness 4048) in paragraph at lines 535--536
+Underfull \hbox (badness 4048) in paragraph at lines 536--537
 \OT1/cmr/m/it/12 and ste-ga-no-graphy\OT1/cmr/m/n/12 . Ou-lu Uni-ver-sity Press
 . ISBN 951-42-7384-2.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--540
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 []\OT1/cmr/m/n/12 Gibson, Ty-ler (2003). \OT1/cmr/m/it/12 Met-hods of au-dio st
 e-ga-no-graphy\OT1/cmr/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 542--543
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
 []\OT1/cmr/m/n/12 John, Co-rin-na (2004). \OT1/cmr/m/it/12 Hi-ding Da-ta in Wa-
 ve Au-dio Fi-les\OT1/cmr/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 545--546
+Underfull \hbox (badness 10000) in paragraph at lines 546--547
 []\OT1/cmr/m/n/12 Wilson, Scott (2003). \OT1/cmr/m/it/12 WA-VE PCM sound-fi-le 
 for-mat\OT1/cmr/m/n/12 .
  []
@@ -588,7 +588,7 @@ for-mat\OT1/cmr/m/n/12 .
 Here is how much of TeX's memory you used:
  4709 strings out of 494053
  60515 string characters out of 3148610
- 147042 words of memory out of 3000000
+ 148042 words of memory out of 3000000
  7942 multiletter control sequences out of 15000+200000
  11728 words of font info for 42 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
@@ -603,7 +603,7 @@ s/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
 :/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on memoria.pdf (34 pages, 646821 bytes).
+Output written on memoria.pdf (34 pages, 646963 bytes).
 PDF statistics:
  178 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
