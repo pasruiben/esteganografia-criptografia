@@ -19,11 +19,15 @@ namespace Steganos_Cripto
 
         public override void update()
         {
-            int samplesPerRegion = State.Instance.SamplesPerRegionParityEncrypt;
             int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
-            int numRegions = numSamples / samplesPerRegion;
 
-            State.Instance.MaxMessageLengthParityEncrypt = numRegions / 8;
+            int samplesPerRegionEncrypt = State.Instance.SamplesPerRegionParityEncrypt;
+            int numRegionsEncrypt = numSamples / samplesPerRegionEncrypt;
+            State.Instance.MaxMessageLengthParityEncrypt = numRegionsEncrypt / 8;
+
+            int samplesPerRegionDecrypt = State.Instance.SamplesPerRegionParityEncrypt;
+            int numRegionsDecrypt = numSamples / samplesPerRegionDecrypt;
+            State.Instance.MaxMessageLengthParityDecrypt = numRegionsDecrypt / 8;
         }
 
         public override bool encrypt(String message, String key)

@@ -19,9 +19,13 @@ namespace Steganos_Cripto
 
         public override void update()
         {
-            int BitsPerSampleLSBEncrypt = State.Instance.BitsPerSampleLSBEncrypt;
             int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
+
+            int BitsPerSampleLSBEncrypt = State.Instance.BitsPerSampleLSBEncrypt;
             State.Instance.MaxMessageLengthLSBEncrypt = (numSamples * BitsPerSampleLSBEncrypt) / 8;
+
+            int BitsPerSampleLSBDecrypt = State.Instance.BitsPerSampleLSBDecrypt;
+            State.Instance.MaxMessageLengthLSBDecrypt = (numSamples * BitsPerSampleLSBDecrypt) / 8;
         }
 
         public override bool encrypt(String message, String key)
