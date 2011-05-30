@@ -108,8 +108,8 @@ namespace Steganos_Cripto
             Header header = wProcessor.header;
             Sample[] samples = wProcessor.samples;
 
-            int percent = 0;
-            int numBitsToModify = 0;
+            int percent = -1;
+            int numBitsToModify = -1;
 
             try
             {
