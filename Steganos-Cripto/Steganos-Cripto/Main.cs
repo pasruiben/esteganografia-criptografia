@@ -108,9 +108,15 @@ namespace Steganos_Cripto
             Header header = wProcessor.header;
             Sample[] samples = wProcessor.samples;
 
+            int percent = 0;
+            int numBitsToModify = 0;
 
-            int percent = int.Parse(textBox3.Text);
-            int numBitsToModify = int.Parse(textBox4.Text);
+            try
+            {
+                percent = int.Parse(textBox3.Text);
+                numBitsToModify = int.Parse(textBox4.Text);
+            }
+            catch (Exception) { }
 
             if (!(percent >= 0 && percent <= 100 && numBitsToModify >= 0 && numBitsToModify <= State.Instance.BitsPerSample))
             {
