@@ -14,7 +14,7 @@ namespace Steganos_Cripto
             base.EncryptView = new ParityEncryptControl();
             base.DecryptView = new ParityDecryptControl();
 
-            base.Name = "Parity";
+            base.Name = "Parity Coding";
         }
 
         public override void update()
