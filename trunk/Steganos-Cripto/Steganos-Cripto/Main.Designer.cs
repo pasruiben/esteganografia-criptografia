@@ -199,7 +199,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(785, 307);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cifrado";
+            this.tabPage1.Text = "Ocultar";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // panel3
@@ -242,7 +242,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(785, 307);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Descifrado";
+            this.tabPage2.Text = "Extraer";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel5
