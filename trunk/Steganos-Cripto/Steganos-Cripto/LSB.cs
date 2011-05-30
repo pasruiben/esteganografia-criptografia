@@ -9,7 +9,7 @@ namespace Steganos_Cripto
 {
     class LSB : Algorithm
     {
-
+        public int maxMessage = 0;
         public LSB()
         {
             base.EncryptView = new LSBEncryptControl();
@@ -17,23 +17,16 @@ namespace Steganos_Cripto
             base.Name = "LSB";
         }
 
-        public override void init()
-        {
-            LSBEncryptControl encrypyView = base.EncryptView as LSBEncryptControl;
-
-            int bitPerSampleMessage = State.Instance.BitsPerSampleLSBEncrypt;
-
-            int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
-            float maxMessage = (numSamples * bitPerSampleMessage) / 8;
-
-            encrypyView.infoLabel.Text = "Longitud máxima del mensaje: " + maxMessage + " caracteres";
-        }
-
         public override void encrypt(String message, String key)
         {
             WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
             Header header = wProcessor.header;
             Sample[] samples = wProcessor.samples;
+
+            if (message.Length > samples.Length)
+            {
+                return;
+            }
 
             int bitsPerSampleMessage = State.Instance.BitsPerSampleLSBEncrypt;
             int seed = State.Instance.SeedLSBEncrypt;
@@ -78,6 +71,11 @@ namespace Steganos_Cripto
             int bitsPerSampleMessage = State.Instance.BitsPerSampleLSBDecrypt;
             int messageLength = State.Instance.MessageLengthLSBDecrypt;
             int seed = State.Instance.SeedLSBDecrypt;
+
+            if (messageLength > samples.Length)
+            {
+                return "";
+            }
 
             IndexRandomGenerator rnd = new IndexRandomGenerator(seed, samples.Length); ;
 

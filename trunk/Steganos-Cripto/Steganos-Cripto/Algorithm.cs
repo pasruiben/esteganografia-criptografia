@@ -12,8 +12,6 @@ namespace Steganos_Cripto
         public Control EncryptView { get; set; }
         public Control DecryptView { get; set; }
 
-        public abstract void init();
-
         public abstract void encrypt(String message, String key);
         public abstract String decrypt(String key);
 

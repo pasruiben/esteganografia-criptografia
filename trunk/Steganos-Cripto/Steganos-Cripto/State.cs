@@ -39,5 +39,6 @@ namespace Steganos_Cripto
 
         public int MessageLengthLSBDecrypt { get; set; }
         public int MessageLengthParityDecrypt { get; set; }
+
     }
 }

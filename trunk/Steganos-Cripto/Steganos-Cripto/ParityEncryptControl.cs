@@ -16,18 +16,30 @@ namespace Steganos_Cripto
             InitializeComponent();
         }
 
+        private void updateInfo()
+        {
+            int samplesPerRegion = State.Instance.SamplesPerRegionParityEncrypt;
+            int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
+            int numRegions = numSamples / samplesPerRegion;
+
+            int maxMessageLengthParity = numRegions / 8;
+
+            infoLabel.Text = "Longitud máxima del mensaje: " + maxMessageLengthParity + " caracteres";
+        }
+
         private void samplesPerRegionTextBox_TextChanged(object sender, EventArgs e)
         {
-            int samplesPerRegion = 1;
             try
             {
-                samplesPerRegion = int.Parse(samplesPerRegionTextBox.Text);
+                int samplesPerRegion = int.Parse(samplesPerRegionTextBox.Text);
+                int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
+                if (!(samplesPerRegion >= 1 && samplesPerRegion <= numSamples)) throw new Exception();
+
+                State.Instance.SamplesPerRegionParityEncrypt = samplesPerRegion;
+
+                updateInfo();
             }
             catch (Exception) { }
-
-            State.Instance.SamplesPerRegionParityEncrypt = samplesPerRegion;
-
-            Main.activeAlgorithm.init();
         }
 
         private void seedTextBox_TextChanged(object sender, EventArgs e)
@@ -41,5 +53,11 @@ namespace Steganos_Cripto
 
             State.Instance.SeedParityEncrypt = SeedParityEncrypt;
         }
+
+        private void ParityEncryptControl_Load(object sender, EventArgs e)
+        {
+            updateInfo();
+        }
+
     }
 }
