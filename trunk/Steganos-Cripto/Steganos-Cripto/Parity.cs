@@ -25,7 +25,7 @@ namespace Steganos_Cripto
             int numRegionsEncrypt = numSamples / samplesPerRegionEncrypt;
             State.Instance.MaxMessageLengthParityEncrypt = numRegionsEncrypt / 8;
 
-            int samplesPerRegionDecrypt = State.Instance.SamplesPerRegionParityEncrypt;
+            int samplesPerRegionDecrypt = State.Instance.SamplesPerRegionParityDecrypt;
             int numRegionsDecrypt = numSamples / samplesPerRegionDecrypt;
             State.Instance.MaxMessageLengthParityDecrypt = numRegionsDecrypt / 8;
         }
