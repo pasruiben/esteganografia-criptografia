@@ -18,14 +18,17 @@ namespace Steganos_Cripto
 
         private void samplesPerRegionTextBox_TextChanged(object sender, EventArgs e)
         {
-            int SamplesPerRegionParityDecrypt = 1;
             try
             {
-                SamplesPerRegionParityDecrypt = int.Parse(samplesPerRegionTextBox.Text);
+                int samplesPerRegion = int.Parse(samplesPerRegionTextBox.Text);
+                int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
+                if (!(samplesPerRegion >= 1 && samplesPerRegion <= numSamples)) throw new Exception();
+
+                State.Instance.SamplesPerRegionParityDecrypt = samplesPerRegion;
+
+                Main.activeAlgorithm.update();
             }
             catch (Exception) { }
-
-            State.Instance.SamplesPerRegionParityDecrypt = SamplesPerRegionParityDecrypt;
         }
 
         private void seedTextBox_TextChanged(object sender, EventArgs e)
@@ -50,6 +53,11 @@ namespace Steganos_Cripto
             catch (Exception) { }
 
             State.Instance.MessageLengthParityDecrypt = messageLength;
+        }
+
+        private void ParityDecryptControl_Load(object sender, EventArgs e)
+        {
+            Main.activeAlgorithm.update();
         }
     }
 }

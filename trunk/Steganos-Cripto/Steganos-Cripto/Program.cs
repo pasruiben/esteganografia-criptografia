@@ -27,6 +27,11 @@ namespace Steganos_Cripto
             State.Instance.MessageLengthLSBDecrypt = 10;
             State.Instance.MessageLengthParityDecrypt = 10;
 
+            State.Instance.MaxMessageLengthLSBEncrypt = 10;
+            State.Instance.MaxMessageLengthParityEncrypt = 10;
+            State.Instance.MaxMessageLengthLSBDecrypt = 10;
+            State.Instance.MaxMessageLengthParityDecrypt = 10;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());

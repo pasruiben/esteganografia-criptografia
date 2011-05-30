@@ -17,15 +17,22 @@ namespace Steganos_Cripto
             base.Name = "LSB";
         }
 
-        public override void encrypt(String message, String key)
+        public override void update()
+        {
+            int BitsPerSampleLSBEncrypt = State.Instance.BitsPerSampleLSBEncrypt;
+            int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
+            State.Instance.MaxMessageLengthLSBEncrypt = (numSamples * BitsPerSampleLSBEncrypt) / 8;
+        }
+
+        public override bool encrypt(String message, String key)
         {
             WavProcessor wProcessor = new WavProcessor(State.Instance.FileNameIn);
             Header header = wProcessor.header;
             Sample[] samples = wProcessor.samples;
 
-            if (message.Length > samples.Length)
+            if (message.Length > State.Instance.MaxMessageLengthLSBEncrypt)
             {
-                return;
+                return false;
             }
 
             int bitsPerSampleMessage = State.Instance.BitsPerSampleLSBEncrypt;
@@ -60,6 +67,8 @@ namespace Steganos_Cripto
             }
 
             WavWriter.run(State.Instance.FileNameOut, header, samples);
+
+            return true;
         }
 
 
@@ -72,9 +81,9 @@ namespace Steganos_Cripto
             int messageLength = State.Instance.MessageLengthLSBDecrypt;
             int seed = State.Instance.SeedLSBDecrypt;
 
-            if (messageLength > samples.Length)
+            if (messageLength > State.Instance.MaxMessageLengthLSBDecrypt)
             {
-                return "";
+                return null;
             }
 
             IndexRandomGenerator rnd = new IndexRandomGenerator(seed, samples.Length); ;

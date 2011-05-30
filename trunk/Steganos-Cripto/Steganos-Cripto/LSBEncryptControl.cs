@@ -18,21 +18,19 @@ namespace Steganos_Cripto
 
         private void updateInfo()
         {
-            int BitsPerSampleLSBEncrypt = State.Instance.BitsPerSampleLSBEncrypt;
-            int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
-            int maxMessageLengthLSB = (numSamples * BitsPerSampleLSBEncrypt) / 8;
-
-            infoLabel.Text = "Longitud máxima del mensaje: " + maxMessageLengthLSB + " caracteres";
+            infoLabel.Text = "Longitud máxima del mensaje: " + State.Instance.MaxMessageLengthLSBEncrypt + " caracteres";
         }
 
         private void bitPerSampleMessageTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                int BitsPerSampleLSBEncrypt = int.Parse(bitPerSampleMessageTextBox.Text);
-                if (!(BitsPerSampleLSBEncrypt >= 1 && BitsPerSampleLSBEncrypt <= State.Instance.BitsPerSample)) throw new Exception();
+                int BitsPerSampleLSB = int.Parse(bitPerSampleMessageTextBox.Text);
+                if (!(BitsPerSampleLSB >= 1 && BitsPerSampleLSB <= State.Instance.BitsPerSample)) throw new Exception();
 
-                State.Instance.BitsPerSampleLSBEncrypt = BitsPerSampleLSBEncrypt;
+                State.Instance.BitsPerSampleLSBEncrypt = BitsPerSampleLSB;
+
+                Main.activeAlgorithm.update();
 
                 updateInfo();
             }
@@ -53,6 +51,7 @@ namespace Steganos_Cripto
 
         private void LSBEncryptControl_Load(object sender, EventArgs e)
         {
+            Main.activeAlgorithm.update();
             updateInfo();
         }
     }

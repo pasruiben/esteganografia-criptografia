@@ -101,6 +101,7 @@
             this.Controls.Add(this.bitPerSampleMessageTextBox);
             this.Controls.Add(this.label1);
             this.Name = "LSBDecryptControl";
+            this.Load += new System.EventHandler(this.LSBDecryptControl_Load);
             this.Size = new System.Drawing.Size(320, 135);
             this.ResumeLayout(false);
             this.PerformLayout();

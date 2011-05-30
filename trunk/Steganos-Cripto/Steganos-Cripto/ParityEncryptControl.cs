@@ -18,13 +18,7 @@ namespace Steganos_Cripto
 
         private void updateInfo()
         {
-            int samplesPerRegion = State.Instance.SamplesPerRegionParityEncrypt;
-            int numSamples = WavProcessor.numSamples(State.Instance.FileNameIn);
-            int numRegions = numSamples / samplesPerRegion;
-
-            int maxMessageLengthParity = numRegions / 8;
-
-            infoLabel.Text = "Longitud máxima del mensaje: " + maxMessageLengthParity + " caracteres";
+            infoLabel.Text = "Longitud máxima del mensaje: " + State.Instance.MaxMessageLengthParityEncrypt + " caracteres";
         }
 
         private void samplesPerRegionTextBox_TextChanged(object sender, EventArgs e)
@@ -37,6 +31,7 @@ namespace Steganos_Cripto
 
                 State.Instance.SamplesPerRegionParityEncrypt = samplesPerRegion;
 
+                Main.activeAlgorithm.update();
                 updateInfo();
             }
             catch (Exception) { }
@@ -56,6 +51,7 @@ namespace Steganos_Cripto
 
         private void ParityEncryptControl_Load(object sender, EventArgs e)
         {
+            Main.activeAlgorithm.update();
             updateInfo();
         }
 
