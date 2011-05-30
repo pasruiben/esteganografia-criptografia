@@ -18,14 +18,16 @@ namespace Steganos_Cripto
 
         private void bitPerSampleMessageTextBox_TextChanged(object sender, EventArgs e)
         {
-            int BitsPerSampleLSBDecrypt = 1;
             try
             {
-                BitsPerSampleLSBDecrypt = int.Parse(bitPerSampleMessageTextBox.Text);
+                int BitsPerSampleLSB = int.Parse(bitPerSampleMessageTextBox.Text);
+                if (!(BitsPerSampleLSB >= 1 && BitsPerSampleLSB <= State.Instance.BitsPerSample)) throw new Exception();
+
+                State.Instance.BitsPerSampleLSBDecrypt = BitsPerSampleLSB;
+
+                Main.activeAlgorithm.update();
             }
             catch (Exception) { }
-
-            State.Instance.BitsPerSampleLSBDecrypt = BitsPerSampleLSBDecrypt;
         }
 
         private void seedTextBox_TextChanged(object sender, EventArgs e)
@@ -50,6 +52,11 @@ namespace Steganos_Cripto
             catch (Exception) { }
 
             State.Instance.MessageLengthLSBDecrypt = messageLength;
+        }
+
+        private void LSBDecryptControl_Load(object sender, EventArgs e)
+        {
+            Main.activeAlgorithm.update();
         }
     }
 }

@@ -40,5 +40,11 @@ namespace Steganos_Cripto
         public int MessageLengthLSBDecrypt { get; set; }
         public int MessageLengthParityDecrypt { get; set; }
 
+        public int MaxMessageLengthLSBEncrypt { get; set; }
+        public int MaxMessageLengthParityEncrypt { get; set; }
+
+        public int MaxMessageLengthLSBDecrypt { get; set; }
+        public int MaxMessageLengthParityDecrypt { get; set; }
+
     }
 }

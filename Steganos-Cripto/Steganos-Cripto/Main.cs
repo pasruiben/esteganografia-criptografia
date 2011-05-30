@@ -84,15 +84,15 @@ namespace Steganos_Cripto
 
         private void aplicar_Cifrado_Click(object sender, EventArgs e)
         {
-            activeAlgorithm.encrypt(messageTextBox.Text, keyTextBox.Text);
+            bool correct = activeAlgorithm.encrypt(messageTextBox.Text, keyTextBox.Text);
 
-            this.infoToolStripStatusLabel.Text = "Algoritmo de cifrado aplicado";
+            if(correct) this.infoToolStripStatusLabel.Text = "Algoritmo de cifrado aplicado";
         }
 
         private void AplicarDescifradoButton_Click(object sender, EventArgs e)
         {
             String res = activeAlgorithm.decrypt(keyTextBox.Text);
-            textBox1.Text = res;
+            if(res != null) textBox1.Text = res;
         }
 
         private void messageTextBox_TextChanged(object sender, EventArgs e)
