@@ -39,7 +39,7 @@ namespace Steganos_Cripto
             {
                 State.Instance.BitsPerSample = WavProcessor.numbitsPerSamples(dlg.FileName);
 
-                if (!(State.Instance.BitsPerSample == 8 || State.Instance.BitsPerSample == 16))
+                if (State.Instance.BitsPerSample != 16)
                 {
                     MessageBox.Show("Wav no válido!");
                     return;
