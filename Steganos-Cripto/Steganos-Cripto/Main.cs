@@ -130,7 +130,7 @@ namespace Steganos_Cripto
             {
                 Sample s = samples[i];
 
-                int num = rnd.Next(percent);
+                int num = rnd.Next(100);
                 if (num >= 0 && num < percent)
                 {
                     IndexRandomGenerator irg = new IndexRandomGenerator((int)DateTime.Now.Ticks, State.Instance.BitsPerSample);
