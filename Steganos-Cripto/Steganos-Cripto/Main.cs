@@ -86,13 +86,17 @@ namespace Steganos_Cripto
         {
             bool correct = activeAlgorithm.encrypt(messageTextBox.Text, keyTextBox.Text);
 
-            if(correct) this.infoToolStripStatusLabel.Text = "Algoritmo de cifrado aplicado";
+            if(correct) this.infoToolStripStatusLabel.Text = "Algoritmo de ocultación aplicado";
         }
 
         private void AplicarDescifradoButton_Click(object sender, EventArgs e)
         {
             String res = activeAlgorithm.decrypt(keyTextBox.Text);
-            if(res != null) textBox1.Text = res;
+            if (res != null)
+            {
+                textBox1.Text = res;
+                this.infoToolStripStatusLabel.Text = "Algoritmo de extracción aplicado";
+            }
         }
 
         private void messageTextBox_TextChanged(object sender, EventArgs e)
