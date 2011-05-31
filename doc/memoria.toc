@@ -6,23 +6,23 @@
 \contentsline {subsection}{\numberline {2.2}Audio digital}{6}
 \contentsline {subsubsection}{\numberline {2.2.1}El formato WAV}{6}
 \contentsline {section}{\numberline {3}Descripci\IeC {\'o}n del problema}{11}
-\contentsline {subsection}{\numberline {3.1}Aplicaciones}{11}
-\contentsline {subsubsection}{\numberline {3.1.1}Privacidad}{11}
-\contentsline {subsubsection}{\numberline {3.1.2}Protecci\IeC {\'o}n de copyright}{11}
+\contentsline {subsection}{\numberline {3.1}Privacidad}{11}
+\contentsline {subsection}{\numberline {3.2}Protecci\IeC {\'o}n de copyright}{11}
 \contentsline {section}{\numberline {4}Soluciones presentadas}{14}
 \contentsline {subsection}{\numberline {4.1}Codificaci\IeC {\'o}n en el bit menos significativo (LSB coding)}{14}
 \contentsline {subsection}{\numberline {4.2}Codificaci\IeC {\'o}n en paridad (Parity coding)}{16}
 \contentsline {subsection}{\numberline {4.3}Codificaci\IeC {\'o}n en fase (Phase coding)}{18}
 \contentsline {subsection}{\numberline {4.4}Espectro ensanchado (Spread spectrum)}{20}
 \contentsline {subsection}{\numberline {4.5}Ocultamiento en eco (Echo hiding)}{22}
-\contentsline {section}{\numberline {5}Conclusiones}{25}
-\contentsline {section}{\numberline {6}Problemas abiertos}{27}
-\contentsline {section}{\numberline {7}Implementaci\IeC {\'o}n realizada}{28}
-\contentsline {subsection}{\numberline {7.1}Manual de instalaci\IeC {\'o}n}{28}
-\contentsline {subsection}{\numberline {7.2}Manual de uso}{28}
-\contentsline {subsubsection}{\numberline {7.2.1}Ocultaci\IeC {\'o}n en LSB}{29}
-\contentsline {subsubsection}{\numberline {7.2.2}Extracci\IeC {\'o}n en LSB}{30}
-\contentsline {subsubsection}{\numberline {7.2.3}Ocultaci\IeC {\'o}n en Parity Coding}{31}
-\contentsline {subsubsection}{\numberline {7.2.4}Extracci\IeC {\'o}n en Parity Coding}{31}
-\contentsline {section}{\numberline {8}Tabla de tiempos}{33}
-\contentsline {section}{Bibliograf\'{\i }a}{34}
+\contentsline {section}{\numberline {5}Implementaci\IeC {\'o}n realizada}{25}
+\contentsline {subsection}{\numberline {5.1}Manual de uso}{25}
+\contentsline {subsubsection}{\numberline {5.1.1}Ocultaci\IeC {\'o}n en LSB}{26}
+\contentsline {subsubsection}{\numberline {5.1.2}Extracci\IeC {\'o}n en LSB}{27}
+\contentsline {subsubsection}{\numberline {5.1.3}Ocultaci\IeC {\'o}n en Parity Coding}{27}
+\contentsline {subsubsection}{\numberline {5.1.4}Extracci\IeC {\'o}n en Parity Coding}{29}
+\contentsline {subsection}{\numberline {5.2}Mejoras y ampliaciones}{29}
+\contentsline {subsection}{\numberline {5.3}Otras implementaciones}{30}
+\contentsline {section}{\numberline {6}Problemas abiertos}{32}
+\contentsline {section}{\numberline {7}Conclusiones}{33}
+\contentsline {section}{\numberline {8}Tabla de tiempos}{34}
+\contentsline {section}{Bibliograf\'{\i }a}{35}
