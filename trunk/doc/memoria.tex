@@ -192,15 +192,13 @@ En un sistema de estaganografía de audio, se ocultan mensajes secretos en audio
 
 Ocultar mensajes secretos en archivos de sonido suele ser más difícil que ocultar mensajes en archivos de imagen o vídeo. Esto se debe a la mayor sensibilidad que presenta en las personas el sistema auditivo frente al sistema visual. Existen un buen número de métodos y algoritmos para llevar a la práctica estos conceptos, algunos de ellos sencillos y otros más complejos (basados en técnicas avanzadas de procesado digital de señales). Estos métodos serán analizados en detalle en la sección ``Soluciones presentadas".
 
-\subsection{Aplicaciones}
-
 Podemos clasificar las aplicaciones de la esteganografía de audio en dos campos fundamentales: privacidad y protección de copyright.
 
-\subsubsection{Privacidad}
+\subsection{Privacidad}
 
 La esteganografía, y en particular la esteganografía de audio, tiene un campo de aplicación muy evidente en el envío de mensajes secretos. En este caso, el objetivo es proteger las comunicaciones entre un emisor y un receptor, de manera que una tercera parte (un enemigo) no pueda tener acceso a la información. El hecho de que la esteganografía pueda ser combinada con técnicas de criptografía la convierte en una herramienta muy potente. Así, la esteganografía añade una primera ``barrera de defensa''. El atacante tendrá que ser capaz de detectar la mera existencia de la información, para posteriormente enfrentarse al criptoanálisis de la misma.
 
-\subsubsection{Protección de copyright}
+\subsection{Protección de copyright}
 
 El rápido desarrollo del software y la bajada de precios de los dispositivos digitales han hecho posible que consumidores de todo el mundo puedan hoy en día crear e intercambiar datos multimedia con gran facilidad. Internet de banda ancha proporciona transmisiones de datos a gran velocidad con una tasa de errores muy baja. Esto ha facilitado que cualquiera pueda distribuir archivos multimedia de gran tamaño y hacer copias exactas de los mismos. La capacidad de llevar a cabo estas copias perfectas dificulta la protección de los derechos de propiedad intelectual. La posibilidad de crear y distribuir un número ilimitado de copias de sus obras causa un daño económico considerable para los autores.
 
@@ -390,40 +388,9 @@ El diagrama de la figura \ref{echo2ndimp} resume esta segunda implementación de
 Para extraer el mensaje secreto, el receptor debe ser capaz de dividir la señal en el mismo conjunto de bloques usado durante el proceso de inserción de la información. Hecho esto, puede usarse la función de autocorrelación del cepstrum de la señal (el cepstrum es la transformada de Fourier del espectro de frecuencias de la señal) para extraer el mensaje, ya que ésta muestra un pico en cada offset de eco en el tiempo, lo que permite reconstruir el mensaje.
 
 \newpage
-\section{Conclusiones}
-
-La esteganografía de audio es muy flexible y esto es lo que la hace tan interesante. Los cinco métodos analizados dan a los usuarios gran capacidad de decisión y hacen la tecnología accesible a un gran número de personas. A la hora de escoger qué método de esteganografía de audio emplear, debe estudiarse la importancia de factores como la tasa de transferencia de datos, el ancho de banda, la robustez y la perceptibilidad, para elegir el método que mejor se ajuste a las necesidades. Por ejemplo, dos personas que sólo necesitan enviarse un mensaje secreto ocasionalmente podrían usar el método de codificación en el bit menos significativo, fácil de implementar. Por contra, una gran multinacional con la intención de proteger su propiedad intelectual de ``piratas digitales'' probablemente consideraría métodos más sofisticados como codificación en fase, espectro ensanchado u ocultamiento de eco. Otro de los aspectos de la esteganografía de audio que la hace tan atractiva es su capacidad para combinarse con las tecnologías de criptografía ya existentes. Los usuarios no tienen que elegir cuál de los dos métodos utilizar, la información puede ir cifrada y oculta simultáneamente.
-
-En resumen, con el crecimiento de áreas como protección de copyright, protección de privacidad y vigilancia, creemos que la esteganografía seguirá aumentando en importancia. La esteganografía de audio, en particular, se centra en problemas que se originaron con la aparición del audio digital (y su espectacular auge con el formato MP3), el software P2P, y la necesidad de un esquema de comunicaciones seguro que pueda mantener el secreto de la información transmitida incluso si ésta debe atravesar canales inseguros.
-
-\newpage
-\section{Problemas abiertos}
-
-La principal dificultad en el campo de la ocultación de información en audio digital es comúnmente ilustrada utilizando el llamado ``triángulo mágico'' (figura \ref{magictriangle}). La inaudibilidad o imperceptibilidad, la robustez frente a ataques y la tasa de transferencia de datos son las tres esquinas del triángulo mágico. Estos tres requisitos son contradictorios. No es posible obtener todas estas características simultáneamente. Por ello, deberá estudiarse cada situación particular para elegir el método más apropiado a aplicar en cada caso.
-
-\begin{figure}[h]
-  \centering
-    \includegraphics[width=0.5\textwidth]{img/magictriangle}
-  \caption{Triángulo mágico}
-  \label{magictriangle}
-\end{figure}
-
-Otros problemas interesantes son:
-
-\begin{itemize}
-
-\item ¿Cuál es la máxima tasa de transferencia de datos que se puede conseguir con cada método, respetando los límites que marca la necesidad de imperceptibilidad?
-
-\item ¿Cómo puede mejorarse la robustez frente a ataques (intencionados o no intencionados) de cada uno de estos métodos?
-
-\end{itemize}
-
-\newpage
 \section{Implementación realizada}
 
-Parte del tiempo empleado en la realización de este trabajo ha sido dedicado al desarrollo de una aplicación que pusiera en práctica los conceptos previamente analizados de manera teórica. Si bien no se nos pedía explícitamente que desarrolláramos una aplicación, hemos pensado que sería muy interesante poder aplicar algunas de las ideas tratadas y observar los resultados obtenidos experimentalmente.
-
-\subsection{Manual de instalación}
+Parte del tiempo empleado en la realización de este trabajo ha sido dedicado al desarrollo de una aplicación que pusiera en práctica los conceptos previamente analizados de manera teórica. Si bien no se nos pedía explícitamente que desarrolláramos una aplicación, hemos pensado que sería muy interesante poder aplicar algunas de las ideas tratadas y observar los resultados obtenidos experimentalmente. Para el desarrollo de esta aplicación se ha utilizado el lenguaje de programación C\#.
 
 La aplicación se distribuye en formato ejecutable (.exe), por lo que no es necesaria instalación. Está preparada para ser ejecutada en entornos con sistema operativo Windows y la versión 3.5 (o posterior) del .NET Framework.
 
@@ -487,6 +454,81 @@ La figura \ref{ss5} muestra la apariencia de la aplicación tras aplicar parity 
   \caption{Apariencia de la aplicación tras extraer un mensaje utilizando parity coding}
   \label{ss5}
 \end{figure}
+
+\subsection{Mejoras y ampliaciones}
+
+Se ha desarrollado una aplicación con interfaz gráfica y un marcado carácter didáctico. Debido al poco tiempo del que se disponía para la elaboración de este trabajo, no se han desarrollado aspectos que habrían dado lugar a una aplicación mucho más completa. A continuación listamos las mejoras y ampliaciones más importantes que podrían llevarse a cabo:
+
+\begin{itemize}
+
+\item Soporte para múltiples formatos de audio
+
+El programa desarrollado sólo ofrece la capacidad de ocultar datos en archivos de audio en formato WAV. Existe un gran número de formatos de audio digital, entre los que destacamos AIFF, AU, MP3, OGG y WMA.
+
+\item Inclusión de más métodos
+
+La aplicación desarrollada ofrece dos algoritmos de ocultación de datos: codificación en el bit menos significativo y codificación en paridad. Como se estudió en la sección ``Soluciones presentadas'', existen más métodos. Se decidió implementar estos algoritmos por ser los más sencillos de entender y de programar desde cero. Para la implementación de los restantes métodos (que trabajan en el dominio de la frecuencia) sería necesario el uso de librerías de C\# para procesado digital de señales. En este sentido, se intentó implementar el algoritmo de codificación en fase (para lo cual se hizo uso de la librería de código abierto Math.NET). Finalmente, no fue posible completar dicha funcionalidad por falta de tiempo y por la poca experiencia que los alumnos tienen en las técnicas matemáticas necesarias (que no forman parte de los contenidos de la asignatura).
+
+\item Ocultación de datos de diferente índole
+
+El programa elaborado permite ocultar texto en archivos de audio. El texto a ocultar debe ser escrito en un campo de texto en la ventana de la aplicación. Una mejora consistiría en permitir al usuario elegir un archivo (que podría ser de texto, o de cualquier otro tipo) que se ocultaría en el archivo de audio elegido. El procedimiento aplicado sería el mismo, puesto que cualquier archivo puede interpretarse como una secuencia de bits.
+
+\end{itemize}
+
+\subsection{Otras implementaciones}
+
+Si bien no es un campo tan desarrollado como la esteganografía en imágenes, existen varias aplicaciones (comerciales o gratuitas) de esteganografía en archivos de audio. Exponemos a continuación algunas de las más conocidas:
+
+\begin{itemize}
+
+\item SilentEye (http://www.silenteye.org/)
+
+Gratuita. Oculta archivos de cualquier tipo en archivos de audio en formato WAV.
+
+\item Steghide (http://steghide.sourceforge.net/)
+
+Gratuito. Oculta datos en archivos de imagen o audio. Los formatos de audio soportados son WAV y AU.
+
+\item MP3Stego (http://www.petitcolas.net/fabien/steganography/mp3stego/index.html)
+
+Gratuito. Oculta archivos de texto dentro de archivos de audio en formato MP3.
+
+\item Invisible Secrets (http://www.invisiblesecrets.com/)
+
+Comercial. Oculta archivos en archivos de imagen o audio. El único formato de audio soportado es WAV.
+
+\end{itemize}
+
+\newpage
+\section{Problemas abiertos}
+
+La principal dificultad en el campo de la ocultación de información en audio digital es comúnmente ilustrada utilizando el llamado ``triángulo mágico'' (figura \ref{magictriangle}). La inaudibilidad o imperceptibilidad, la robustez frente a ataques y la tasa de transferencia de datos son las tres esquinas del triángulo mágico. Estos tres requisitos son contradictorios. No es posible obtener todas estas características simultáneamente. Por ello, deberá estudiarse cada situación particular para elegir el método más apropiado a aplicar en cada caso.
+
+Por ejemplo, para mejorar la robustez suele recurrirse a ocultar el mensaje varias veces en el archivo de audio. Si se oculta el mensaje dos veces, el efecto sería similar a ocultar un mensaje de longitud igual al doble de la original. Evidentemente, esto reduce la tasa de transferencia de datos. En concreto, el tamaño máximo de mensaje que se podrá incluir será la mitad. Igualmente, esto reduce la imperceptibilidad, puesto que para ocultar el mismo mensaje será necesario modificar el doble de bits, incrementando las posibilidades de que el mensaje oculto pueda ser detectado.
+
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=0.5\textwidth]{img/magictriangle}
+  \caption{Triángulo mágico}
+  \label{magictriangle}
+\end{figure}
+
+Otros problemas interesantes son:
+
+\begin{itemize}
+
+\item ¿Cuál es la máxima tasa de transferencia de datos que se puede conseguir con cada método, respetando los límites que marca la necesidad de imperceptibilidad?
+
+\item ¿Cómo puede evaluarse la robustez frente a ataques (intencionados o no intencionados) de cada uno de estos métodos?
+
+\end{itemize}
+
+\newpage
+\section{Conclusiones}
+
+La esteganografía de audio es muy flexible y esto es lo que la hace tan interesante. Los cinco métodos analizados dan a los usuarios gran capacidad de decisión y hacen la tecnología accesible a un gran número de personas. A la hora de escoger qué método de esteganografía de audio emplear, debe estudiarse la importancia de factores como la tasa de transferencia de datos, el ancho de banda, la robustez y la perceptibilidad, para elegir el método que mejor se ajuste a las necesidades. Por ejemplo, dos personas que sólo necesitan enviarse un mensaje secreto ocasionalmente podrían usar el método de codificación en el bit menos significativo, fácil de implementar. Por contra, una gran multinacional con la intención de proteger su propiedad intelectual de ``piratas digitales'' probablemente consideraría métodos más sofisticados como codificación en fase, espectro ensanchado u ocultamiento de eco. Otro de los aspectos de la esteganografía de audio que la hace tan atractiva es su capacidad para combinarse con las tecnologías de criptografía ya existentes. Los usuarios no tienen que elegir cuál de los dos métodos utilizar, la información puede ir cifrada y oculta simultáneamente.
+
+En resumen, con el crecimiento de áreas como protección de copyright, protección de privacidad y vigilancia, creemos que la esteganografía seguirá aumentando en importancia. La esteganografía de audio, en particular, se centra en problemas que se originaron con la aparición del audio digital (y su espectacular auge con el formato MP3), el software P2P, y la necesidad de un esquema de comunicaciones seguro que pueda mantener el secreto de la información transmitida incluso si ésta debe atravesar canales inseguros.
 
 \clearpage
 \section{Tabla de tiempos}
