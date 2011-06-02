@@ -30,6 +30,27 @@ namespace Steganos_Cripto
             MessageBox.Show("Esteganografía en audio.\nRealizado por Juan Antonio Cano Salado, Borja Moreno Fernandez y Pascual Javier Ruiz Benitez");
         }
 
+        private void initFile(String file)
+        {
+            State.Instance.BitsPerSample = WavProcessor.numbitsPerSamples(file);
+
+            if (!(State.Instance.BitsPerSample == 8 || State.Instance.BitsPerSample == 16))
+            {
+                MessageBox.Show("Wav no válido!");
+                return;
+            }
+
+            this.infoToolStripStatusLabel.Text = "Audio cargado";
+            this.Text = "Esteganografía en audio - " + file + " - Bits por sample: " + State.Instance.BitsPerSample;
+
+            State.Instance.FileNameIn = file;
+            State.Instance.FileNameOut = file + ".out.wav";
+
+            panel2.Visible = true;
+            tabControl1.Visible = true;
+            panel3.Visible = true;
+        }
+
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -37,23 +58,7 @@ namespace Steganos_Cripto
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                State.Instance.BitsPerSample = WavProcessor.numbitsPerSamples(dlg.FileName);
-
-                if (!(State.Instance.BitsPerSample == 8 || State.Instance.BitsPerSample == 16))
-                {
-                    MessageBox.Show("Wav no válido!");
-                    return;
-                }
-
-                this.infoToolStripStatusLabel.Text = "Audio cargado";
-                this.Text = "Esteganografía en audio - " + dlg.SafeFileName;
-
-                State.Instance.FileNameIn = dlg.FileName;
-                State.Instance.FileNameOut = dlg.FileName + ".out.wav";
-
-                panel2.Visible = true;
-                tabControl1.Visible = true;
-                panel3.Visible = true;
+                initFile(dlg.FileName);
             }
         }
 
@@ -148,6 +153,18 @@ namespace Steganos_Cripto
             WavWriter.run(State.Instance.FileNameIn, header, samples);
 
             this.infoToolStripStatusLabel.Text = "Ruido aplicado";
+        }
+
+        private void Main_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false)) e.Effect = DragDropEffects.All;
+        }
+
+        private void Main_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] fileList = e.Data.GetData(DataFormats.FileDrop) as string[];
+
+            initFile(fileList[0]);
         }
     }
 }
