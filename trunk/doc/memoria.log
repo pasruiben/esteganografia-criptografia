@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  31 MAY 2011 22:50
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.3.6)  2 JUN 2011 20:09
 entering extended mode
 **memoria.tex
 (C:\Users\BMF\Desktop\C\trabajoC\doc\memoria.tex
@@ -538,9 +538,9 @@ py)> <C:/Users/BMF/Desktop/C/trabajoC/doc/img/ss4.png (PNG copy)>]
 File: img/ss5.png Graphic file (type png)
  <use img/ss5.png> [29 <C:/Users/BMF/Desktop/C/trabajoC/doc/img/ss5.png (PNG co
 py)>] [30]
-Overfull \hbox (69.90356pt too wide) in paragraph at lines 492--493
-[]\OT1/cmr/m/n/12 MP3Stego (http://www.petitcolas.net/fabien/steganography/mp3s
-tego/index.html) 
+Overfull \hbox (41.18164pt too wide) in paragraph at lines 492--493
+[]\OT1/cmr/m/n/12 MP3Stego (http://petitcolas.net/fabien/steganography/mp3stego
+/index.html) 
  []
 
 [31] <img/magictriangle.png, id=136, 336.25626pt x 176.66pt>
@@ -590,29 +590,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 588--589
 for-mat\OT1/cmr/m/n/12 .
  []
 
-[35] (C:\Users\BMF\Desktop\C\trabajoC\doc\memoria.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[35] (C:\Users\BMF\Desktop\C\trabajoC\doc\memoria.aux) ) 
 Here is how much of TeX's memory you used:
  4709 strings out of 494053
  60515 string characters out of 3148610
- 148043 words of memory out of 3000000
+ 148042 words of memory out of 3000000
  7942 multiletter control sequences out of 15000+200000
  11728 words of font info for 42 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  38i,9n,67p,1388b,1452s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on memoria.pdf (35 pages, 651206 bytes).
+<C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on memoria.pdf (35 pages, 651267 bytes).
 PDF statistics:
  181 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
