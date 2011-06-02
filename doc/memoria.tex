@@ -27,7 +27,7 @@
 
 Este trabajo aborda la ocultación de datos en archivos de sonido o, lo que es lo mismo, la esteganografía de audio. El objetivo de esta disciplina consiste básicamente en ocultar información (de cualquier tipo) en archivos de sonido, de forma que los cambios llevados a cabo en el archivo original resulten imperceptibles para una persona.
 
-Comenzaremos estudiando los principios básicos de la esteganografía y el audio digital, con especial énfasis en uno de los formatos de audio más populares: WAV. Hecho esto, presentaremos el problema de la esteganografía de audio y sus aplicaciones más destacadas. A continuación, analizaremos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Completaremos esta información con unas conclusiones y una exposición de los problemas que quedan abiertos. Finalmente, incluiremos una descripción de la implementación realizada y proporcionaremos un manual de instalación y manejo de la aplicación desarrollada.
+Comenzaremos estudiando los principios básicos de la esteganografía y el audio digital, con especial énfasis en uno de los formatos de audio más populares: WAV. Hecho esto, presentaremos el problema de la esteganografía de audio y sus aplicaciones más destacadas. A continuación, analizaremos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Después, incluiremos una descripción de la implementación realizada y proporcionaremos un manual de manejo de la aplicación desarrollada. Finalmente completaremos esta información con unas conclusiones y una exposición de los problemas que quedan abiertos.
 
 \newpage
 \section{Introducción}
@@ -58,7 +58,7 @@ La esteganografía puede además combinarse con la criptografía para crear sist
 
 \item Esteganografía pura
 
-La fortaleza del sistema recae en los algoritmos de ocultación y extracción de la información, que solo el emisor y el receptor del mensaje deberían conocer.
+La fortaleza del sistema recae en los algoritmos de ocultación y extracción de la información, que sólo el emisor y el receptor del mensaje deberían conocer.
 
 \item Esteganografía de clave privada
 
@@ -200,7 +200,7 @@ La esteganografía, y en particular la esteganografía de audio, tiene un campo 
 
 \subsection{Protección de copyright}
 
-El rápido desarrollo del software y la bajada de precios de los dispositivos digitales han hecho posible que consumidores de todo el mundo puedan hoy en día crear e intercambiar datos multimedia con gran facilidad. Internet de banda ancha proporciona transmisiones de datos a gran velocidad con una tasa de errores muy baja. Esto ha facilitado que cualquiera pueda distribuir archivos multimedia de gran tamaño y hacer copias exactas de los mismos. La capacidad de llevar a cabo estas copias perfectas dificulta la protección de los derechos de propiedad intelectual. La posibilidad de crear y distribuir un número ilimitado de copias de sus obras causa un daño económico considerable para los autores.
+El rápido desarrollo del software y la bajada de precios de los dispositivos digitales han hecho posible que consumidores de todo el mundo puedan hoy en día crear e intercambiar datos multimedia con gran facilidad. Internet de banda ancha proporciona transmisiones de datos a gran velocidad con una tasa de errores muy baja. Esto ha facilitado que cualquiera pueda distribuir archivos multimedia de gran tamaño y hacer copias exactas de los mismos. La capacidad de llevar a cabo estas copias perfectas dificulta la protección de los derechos de propiedad intelectual. La posibilidad de crear y distribuir un número ilimitado de copias de sus obras causa un daño económico considerable a los autores.
 
 Los métodos tradicionales de protección de copyright ya no son suficientes. Los métodos de protección hardware no son una opción, ya que el mercado se está alejando cada vez más de los dispositivos físicos. Los métodos básicos de protección software basados en la inclusión de información en la cabecera de los archivos multimedia tampoco son de utilidad, ya que la cabecera de los archivos puede ser fácilmente sustituida por otra, sin que los datos multimedia sufran ningún tipo de deterioro.
 
@@ -215,7 +215,7 @@ En resumen, el uso de esteganografía de audio en protección de derechos de pro
 \newpage
 \section{Soluciones presentadas}
 
-En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se ha preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a lectores con conocimientos básicos de esteganografía.
+En esta sección presentamos algunos de los métodos más comúnmente utilizados en esteganografía de audio. Pueden encontrarse implementaciones de estos métodos en la Web. Algunos de los métodos más avanzados requieren conocimiento previo de técnicas de procesado de señales, análisis de Fourier y otras áreas matemáticas. Se ha preferido utilizar diagramas y pseudocódigo en lugar de fórmulas matemáticas exactas para intentar hacer la teoría más accesible a los lectores.
 
 \subsection{Codificación en el bit menos significativo (LSB coding)}
 
@@ -396,7 +396,7 @@ La aplicación se distribuye en formato ejecutable (.exe), por lo que no es nece
 
 \subsection{Manual de uso}
 
-Tras arrancar, la aplicación muestra una ventana vacía. Para poner en marcha el programa, es necesario en primer lugar cargar un archivo de audio en formato WAV. Para ello se usa la opción \emph{Abrir} del menú desplegable \emph{Archivo}. La figura \ref{ss1} ilustra la apariencia del programa una vez cargado el archivo de audio correspondiente.
+Tras arrancar, la aplicación muestra una ventana vacía. Para comenzar, es necesario en primer lugar cargar un archivo de audio en formato WAV. Para ello se usa la opción \emph{Abrir} del menú desplegable \emph{Archivo}. La figura \ref{ss1} ilustra la apariencia del programa una vez cargado el archivo de audio correspondiente.
 
 \begin{figure}[h]
   \centering
@@ -463,7 +463,7 @@ Se ha desarrollado una aplicación con interfaz gráfica y un marcado carácter 
 
 \item Soporte para múltiples formatos de audio
 
-El programa desarrollado sólo ofrece la capacidad de ocultar datos en archivos de audio en formato WAV. Existe un gran número de formatos de audio digital, entre los que destacamos AIFF, AU, MP3, OGG y WMA.
+El programa desarrollado sólo ofrece la capacidad de ocultar datos en archivos de audio en formato WAV. Existe un gran número de formatos de audio digital, entre los que destacamos AIFF, AU, MP3, OGG y WMA. Para dar soporte a estos formatos, sería necesario estudiar en detalle la estructura interna de cada uno de ellos.
 
 \item Inclusión de más métodos
 
@@ -471,7 +471,7 @@ La aplicación desarrollada ofrece dos algoritmos de ocultación de datos: codif
 
 \item Ocultación de datos de diferente índole
 
-El programa elaborado permite ocultar texto en archivos de audio. El texto a ocultar debe ser escrito en un campo de texto en la ventana de la aplicación. Una mejora consistiría en permitir al usuario elegir un archivo (que podría ser de texto, o de cualquier otro tipo) que se ocultaría en el archivo de audio elegido. El procedimiento aplicado sería el mismo, puesto que cualquier archivo puede interpretarse como una secuencia de bits.
+El programa elaborado permite ocultar texto en archivos de audio. El texto a ocultar debe ser escrito en un campo presente en la ventana de la aplicación. Una mejora consistiría en permitir al usuario elegir un archivo (que podría ser de texto, o de cualquier otro tipo) que se ocultaría en el archivo de audio elegido. El procedimiento aplicado sería el mismo, puesto que cualquier archivo puede interpretarse como una secuencia de bits.
 
 \end{itemize}
 
@@ -489,7 +489,7 @@ Gratuita. Oculta archivos de cualquier tipo en archivos de audio en formato WAV.
 
 Gratuito. Oculta datos en archivos de imagen o audio. Los formatos de audio soportados son WAV y AU.
 
-\item MP3Stego (http://www.petitcolas.net/fabien/steganography/mp3stego/index.html)
+\item MP3Stego (http://petitcolas.net/fabien/steganography/mp3stego/index.html)
 
 Gratuito. Oculta archivos de texto dentro de archivos de audio en formato MP3.
 
